@@ -4,5 +4,5 @@ import 'package:tajir/app.dart';
 
 void main() async {
   await GetStorage.init();
-  runApp(AlgyrApp());
+  runApp(TajirApp());
 }
