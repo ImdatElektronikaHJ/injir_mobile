@@ -41,9 +41,9 @@ class LocalizationService extends Translations {
   }
 
   changeLocale(String lang) {
-    _box.write(storageLocaleStringKey, lang);
     final Locale locale = _getLocaleFromLanguage(lang);
     Get.updateLocale(locale);
+    _box.write(storageLocaleStringKey, lang);
   }
 
   @override
