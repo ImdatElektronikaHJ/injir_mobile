@@ -16,7 +16,7 @@ class LocalizationService extends Translations {
 
   static final List<String> langs = ['Türkmen', 'Русский', 'English'];
 
-  static const String storageLocaleStringKey = 'selected_locale_key';
+  static const String _selectedLocaleStringKey = 'selected_locale_key';
 
   final GetStorage _box = GetStorage();
 
@@ -36,14 +36,14 @@ class LocalizationService extends Translations {
   }
 
   Locale getLocale() {
-    String? selectedLocale = _box.read<String>(storageLocaleStringKey);
+    String? selectedLocale = _box.read<String>(_selectedLocaleStringKey);
     return _getLocaleFromLanguage(selectedLocale);
   }
 
   changeLocale(String lang) {
     final Locale locale = _getLocaleFromLanguage(lang);
     Get.updateLocale(locale);
-    _box.write(storageLocaleStringKey, lang);
+    _box.write(_selectedLocaleStringKey, lang);
   }
 
   @override
