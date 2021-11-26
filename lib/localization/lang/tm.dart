@@ -1,3 +1,8 @@
 const Map<String, String> tmTm = {
-  'app_name':'Täjir'
+  'app_name': 'Täjir',
+  'home': 'Главная',
+  'categories': 'Категории',
+  'cart': 'Корзина',
+  'stores': 'Магазины',
+  'profile': 'Профиль'
 };
