@@ -17,4 +17,13 @@ class AppDimensions {
   static const marginExtraLarge = 25.0;
 
   static const appBarLeadingWidth = 120.0;
+  static const bannerHeight = 155.0;
+
+  static const homeCategoriesHeight = 90.0;
+  static const homeCategoriesWidth = 120.0;
+
+  static const listProductWidth = 160.0;
+  static const listProductHeight = 250.0;
+
+  static const homeBrandsHeight = 30.0;
 }
