@@ -5,6 +5,8 @@ class AppDarkTheme {
   static final ThemeData theme = ThemeData(
       appBarTheme: _appBarTheme,
       brightness: Brightness.dark,
+      fontFamily: 'Avenir',
+      textTheme: _textTheme,
       primarySwatch: Colors.amber,
       backgroundColor: Colors.black);
 
@@ -16,4 +18,8 @@ class AppDarkTheme {
         statusBarBrightness: Brightness.dark,
       ),
       color: Colors.transparent);
+
+  static const TextTheme _textTheme = TextTheme(
+    button: TextStyle(color: Colors.black),
+  );
 }
