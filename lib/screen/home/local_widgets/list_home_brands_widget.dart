@@ -29,7 +29,7 @@ class HomeBrandsWidget extends StatelessWidget {
     return Container(
       height: AppDimensions.homeBrandsHeight + AppDimensions.marginSmall,
       padding: const EdgeInsets.all(AppDimensions.marginSmall),
-      child: Image.asset('assets/images/bn1.png'),
+      child: Image.asset('assets/placeholder/bn1.png'),
     );
   }
 }
