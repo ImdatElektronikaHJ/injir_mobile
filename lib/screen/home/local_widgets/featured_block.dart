@@ -6,10 +6,12 @@ import 'package:tajir/theme/app_dimensions.dart';
 class FeaturedBlockWidget extends StatelessWidget {
   final Widget childWidget;
   final String title;
+  final Function? onSeeAllTapped;
   const FeaturedBlockWidget({
     Key? key,
     required this.childWidget,
     required this.title,
+    this.onSeeAllTapped,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,10 @@ class FeaturedBlockWidget extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: AppDimensions.marginSmall),
-          FeaturedBlockTitle(title: title),
+          FeaturedBlockTitle(
+            title: title,
+            onSeeAllTapped: onSeeAllTapped,
+          ),
           childWidget,
         ],
       ),
@@ -28,9 +33,11 @@ class FeaturedBlockWidget extends StatelessWidget {
 }
 
 class FeaturedBlockTitle extends StatelessWidget {
-  final String title;
+  final String? title;
+  final Function? onSeeAllTapped;
 
-  const FeaturedBlockTitle({Key? key, required this.title}) : super(key: key);
+  const FeaturedBlockTitle({Key? key, this.title, this.onSeeAllTapped})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,17 +47,14 @@ class FeaturedBlockTitle extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            title!,
             style: Theme.of(context)
                 .textTheme
                 .subtitle1!
                 .copyWith(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
           GestureDetector(
-            onTap: () {
-              print('on see all tapped');
-              //TODO add click listener
-            },
+            onTap: () => onSeeAllTapped!(),
             child: Container(
               padding: const EdgeInsets.symmetric(
                   horizontal: AppDimensions.paddingSmall,
