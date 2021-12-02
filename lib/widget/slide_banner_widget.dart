@@ -5,9 +5,7 @@ import 'package:tajir/theme/app_dimensions.dart';
 
 class SlideBannerWidget extends StatefulWidget {
   final List<dynamic> slideBanners;
-  final Function(String url) onBannerTapped;
-  const SlideBannerWidget(
-      {Key? key, required this.slideBanners, required this.onBannerTapped})
+  const SlideBannerWidget({Key? key, required this.slideBanners})
       : super(key: key);
 
   @override
@@ -16,13 +14,11 @@ class SlideBannerWidget extends StatefulWidget {
 
 class _SlideBannerWidgetState extends State<SlideBannerWidget> {
   late List<dynamic> _slideBanners;
-  late Function(String) _onBannerTapped;
   int _currentIndex = 0;
 
   @override
   void initState() {
     _slideBanners = widget.slideBanners;
-    _onBannerTapped = widget.onBannerTapped;
     super.initState();
   }
 
@@ -34,13 +30,13 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
       children: [
         CarouselSlider(
           items: _slideBanners
-              .map((e) => GestureDetector(
-                  onTap: () => _onBannerTapped(e.link),
-                  child: ClipRRect(
-                    child: e,
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.borderRadiusMedium),
-                  )))
+              .map(
+                (e) => ClipRRect(
+                  child: e,
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.borderRadiusMedium),
+                ),
+              )
               .toList(),
           options: CarouselOptions(
             autoPlay: true,
@@ -63,8 +59,9 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
                 height: 10.0,
                 width: _currentIndex == index ? 10.0 : 10.0,
                 margin: const EdgeInsets.symmetric(
-                    vertical: AppDimensions.marginMedium,
-                    horizontal: AppDimensions.marginSmall / 1.5),
+                  vertical: AppDimensions.marginMedium,
+                  horizontal: AppDimensions.marginSmall / 1.5,
+                ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndex == index
@@ -93,7 +90,6 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
       setState(() {
         _currentIndex = 0;
         _slideBanners = widget.slideBanners;
-        _onBannerTapped = widget.onBannerTapped;
       });
     }
     super.didUpdateWidget(oldWidget);
