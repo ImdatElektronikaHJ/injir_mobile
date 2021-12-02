@@ -26,52 +26,50 @@ class HomeScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 BannerContainer(
+                  child: SlideBannerWidget(
+                    slideBanners: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/placeholder/slider1.png'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/placeholder/bn1.png'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/placeholder/bn2.png'),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                BannerContainer(
                   child: Container(
-                    alignment: Alignment.center,
-                    child: SlideBannerWidget(
-                      slideBanners: [
-                        Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image:
-                                  AssetImage('assets/placeholder/slider1.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/placeholder/bn1.png'),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/placeholder/bn2.png'),
-                            ),
-                          ),
-                        ),
-                      ],
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/placeholder/bn1.png'),
+                      ),
                     ),
                   ),
                 ),
                 BannerContainer(
-                    child: Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/placeholder/bn1.png'),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/placeholder/bn2.png'),
+                      ),
                     ),
                   ),
-                )),
-                BannerContainer(
-                    child: Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/placeholder/bn2.png'),
-                    ),
-                  ),
-                )),
+                ),
                 const FeaturedBlockWidget(
                   title: 'Top Categories',
                   childWidget: ListHomeCategoriesWidget(),
