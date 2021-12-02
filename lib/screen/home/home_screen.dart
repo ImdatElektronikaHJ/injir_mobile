@@ -3,7 +3,7 @@ import 'package:tajir/screen/home/local_widgets/banner_container.dart';
 import 'package:tajir/screen/home/local_widgets/featured_block.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_brands_widget.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_categories_widget.dart';
-import 'package:tajir/screen/home/local_widgets/list_list_product_widget.dart';
+import 'package:tajir/widget/list_list_product_widget.dart';
 import 'package:tajir/theme/app_dimensions.dart';
 import 'package:tajir/widget/slide_banner_widget.dart';
 
@@ -33,41 +33,49 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/slider1.png')),
+                              image:
+                                  AssetImage('assets/placeholder/slider1.png'),
+                            ),
                           ),
                         ),
                         Container(
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/bn1.png')),
+                              image: AssetImage('assets/placeholder/bn1.png'),
+                            ),
                           ),
                         ),
                         Container(
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/bn2.png')),
+                              image: AssetImage('assets/placeholder/bn2.png'),
+                            ),
                           ),
                         ),
                       ],
-                      onBannerTapped: (_) {},
                     ),
                   ),
                 ),
                 BannerContainer(
                     child: Container(
                   decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/bn1.png'))),
+                    image: DecorationImage(
+                      image: AssetImage('assets/placeholder/bn1.png'),
+                    ),
+                  ),
                 )),
                 BannerContainer(
                     child: Container(
                   decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/bn2.png'))),
+                    image: DecorationImage(
+                      image: AssetImage('assets/placeholder/bn2.png'),
+                    ),
+                  ),
                 )),
                 const FeaturedBlockWidget(
                   title: 'Top Categories',
                   childWidget: ListHomeCategoriesWidget(),
+                  onSeeAllTapped: onTopCategoriesTapped,
                 ),
                 const FeaturedBlockWidget(
                   title: 'Trending items',
@@ -88,4 +96,10 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+// just a placeholder for testing
+void onTopCategoriesTapped() {
+  //TODO: add click listener
+  print('fsdkfljds;lkj');
 }
