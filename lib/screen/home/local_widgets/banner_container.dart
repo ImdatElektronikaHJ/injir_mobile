@@ -16,6 +16,7 @@ class BannerContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
       ),
+      alignment: Alignment.center,
       child: child,
     );
   }
