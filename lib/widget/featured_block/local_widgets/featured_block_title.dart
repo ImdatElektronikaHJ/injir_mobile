@@ -3,35 +3,6 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimensions.dart';
 
-class FeaturedBlockWidget extends StatelessWidget {
-  final Widget childWidget;
-  final String title;
-  final Function? onSeeAllTapped;
-  const FeaturedBlockWidget({
-    Key? key,
-    required this.childWidget,
-    required this.title,
-    this.onSeeAllTapped,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimensions.marginMedium),
-      child: Column(
-        children: [
-          const SizedBox(height: AppDimensions.marginSmall),
-          FeaturedBlockTitle(
-            title: title,
-            onSeeAllTapped: onSeeAllTapped,
-          ),
-          childWidget,
-        ],
-      ),
-    );
-  }
-}
-
 class FeaturedBlockTitle extends StatelessWidget {
   final String? title;
   final Function? onSeeAllTapped;

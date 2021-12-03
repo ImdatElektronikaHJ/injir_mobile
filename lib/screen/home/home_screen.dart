@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/screen/home/local_widgets/banner_container.dart';
-import 'package:tajir/screen/home/local_widgets/featured_block.dart';
+import 'package:tajir/widget/featured_block/featured_block.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_brands_widget.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_categories_widget.dart';
 import 'package:tajir/widget/list_list_product_widget.dart';
@@ -31,21 +31,21 @@ class HomeScreen extends StatelessWidget {
                       Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/placeholder/slider1.png'),
+                            image: AssetImage('assets/images/placeholder/slider1.png'),
                           ),
                         ),
                       ),
                       Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/placeholder/bn1.png'),
+                            image: AssetImage('assets/images/placeholder/bn1.png'),
                           ),
                         ),
                       ),
                       Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/placeholder/bn2.png'),
+                            image: AssetImage('assets/images/placeholder/bn2.png'),
                           ),
                         ),
                       ),
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/placeholder/bn1.png'),
+                        image: AssetImage('assets/images/placeholder/bn1.png'),
                       ),
                     ),
                   ),
@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/placeholder/bn2.png'),
+                        image: AssetImage('assets/images/placeholder/bn2.png'),
                       ),
                     ),
                   ),
