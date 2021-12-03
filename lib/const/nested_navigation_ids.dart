@@ -6,4 +6,8 @@ class NestedNavigationIds {
   static const int cart = 2;
   static const int stores = 3;
   static const int profile = 4;
+  static const int wishlist = 5;
+  static const int compare = 6;
+  static const int search = 7;
+  static const int becomeSeller = 8;
 }
