@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_dimensions.dart';
 
+import 'home_brands_widget.dart';
+
 class ListHomeBrandsWidget extends StatelessWidget {
   const ListHomeBrandsWidget({Key? key}) : super(key: key);
 
@@ -17,19 +19,6 @@ class ListHomeBrandsWidget extends StatelessWidget {
           return const HomeBrandsWidget();
         },
       ),
-    );
-  }
-}
-
-class HomeBrandsWidget extends StatelessWidget {
-  const HomeBrandsWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: AppDimensions.homeBrandsHeight + AppDimensions.marginSmall,
-      padding: const EdgeInsets.all(AppDimensions.marginSmall),
-      child: Image.asset('assets/placeholder/bn1.png'),
     );
   }
 }
