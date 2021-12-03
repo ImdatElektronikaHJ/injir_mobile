@@ -16,6 +16,7 @@ class DashboardContainer extends StatelessWidget {
           topRight: Radius.circular(AppDimension.borderRadiusLarge),
         ),
       ),
+      clipBehavior: Clip.hardEdge,
       child: child,
     );
   }

@@ -16,6 +16,7 @@ class TajirApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         enableLog: true,
         localizationsDelegates: LocalizationService.localizationsDelegate(),
         locale: localizationService.getLocale(),
