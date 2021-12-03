@@ -9,4 +9,8 @@ class AppRoutes {
   static const String storesRoute = '/stores';
   static const String profileRoute = '/profile';
   static const String categoryRoute = '/category';
+  static const String becomeSellerRoute = '/become_seller';
+  static const String compareRoute = '/compare';
+  static const String searchRoute = '/search';
+  static const String wishlistRoute = '/wishlist';
 }
