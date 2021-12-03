@@ -1,6 +1,6 @@
-class NestedNavigationIds {
-  NestedNavigationIds._();
-  
+class DashboardNavigationIndex {
+  DashboardNavigationIndex._();
+
   static const int home = 0;
   static const int categories = 1;
   static const int cart = 2;

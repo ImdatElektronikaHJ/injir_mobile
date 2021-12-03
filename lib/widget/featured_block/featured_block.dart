@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'local_widgets/featured_block_title.dart';
 
@@ -17,10 +17,10 @@ class FeaturedBlockWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimensions.marginMedium),
+      padding: const EdgeInsets.symmetric(vertical: AppDimension.marginMedium),
       child: Column(
         children: [
-          const SizedBox(height: AppDimensions.marginSmall),
+          const SizedBox(height: AppDimension.marginSmall),
           FeaturedBlockTitle(
             title: title,
             onSeeAllTapped: onSeeAllTapped,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class HomeCategoriesWidget extends StatelessWidget {
   const HomeCategoriesWidget({Key? key}) : super(key: key);
@@ -11,10 +11,10 @@ class HomeCategoriesWidget extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            width: AppDimensions.homeCategoriesWidth,
+            width: AppDimension.homeCategoriesWidth,
             margin: const EdgeInsets.symmetric(
-              horizontal: AppDimensions.marginSmall,
-              vertical: AppDimensions.marginSmall / 2,
+              horizontal: AppDimension.marginSmall,
+              vertical: AppDimension.marginSmall / 2,
             ),
             decoration: BoxDecoration(
                 color: AppColors.lightGreyColor,
@@ -25,7 +25,7 @@ class HomeCategoriesWidget extends StatelessWidget {
                       blurRadius: 20)
                 ],
                 borderRadius:
-                    BorderRadius.circular(AppDimensions.borderRadiusMedium)),
+                    BorderRadius.circular(AppDimension.borderRadiusMedium)),
           ),
         ),
         Text('Jeans',

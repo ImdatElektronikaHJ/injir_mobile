@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/animated_like_button.dart';
 
 class ListProductImageBlock extends StatelessWidget {
@@ -20,7 +19,7 @@ class ListProductImageBlock extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: AppDimensions.paddingSmall),
+          padding: const EdgeInsets.only(top: AppDimension.paddingSmall),
           child: Center(
             child: Image.asset(imageUrl),
           ),
@@ -36,15 +35,15 @@ class ListProductImageBlock extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Container(
               margin: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingSmall),
+                  horizontal: AppDimension.paddingSmall),
               decoration: BoxDecoration(
                 color: AppColors.redColor,
                 borderRadius:
-                    BorderRadius.circular(AppDimensions.borderRadiusSmall / 2),
+                    BorderRadius.circular(AppDimension.borderRadiusSmall / 2),
               ),
               padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingSmall / 1.5,
-                  vertical: AppDimensions.paddingSmall / 3),
+                  horizontal: AppDimension.paddingSmall / 1.5,
+                  vertical: AppDimension.paddingSmall / 3),
               child: Text(
                 '-$salePercentage%',
                 maxLines: 1,
@@ -58,6 +57,3 @@ class ListProductImageBlock extends StatelessWidget {
     );
   }
 }
-
-
-

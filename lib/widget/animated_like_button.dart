@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class AnimatedLikeButton extends StatefulWidget {
   final bool isInWishList;
@@ -39,8 +39,8 @@ class _AnimatedLikeButtonState extends State<AnimatedLikeButton> {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
-            vertical: AppDimensions.paddingSmall,
-            horizontal: AppDimensions.paddingMedium),
+            vertical: AppDimension.paddingSmall,
+            horizontal: AppDimension.paddingMedium),
         color: Colors.transparent,
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 150),

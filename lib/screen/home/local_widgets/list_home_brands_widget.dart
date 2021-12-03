@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'home_brands_widget.dart';
 
@@ -10,7 +10,7 @@ class ListHomeBrandsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height:
-          AppDimensions.homeCategoriesHeight + AppDimensions.marginExtraLarge,
+          AppDimension.homeCategoriesHeight + AppDimension.marginExtraLarge,
       child: ListView.builder(
         itemCount: 6,
         scrollDirection: Axis.horizontal,

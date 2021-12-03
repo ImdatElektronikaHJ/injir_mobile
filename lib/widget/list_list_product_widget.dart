@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/list_product/list_product_widget.dart';
 
 class ListListProductWidget extends StatelessWidget {
@@ -8,7 +8,7 @@ class ListListProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppDimensions.listProductHeight + AppDimensions.marginExtraLarge * 2,
+      height: AppDimension.listProductHeight + AppDimension.marginExtraLarge * 2,
       child: ListView.builder(
         itemBuilder: (context, index) => const ListProductWidget(),
         itemCount: 6,

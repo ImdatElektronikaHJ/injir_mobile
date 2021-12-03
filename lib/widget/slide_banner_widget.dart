@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class SlideBannerWidget extends StatefulWidget {
   final List<dynamic> slideBanners;
@@ -34,7 +34,7 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
                 (e) => ClipRRect(
                   child: e,
                   borderRadius:
-                      BorderRadius.circular(AppDimensions.borderRadiusMedium),
+                      BorderRadius.circular(AppDimension.borderRadiusMedium),
                 ),
               )
               .toList(),
@@ -59,8 +59,8 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
                 height: 10.0,
                 width: _currentIndex == index ? 10.0 : 10.0,
                 margin: const EdgeInsets.symmetric(
-                  vertical: AppDimensions.marginMedium,
-                  horizontal: AppDimensions.marginSmall / 1.5,
+                  vertical: AppDimension.marginMedium,
+                  horizontal: AppDimension.marginSmall * 3 / 2,
                 ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

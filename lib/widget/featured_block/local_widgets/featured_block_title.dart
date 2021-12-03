@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class FeaturedBlockTitle extends StatelessWidget {
   final String? title;
@@ -12,7 +12,7 @@ class FeaturedBlockTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: AppDimensions.marginMedium),
+      padding: const EdgeInsets.only(left: AppDimension.marginMedium),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,8 +28,8 @@ class FeaturedBlockTitle extends StatelessWidget {
             onTap: () => onSeeAllTapped!(),
             child: Container(
               padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingSmall,
-                  vertical: AppDimensions.paddingSmall / 2),
+                  horizontal: AppDimension.paddingSmall,
+                  vertical: AppDimension.paddingSmall / 2),
               color: Colors.transparent,
               child: Text(
                 'see_all'.tr,
