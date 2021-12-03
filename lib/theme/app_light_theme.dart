@@ -10,6 +10,8 @@ class AppLightTheme {
       brightness: Brightness.light,
       primarySwatch: generateMaterialColor(AppColors.darkBlueColor),
       backgroundColor: Colors.white,
+      fontFamily: 'Avenir',
+      textTheme: _textTheme,
       scaffoldBackgroundColor: AppColors.darkBlueColor,
       bottomNavigationBarTheme: _bottomNavigationBarThemeData);
 
@@ -27,4 +29,7 @@ class AppLightTheme {
           backgroundColor: Colors.white,
           selectedItemColor: AppColors.darkBlueColor,
           unselectedItemColor: AppColors.darkerGreyColor);
+
+  static const TextTheme _textTheme =
+      TextTheme(button: TextStyle(color: AppColors.whiteColor));
 }

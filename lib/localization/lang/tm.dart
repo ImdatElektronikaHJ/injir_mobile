@@ -4,5 +4,6 @@ const Map<String, String> tmTm = {
   'categories': 'Категории',
   'cart': 'Корзина',
   'stores': 'Магазины',
-  'profile': 'Профиль'
+  'profile': 'Профиль',
+  'see_all':'See All'
 };
