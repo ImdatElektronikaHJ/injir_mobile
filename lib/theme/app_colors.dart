@@ -28,4 +28,5 @@ class AppColors {
   static const Color blackColor6 = Color.fromRGBO(0, 0, 0, 0.06);
   static const Color whiteColor = Color.fromRGBO(255, 255, 255, 1);
   static const Color amberColor = Color.fromRGBO(247, 181, 0, 1);
+  static const Color lightBlueColor = Color.fromRGBO(2, 74, 180, 1);
 }
