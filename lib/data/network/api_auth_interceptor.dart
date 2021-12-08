@@ -171,6 +171,7 @@ class ApiAuthInterceptor extends QueuedInterceptor {
 
               return handler.resolve(cloneRequest);
             } else if (errors.contains(
+                // ignore: unnecessary_string_escapes
                 'The entered phone number and \/ or password is incorrect')) {
               await StorageLogin.clearLogin();
             }
