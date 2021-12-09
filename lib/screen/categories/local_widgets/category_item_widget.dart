@@ -30,7 +30,6 @@ class CategoryItemWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: AppDimension.paddingSmall),
                 child: Column(children: [
                   Expanded(
-                    flex: 2,
                     child: Container(
                       decoration:const  BoxDecoration(
                         image: DecorationImage(
@@ -39,16 +38,15 @@ class CategoryItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Expanded(
-                    child: Padding(
+                  const Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(
                             'Элетроника',
-                            // overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
+                            maxLines: 2,
                           ),
                         ),
-                  ),
                 ]),
               ),
             ),
