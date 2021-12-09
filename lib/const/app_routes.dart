@@ -1,6 +1,6 @@
 class AppRoutes {
   AppRoutes._();
-  
+
   static const String defaultRoute = '/';
   static const String splashRoute = '/';
   static const String homeRoute = '/home';
@@ -9,4 +9,5 @@ class AppRoutes {
   static const String storesRoute = '/stores';
   static const String profileRoute = '/profile';
   static const String categoryRoute = '/category';
+  static const String productRoute = '/product';
 }
