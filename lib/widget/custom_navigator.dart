@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/const/app_routes.dart';
 import 'package:tajir/screen/category/category_screen.dart';
+import 'package:tajir/screen/product/product_screen.dart';
 
 class CustomNavigator extends StatelessWidget {
   final Widget initialRoute;
@@ -32,6 +33,10 @@ class CustomNavigator extends StatelessWidget {
 
         case AppRoutes.categoryRoute:
           screen = const CategoryScreen();
+          break;
+
+        case AppRoutes.productRoute:
+          screen = const ProductScreen();
           break;
 
         default:
