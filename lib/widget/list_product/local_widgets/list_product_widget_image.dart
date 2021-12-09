@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimensions.dart';
 import 'package:tajir/widget/animated_like_button.dart';
+import 'package:tajir/widget/sale_widget.dart';
 
 class ListProductImageBlock extends StatelessWidget {
   final String imageUrl;
@@ -34,23 +33,8 @@ class ListProductImageBlock extends StatelessWidget {
           visible: salePercentage != null && salePercentage?.isNotEmpty == true,
           child: Align(
             alignment: Alignment.bottomRight,
-            child: Container(
-              margin: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingSmall),
-              decoration: BoxDecoration(
-                color: AppColors.redColor,
-                borderRadius:
-                    BorderRadius.circular(AppDimensions.borderRadiusSmall / 2),
-              ),
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.paddingSmall / 1.5,
-                  vertical: AppDimensions.paddingSmall / 3),
-              child: Text(
-                '-$salePercentage%',
-                maxLines: 1,
-                style: Theme.of(context).textTheme.button!.copyWith(
-                    color: AppColors.whiteColor, fontWeight: FontWeight.bold),
-              ),
+            child: SaleWidget(
+              salePercentage: salePercentage,
             ),
           ),
         ),
@@ -58,6 +42,3 @@ class ListProductImageBlock extends StatelessWidget {
     );
   }
 }
-
-
-
