@@ -1,11 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimensions.dart';
 
 class SlideBannerWidget extends StatefulWidget {
   final List<dynamic> slideBanners;
-  const SlideBannerWidget({Key? key, required this.slideBanners})
+  final Color activeColor;
+  final Color disabledColor;
+  const SlideBannerWidget(
+      {Key? key,
+      required this.slideBanners,
+      required this.activeColor,
+      required this.disabledColor})
       : super(key: key);
 
   @override
@@ -65,8 +70,8 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndex == index
-                      ? AppColors.blackColor25
-                      : AppColors.blackColor10,
+                      ? widget.activeColor
+                      : widget.disabledColor,
                 ),
               );
             }).toList(),

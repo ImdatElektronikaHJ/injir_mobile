@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/screen/home/local_widgets/banner_container.dart';
+import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/widget/featured_block/featured_block.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_brands_widget.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_categories_widget.dart';
@@ -27,25 +28,30 @@ class HomeScreen extends StatelessWidget {
               children: [
                 BannerContainer(
                   child: SlideBannerWidget(
+                    activeColor: AppColors.blackColor25,
+                    disabledColor: AppColors.blackColor6,
                     slideBanners: [
                       Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/images/placeholder/slider1.png'),
+                            image: AssetImage(
+                                'assets/images/placeholder/slider1.png'),
                           ),
                         ),
                       ),
                       Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/images/placeholder/bn1.png'),
+                            image:
+                                AssetImage('assets/images/placeholder/bn1.png'),
                           ),
                         ),
                       ),
                       Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/images/placeholder/bn2.png'),
+                            image:
+                                AssetImage('assets/images/placeholder/bn2.png'),
                           ),
                         ),
                       ),
