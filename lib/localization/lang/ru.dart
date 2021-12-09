@@ -5,5 +5,18 @@ const Map<String, String> ruRu = {
   'cart': 'Корзина',
   'stores': 'Магазины',
   'profile': 'Профиль',
-  'see_all': 'Посмотреть все'
+  'see_all': 'Посмотреть все',
+  'description': 'Описание',
+  'specifications': 'Характеристики',
+  'to_cart': 'В корзину',
+  'buy': 'Купить',
+  'reviews': 'Отзывы',
+  'leave_feedback': 'Оставить отзыв',
+  'rate_product': 'Оцените продукт',
+  'your_comments': 'Ваши комментарии',
+  'comment': 'Комментировать',
+  'in_stock': 'В наличии',
+  'out_of_stock': 'Нет в наличии',
+  'contact_seller': 'Связаться с продавцом',
+  'compare': 'Сравнить'
 };
