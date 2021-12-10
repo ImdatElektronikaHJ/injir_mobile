@@ -2,6 +2,7 @@ class AppRoutes {
   AppRoutes._();
 
   static const String defaultRoute = '/';
+  static const String dashboardRoute = '/dashboard';
   static const String homeRoute = '/home';
   static const String categoriesRoute = '/categories';
   static const String cartRoute = '/cart';
