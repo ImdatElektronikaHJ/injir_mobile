@@ -60,7 +60,11 @@ class CustomNavigator extends StatelessWidget {
         default:
           return null;
       }
-      return GetPageRoute(routeName: settings.name, page: () => screen);
+      return GetPageRoute(
+          routeName: settings.name,
+          page: () => screen,
+          transition: Transition.downToUp,
+          curve: Curves.fastOutSlowIn);
     };
   }
 }
