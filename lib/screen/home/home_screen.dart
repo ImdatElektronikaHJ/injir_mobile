@@ -5,7 +5,7 @@ import 'package:tajir/widget/featured_block/featured_block.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_brands_widget.dart';
 import 'package:tajir/screen/home/local_widgets/list_home_categories_widget.dart';
 import 'package:tajir/widget/list_list_product_widget.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/slide_banner_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           const SliverToBoxAdapter(
             child: SizedBox(
-              height: AppDimensions.marginMedium,
+              height: AppDimension.marginMedium,
             ),
           ),
           SliverToBoxAdapter(
@@ -105,5 +105,4 @@ class HomeScreen extends StatelessWidget {
 // just a placeholder for testing
 void onTopCategoriesTapped() {
   //TODO: add click listener
-  print('fsdkfljds;lkj');
 }

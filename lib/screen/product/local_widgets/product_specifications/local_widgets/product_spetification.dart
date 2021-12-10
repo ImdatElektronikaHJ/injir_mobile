@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductSpetification extends StatelessWidget {
   final String title;
@@ -16,12 +16,12 @@ class ProductSpetification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-          vertical: AppDimensions.paddingSmall / 2,
-          horizontal: AppDimensions.paddingSmall),
+          vertical: AppDimension.paddingSmall / 2,
+          horizontal: AppDimension.paddingSmall),
       decoration: BoxDecoration(
           color: primaryColor,
           borderRadius:
-              BorderRadius.circular(AppDimensions.borderRadiusSmall / 2)),
+              BorderRadius.circular(AppDimension.borderRadiusSmall / 2)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

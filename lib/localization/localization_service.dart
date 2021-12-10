@@ -40,6 +40,11 @@ class LocalizationService extends Translations {
     return _getLocaleFromLanguage(selectedLocale);
   }
 
+  String getLangCode() {
+    Locale locale = getLocale();
+    return '${locale.languageCode}_${locale.countryCode}';
+  }
+
   changeLocale(String lang) {
     final Locale locale = _getLocaleFromLanguage(lang);
     Get.updateLocale(locale);

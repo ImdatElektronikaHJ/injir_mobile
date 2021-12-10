@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductTextButton extends StatelessWidget {
   final String title;
@@ -14,7 +14,7 @@ class ProductTextButton extends StatelessWidget {
       onTap: () => onTapped!(),
       child: Padding(
         padding:
-            const EdgeInsets.symmetric(vertical: AppDimensions.paddingSmall),
+            const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall),
         child: Text(
           title,
           style: Theme.of(context).textTheme.headline6!.copyWith(

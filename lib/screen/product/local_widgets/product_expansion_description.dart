@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductExpansionDescription extends StatefulWidget {
   final String title;
@@ -36,7 +36,7 @@ class _ProductExpansionDescriptionState
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimensions.paddingMedium),
+                    horizontal: AppDimension.paddingMedium),
                 child: Text(
                   widget.title,
                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -48,7 +48,7 @@ class _ProductExpansionDescriptionState
             );
           },
           body: Padding(
-              padding: const EdgeInsets.all(AppDimensions.paddingMedium),
+              padding: const EdgeInsets.all(AppDimension.paddingMedium),
               child: widget.child),
         )
       ],

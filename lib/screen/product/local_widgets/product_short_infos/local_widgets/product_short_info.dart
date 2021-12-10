@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductShortInfo extends StatelessWidget {
   final String title;
@@ -12,8 +12,8 @@ class ProductShortInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          vertical: AppDimensions.paddingSmall / 2,
-          horizontal: AppDimensions.marginMedium),
+          vertical: AppDimension.paddingSmall / 2,
+          horizontal: AppDimension.marginMedium),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

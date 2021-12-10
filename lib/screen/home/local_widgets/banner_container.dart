@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class BannerContainer extends StatelessWidget {
   final Widget child;
@@ -8,13 +8,13 @@ class BannerContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.bannerHeight,
+      height: AppDimension.bannerHeight,
       clipBehavior: Clip.hardEdge,
       margin: const EdgeInsets.symmetric(
-          horizontal: AppDimensions.marginMedium,
-          vertical: AppDimensions.marginSmall / 2),
+          horizontal: AppDimension.marginMedium,
+          vertical: AppDimension.marginSmall / 2),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimensions.borderRadiusMedium),
+        borderRadius: BorderRadius.circular(AppDimension.borderRadiusMedium),
       ),
       alignment: Alignment.center,
       child: child,

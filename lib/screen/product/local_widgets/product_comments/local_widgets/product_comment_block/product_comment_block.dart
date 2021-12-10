@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'local_widgets/product_comment_block_rating.dart';
 import 'local_widgets/product_comments_block_date.dart';
@@ -20,7 +20,7 @@ class ProductCommentBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppDimensions.marginMedium),
+      padding: const EdgeInsets.symmetric(vertical: AppDimension.marginMedium),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

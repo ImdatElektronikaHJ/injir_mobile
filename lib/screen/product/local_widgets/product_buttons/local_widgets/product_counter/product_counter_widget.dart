@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'local_widgets/product_counter_widget_button.dart';
 
@@ -34,7 +34,7 @@ class _ProductCounterWidgetState extends State<ProductCounterWidget> {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(AppDimensions.paddingSmall),
+            padding: const EdgeInsets.all(AppDimension.paddingSmall),
             child: Text(
               '$count',
               textAlign: TextAlign.center,
@@ -53,4 +53,3 @@ class _ProductCounterWidgetState extends State<ProductCounterWidget> {
     );
   }
 }
-

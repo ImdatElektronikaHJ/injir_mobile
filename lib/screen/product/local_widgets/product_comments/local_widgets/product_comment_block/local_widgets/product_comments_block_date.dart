@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductCommentBlockDate extends StatelessWidget {
   final String date;
@@ -19,7 +19,7 @@ class ProductCommentBlockDate extends StatelessWidget {
           size: 18.0,
         ),
         const SizedBox(
-          width: AppDimensions.paddingSmall / 2,
+          width: AppDimension.paddingSmall / 2,
         ),
         Text(
           date,

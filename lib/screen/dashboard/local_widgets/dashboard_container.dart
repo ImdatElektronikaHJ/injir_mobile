@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class DashboardContainer extends StatelessWidget {
   final Widget child;
@@ -8,12 +8,12 @@ class DashboardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: AppDimensions.marginMedium),
+      margin: const EdgeInsets.only(top: AppDimension.marginMedium),
       decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(AppDimensions.borderRadiusLarge),
-          topRight: Radius.circular(AppDimensions.borderRadiusLarge),
+          topLeft: Radius.circular(AppDimension.borderRadiusLarge),
+          topRight: Radius.circular(AppDimension.borderRadiusLarge),
         ),
       ),
       clipBehavior: Clip.hardEdge,

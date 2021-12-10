@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'local_widgets/product_add_to_cart_widget.dart';
 import 'local_widgets/product_elevated_button.dart';
@@ -14,7 +14,7 @@ class ProductButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.symmetric(horizontal: AppDimensions.marginMedium),
+          const EdgeInsets.symmetric(horizontal: AppDimension.marginMedium),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,12 +31,12 @@ class ProductButtons extends StatelessWidget {
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: AppDimensions.paddingSmall),
+            padding:
+                const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall),
             child: Row(
               children: [
                 const Expanded(child: ProductAddToCartWidget()),
-                const SizedBox(width: AppDimensions.marginMedium),
+                const SizedBox(width: AppDimension.marginMedium),
                 Expanded(
                   child: ProductElevatedButton(
                     title: 'buy'.tr,

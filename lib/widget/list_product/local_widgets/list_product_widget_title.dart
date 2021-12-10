@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ListProductTitleBlock extends StatelessWidget {
   final String title;
@@ -10,8 +10,8 @@ class ListProductTitleBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          horizontal: AppDimensions.paddingSmall,
-          vertical: AppDimensions.paddingSmall / 2),
+          horizontal: AppDimension.paddingSmall,
+          vertical: AppDimension.paddingSmall / 2),
       child: Text(
         title,
         style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16.0),

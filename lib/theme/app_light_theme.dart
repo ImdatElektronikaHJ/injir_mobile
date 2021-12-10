@@ -8,11 +8,11 @@ class AppLightTheme {
   static final ThemeData theme = ThemeData(
       appBarTheme: _appBarTheme,
       brightness: Brightness.light,
-      primarySwatch: generateMaterialColor(AppColors.darkBlueColor),
+      primarySwatch: generateMaterialColor(AppColors.lightBlueColor),
       backgroundColor: Colors.white,
       fontFamily: 'Avenir',
       textTheme: _textTheme,
-      scaffoldBackgroundColor: AppColors.darkBlueColor,
+      scaffoldBackgroundColor: AppColors.lightBlueColor,
       bottomNavigationBarTheme: _bottomNavigationBarThemeData);
 
   static const AppBarTheme _appBarTheme = AppBarTheme(

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/animated_like_button.dart';
 import 'package:tajir/widget/slide_banner_widget.dart';
 
@@ -21,7 +21,7 @@ class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppDimensions.productSliderBannerHeight,
+      height: AppDimension.productSliderBannerHeight,
       child: Stack(
         children: [
           SlideBannerWidget(
@@ -62,7 +62,7 @@ class ProductImage extends StatelessWidget {
           GestureDetector(
             onTap: () => onBackTapped(),
             child: Container(
-              padding: const EdgeInsets.all(AppDimensions.paddingSmall),
+              padding: const EdgeInsets.all(AppDimension.paddingSmall),
               color: AppColors.whiteColor,
               child: Icon(
                 Platform.isIOS ? CupertinoIcons.back : Icons.arrow_back,

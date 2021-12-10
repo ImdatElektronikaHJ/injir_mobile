@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductCommentRating extends StatelessWidget {
   final double? rating;
@@ -11,13 +11,13 @@ class ProductCommentRating extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.symmetric(vertical: AppDimensions.paddingSmall / 2),
+          const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall / 2),
       child: Row(
         children: [
           for (int i = 0; i < 5; i++)
             Padding(
               padding:
-                  const EdgeInsets.only(right: AppDimensions.paddingSmall / 2),
+                  const EdgeInsets.only(right: AppDimension.paddingSmall / 2),
               child: Icon(
                 i < rating!.floor()
                     ? CupertinoIcons.star_fill

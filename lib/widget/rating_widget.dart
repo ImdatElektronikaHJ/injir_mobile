@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class RatingWidget extends StatelessWidget {
   final double? rating;
@@ -14,7 +14,7 @@ class RatingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppDimensions.paddingSmall / 3),
+      padding: const EdgeInsets.all(AppDimension.paddingSmall / 3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,7 +22,7 @@ class RatingWidget extends StatelessWidget {
         children: [
           _getRating()!,
           const SizedBox(
-            width: AppDimensions.marginSmall / 2,
+            width: AppDimension.marginSmall / 2,
           ),
           Text(
             '($rateTotal)',

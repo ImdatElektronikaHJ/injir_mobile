@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/const/app_routes.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'package:tajir/const/nested_navigation_ids.dart';
 
@@ -22,12 +22,12 @@ class ListProductWidget extends StatelessWidget {
         Get.toNamed(AppRoutes.productRoute, id: NestedNavigationIds.home);
       },
       child: Container(
-        height: AppDimensions.listProductHeight + AppDimensions.marginLarge,
-        width: AppDimensions.listProductWidth + AppDimensions.marginMedium,
+        height: AppDimension.listProductHeight + AppDimension.marginLarge,
+        width: AppDimension.listProductWidth + AppDimension.marginMedium,
         margin: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.marginMedium / 2,
-            vertical: AppDimensions.marginMedium),
-        padding: const EdgeInsets.only(bottom: AppDimensions.paddingSmall),
+            horizontal: AppDimension.marginMedium / 2,
+            vertical: AppDimension.marginMedium),
+        padding: const EdgeInsets.only(bottom: AppDimension.paddingSmall),
         decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(
@@ -36,7 +36,7 @@ class ListProductWidget extends StatelessWidget {
               offset: Offset(0, 2),
             ),
           ],
-          borderRadius: BorderRadius.circular(AppDimensions.borderRadiusSmall),
+          borderRadius: BorderRadius.circular(AppDimension.borderRadiusSmall),
           color: AppColors.whiteColor,
         ),
         child: Column(

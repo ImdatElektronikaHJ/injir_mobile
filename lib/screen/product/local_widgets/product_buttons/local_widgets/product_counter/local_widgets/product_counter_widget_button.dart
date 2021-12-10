@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductCounterWidgetButton extends StatelessWidget {
   final String title;
@@ -22,12 +22,12 @@ class ProductCounterWidgetButton extends StatelessWidget {
         elevation: 2.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            AppDimensions.borderRadiusSmall,
+            AppDimension.borderRadiusSmall,
           ),
         ),
         fixedSize: const Size(
-          AppDimensions.productElevatedButtonHeight / 2,
-          AppDimensions.productElevatedButtonHeight,
+          AppDimension.productElevatedButtonHeight / 2,
+          AppDimension.productElevatedButtonHeight,
         ),
       ),
       onPressed: () => onButtonTapped(),

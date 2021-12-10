@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/rating_widget.dart';
 
 import 'local_widgets/product_price.dart';
@@ -14,7 +14,7 @@ class ProductThumbInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          const EdgeInsets.symmetric(horizontal: AppDimensions.paddingMedium),
+          const EdgeInsets.symmetric(horizontal: AppDimension.paddingMedium),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,7 +26,7 @@ class ProductThumbInfo extends StatelessWidget {
           ),
           const Padding(
             padding:
-                EdgeInsets.symmetric(vertical: AppDimensions.marginSmall / 2),
+                EdgeInsets.symmetric(vertical: AppDimension.marginSmall / 2),
             child: RatingWidget(
               iconSize: 18.0,
               rateTotal: 123,
@@ -35,7 +35,7 @@ class ProductThumbInfo extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-                vertical: AppDimensions.marginSmall / 2),
+                vertical: AppDimension.marginSmall / 2),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

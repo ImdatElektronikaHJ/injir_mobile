@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/screen/product/local_widgets/product_specifications/local_widgets/product_spetification.dart';
 import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductSpecificationWithTitle extends StatelessWidget {
   final String title;
@@ -17,7 +17,7 @@ class ProductSpecificationWithTitle extends StatelessWidget {
       children: [
         Padding(
           padding:
-              const EdgeInsets.symmetric(vertical: AppDimensions.paddingSmall),
+              const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall),
           child: Text(
             title,
             style: Theme.of(context)

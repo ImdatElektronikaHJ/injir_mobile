@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/animated_like_button.dart';
 import 'package:tajir/widget/sale_widget.dart';
 
@@ -19,7 +19,7 @@ class ListProductImageBlock extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: AppDimensions.paddingSmall),
+          padding: const EdgeInsets.only(top: AppDimension.paddingSmall),
           child: Center(
             child: Image.asset(imageUrl),
           ),

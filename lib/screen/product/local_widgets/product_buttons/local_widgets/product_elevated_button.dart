@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimensions.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class ProductElevatedButton extends StatelessWidget {
   final String title;
@@ -16,12 +16,12 @@ class ProductElevatedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: buttonColor,
         minimumSize: Size(MediaQuery.of(context).size.width,
-            AppDimensions.productElevatedButtonHeight),
+            AppDimension.productElevatedButtonHeight),
         elevation: 0.0,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(
-              AppDimensions.borderRadiusSmall,
+              AppDimension.borderRadiusSmall,
             ),
           ),
         ),
