@@ -16,7 +16,9 @@ import 'package:tajir/screen/profile/profile_screen.dart';
 import 'package:tajir/screen/search/search_screen.dart';
 import 'package:tajir/screen/stores/stores_screen.dart';
 import 'package:tajir/screen/wishlist/wishlist_screen.dart';
+import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/widget/colored_safe_area.dart';
 import 'package:tajir/widget/custom_navigator.dart';
 import 'package:tajir/widget/fade_indexed_stack.dart';
 
@@ -26,7 +28,7 @@ import 'local_widgets/dashboard_search_bar.dart';
 class DashboardScreen extends StatelessWidget {
   final DashboardController _dashboardController =
       Get.put(DashboardController());
-      
+
   DashboardScreen({Key? key}) : super(key: key);
 
   @override
@@ -34,100 +36,105 @@ class DashboardScreen extends StatelessWidget {
     return Obx(() {
       int currentIndex = _dashboardController.currentIndex;
       bool searchBarExpanded = _dashboardController.searchBarExpanded;
-      return Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          leadingWidth: AppDimension.appBarLeadingWidth,
-          automaticallyImplyLeading: false,
-          leading: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(AppDimension.paddingSmall),
-              child: Image.asset(
-                'assets/images/tajir_logo_text.png',
-              ),
-            ),
-          ),
-          actions: [
-            DashboardTopNavItem(
-              value: NestedNavigationIds.wishlist,
-              groupValue: currentIndex,
-              iconData: CupertinoIcons.heart_fill,
-              onTapped: () => _dashboardController
-                  .updateCurrentIndex(DashboardNavigationIndex.wishlist),
-            ),
-            DashboardTopNavItem(
-              value: NestedNavigationIds.compare,
-              groupValue: currentIndex,
-              iconData: CupertinoIcons.arrow_right_arrow_left,
-              onTapped: () => _dashboardController
-                  .updateCurrentIndex(DashboardNavigationIndex.compare),
-            ),
-            DashboardTopNavItem(
-              value: NestedNavigationIds.search,
-              groupValue: currentIndex,
-              iconData: CupertinoIcons.search,
-              onTapped: () => _dashboardController
-                  .updateCurrentIndex(DashboardNavigationIndex.search),
-            ),
-            DashboardTopNavItem(
-              value: NestedNavigationIds.becomeSeller,
-              groupValue: currentIndex,
-              iconData: CupertinoIcons.person_2_fill,
-              onTapped: () => _dashboardController
-                  .updateCurrentIndex(DashboardNavigationIndex.becomeSeller),
-            ),
-            const SizedBox(
-              width: AppDimension.paddingMedium,
-            )
-          ],
-        ),
-        body: WillPopScope(
-          onWillPop: _dashboardController.onWillPop,
-          child: Column(
-            children: [
-              DashboardSearchBar(isExpanded: searchBarExpanded),
-              Expanded(
-                child: DashboardContainer(
-                  child: FadeIndexedStack(index: currentIndex, children: const [
-                    CustomNavigator(
-                        initialRoute: HomeScreen(),
-                        nestedId: NestedNavigationIds.home),
-                    CustomNavigator(
-                        initialRoute: CategoriesScreen(),
-                        nestedId: NestedNavigationIds.categories),
-                    CustomNavigator(
-                        initialRoute: CartScreen(),
-                        nestedId: NestedNavigationIds.cart),
-                    CustomNavigator(
-                        initialRoute: StoresScreen(),
-                        nestedId: NestedNavigationIds.stores),
-                    CustomNavigator(
-                        initialRoute: ProfileScreen(),
-                        nestedId: NestedNavigationIds.profile),
-                    CustomNavigator(
-                        initialRoute: WishlistScreen(),
-                        nestedId: NestedNavigationIds.wishlist),
-                    CustomNavigator(
-                        initialRoute: CompareScreen(),
-                        nestedId: NestedNavigationIds.compare),
-                    CustomNavigator(
-                      initialRoute: SearchScreen(),
-                      nestedId: NestedNavigationIds.search,
-                    ),
-                    CustomNavigator(
-                        initialRoute: BecomeSellerScreen(),
-                        nestedId: NestedNavigationIds.becomeSeller),
-                  ]),
+      return ColoredSafeArea(
+        top: false,
+        bottomColor: AppColors.whiteColor,
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: false,
+            leadingWidth: AppDimension.appBarLeadingWidth,
+            automaticallyImplyLeading: false,
+            leading: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(AppDimension.paddingSmall),
+                child: Image.asset(
+                  'assets/images/tajir_logo_text.png',
                 ),
               ),
+            ),
+            actions: [
+              DashboardTopNavItem(
+                value: NestedNavigationIds.wishlist,
+                groupValue: currentIndex,
+                iconData: CupertinoIcons.heart_fill,
+                onTapped: () => _dashboardController
+                    .updateCurrentIndex(DashboardNavigationIndex.wishlist),
+              ),
+              DashboardTopNavItem(
+                value: NestedNavigationIds.compare,
+                groupValue: currentIndex,
+                iconData: CupertinoIcons.arrow_right_arrow_left,
+                onTapped: () => _dashboardController
+                    .updateCurrentIndex(DashboardNavigationIndex.compare),
+              ),
+              DashboardTopNavItem(
+                value: NestedNavigationIds.search,
+                groupValue: currentIndex,
+                iconData: CupertinoIcons.search,
+                onTapped: () => _dashboardController
+                    .updateCurrentIndex(DashboardNavigationIndex.search),
+              ),
+              DashboardTopNavItem(
+                value: NestedNavigationIds.becomeSeller,
+                groupValue: currentIndex,
+                iconData: CupertinoIcons.person_2_fill,
+                onTapped: () => _dashboardController
+                    .updateCurrentIndex(DashboardNavigationIndex.becomeSeller),
+              ),
+              const SizedBox(
+                width: AppDimension.paddingMedium,
+              )
             ],
           ),
+          body: WillPopScope(
+            onWillPop: _dashboardController.onWillPop,
+            child: Column(
+              children: [
+                DashboardSearchBar(isExpanded: searchBarExpanded),
+                Expanded(
+                  child: DashboardContainer(
+                    child:
+                        FadeIndexedStack(index: currentIndex, children: const [
+                      CustomNavigator(
+                          initialRoute: HomeScreen(),
+                          nestedId: NestedNavigationIds.home),
+                      CustomNavigator(
+                          initialRoute: CategoriesScreen(),
+                          nestedId: NestedNavigationIds.categories),
+                      CustomNavigator(
+                          initialRoute: CartScreen(),
+                          nestedId: NestedNavigationIds.cart),
+                      CustomNavigator(
+                          initialRoute: StoresScreen(),
+                          nestedId: NestedNavigationIds.stores),
+                      CustomNavigator(
+                          initialRoute: ProfileScreen(),
+                          nestedId: NestedNavigationIds.profile),
+                      CustomNavigator(
+                          initialRoute: WishlistScreen(),
+                          nestedId: NestedNavigationIds.wishlist),
+                      CustomNavigator(
+                          initialRoute: CompareScreen(),
+                          nestedId: NestedNavigationIds.compare),
+                      CustomNavigator(
+                        initialRoute: SearchScreen(),
+                        nestedId: NestedNavigationIds.search,
+                      ),
+                      CustomNavigator(
+                          initialRoute: BecomeSellerScreen(),
+                          nestedId: NestedNavigationIds.becomeSeller),
+                    ]),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar: DashboardBottomNav(
+              onItemSelected: (pos) {
+                _dashboardController.updateCurrentIndex(pos);
+              },
+              currentIndex: currentIndex),
         ),
-        bottomNavigationBar: DashboardBottomNav(
-            onItemSelected: (pos) {
-              _dashboardController.updateCurrentIndex(pos);
-            },
-            currentIndex: currentIndex),
       );
     });
   }
