@@ -65,7 +65,7 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
                 width: _currentIndex == index ? 10.0 : 10.0,
                 margin: const EdgeInsets.symmetric(
                   vertical: AppDimension.marginMedium,
-                  horizontal: AppDimension.marginSmall * 3 / 2,
+                  horizontal: AppDimension.marginSmall,
                 ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
