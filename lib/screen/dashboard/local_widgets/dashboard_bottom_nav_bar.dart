@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_bottom_nav_item.dart';
+import 'package:tajir/theme/app_colors.dart';
 
 class DashboardBottomNavBar extends StatelessWidget {
   final List<DashboardBottomNavItem> items;
@@ -10,11 +11,19 @@ class DashboardBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: kToolbarHeight,
-      child: Material(
-        elevation: 10.0,
+      decoration: BoxDecoration(
         color: Theme.of(context).bottomAppBarColor,
+        boxShadow: const [
+          BoxShadow(
+            color: AppColors.blackColor6,
+            offset: Offset(0, -1),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List<Widget>.from(items),
