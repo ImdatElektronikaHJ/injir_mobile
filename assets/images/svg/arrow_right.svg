@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic-chevron</title>
+    <defs>
+        <path d="M10.35,11.6222157 L5.7848796,7.094311 C5.4480524,6.76022967 4.9019476,6.76022967 4.5651204,7.094311 C4.2282932,7.42839232 4.2282932,7.97004518 4.5651204,8.3041265 L9.7401204,13.436939 C10.0769476,13.7710203 10.6230524,13.7710203 10.9598796,13.436939 L16.1348796,8.3041265 C16.4717068,7.97004518 16.4717068,7.42839232 16.1348796,7.094311 C15.7980524,6.76022967 15.2519476,6.76022967 14.9151204,7.094311 L10.35,11.6222157 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-54" transform="translate(-370.000000, -176.000000)">
+            <g id="MENU" transform="translate(0.000000, 150.000000)">
+                <g id="Group-2" transform="translate(23.000000, 22.812500)">
+                    <g id="ic-chevron" transform="translate(357.650000, 13.687500) rotate(-90.000000) translate(-357.650000, -13.687500) translate(347.300000, 3.421875)">
+                        <rect id="Rectangle" x="0" y="0" width="20.7" height="20.53125"></rect>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Shape" fill="#8C8C8C" fill-rule="nonzero" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
