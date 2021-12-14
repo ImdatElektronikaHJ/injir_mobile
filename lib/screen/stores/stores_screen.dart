@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/svg_icons.dart';
 
-import 'local_widgets/stories_item_widgets.dart';
+import 'local_widgets/stories_item_screen.dart';
 
 class StoresScreen extends StatelessWidget {
   const StoresScreen({Key? key}) : super(key: key);
