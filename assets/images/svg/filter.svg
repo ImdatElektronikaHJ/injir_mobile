@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="14px" viewBox="0 0 24 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>filter</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-44" transform="translate(-324.000000, -126.000000)" fill="#0063C6">
+            <g id="ic-filter" transform="translate(322.161290, 119.000000)">
+                <g id="filter" transform="translate(2.322581, 7.000000)">
+                    <rect id="Rectangle" x="0" y="0" width="23.2258065" height="2.33333333" rx="1.16666667"></rect>
+                    <rect id="Rectangle" x="4.64516129" y="5.83333333" width="15.0967742" height="2.33333333" rx="1.16666667"></rect>
+                    <rect id="Rectangle" x="8.12903226" y="11.6666667" width="6.96774194" height="2.33333333" rx="1.16666667"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
