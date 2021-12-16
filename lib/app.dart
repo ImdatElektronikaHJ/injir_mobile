@@ -26,7 +26,7 @@ class TajirApp extends StatelessWidget {
         translations: localizationService,
         title: 'Tajir',
         theme: AppLightTheme.theme,
-        darkTheme: AppDarkTheme.theme,
+        //darkTheme: AppDarkTheme.theme,
         themeMode: AppThemeService().themeMode,
         getPages: [
           GetPage(
