@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import 'app_colors.dart';
 import 'color_swatch_generator.dart';
@@ -13,7 +14,8 @@ class AppLightTheme {
       fontFamily: 'Avenir',
       textTheme: _textTheme,
       scaffoldBackgroundColor: AppColors.lightBlueColor,
-      bottomNavigationBarTheme: _bottomNavigationBarThemeData);
+      bottomNavigationBarTheme: _bottomNavigationBarThemeData,
+      elevatedButtonTheme: _elevatedButtonTheme);
 
   static const AppBarTheme _appBarTheme = AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -30,6 +32,28 @@ class AppLightTheme {
           selectedItemColor: AppColors.darkBlueColor,
           unselectedItemColor: AppColors.darkerGreyColor);
 
-  static const TextTheme _textTheme =
-      TextTheme(button: TextStyle(color: AppColors.whiteColor));
+  static const TextTheme _textTheme = TextTheme(
+    button: TextStyle(color: AppColors.whiteColor),
+    bodyText2: TextStyle(color: AppColors.darkerGreyColor),
+  );
+
+  static final ElevatedButtonThemeData _elevatedButtonTheme =
+      ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(
+        AppColors.lightBlueColor,
+      ),
+      foregroundColor: MaterialStateProperty.all<Color>(
+        AppColors.whiteColor,
+      ),
+      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+        const EdgeInsets.all(AppDimension.paddingMedium),
+      ),
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimension.borderRadiusSmall),
+        ),
+      ),
+    ),
+  );
 }

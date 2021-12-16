@@ -14,4 +14,5 @@ class AppRoutes {
   static const String compareRoute = '/compare';
   static const String searchRoute = '/search';
   static const String wishlistRoute = '/wishlist';
+  static const String showcaseRoute = '/showcase';
 }

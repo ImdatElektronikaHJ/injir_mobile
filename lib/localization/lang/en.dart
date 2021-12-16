@@ -19,4 +19,8 @@ const Map<String, String> enGb = {
   'out_of_stock': 'Out of stock',
   'contact_seller': 'Contact the seller',
   'compare': 'Compare',
+  'sign_in': 'Sign in',
+  'sign_up': 'Sign up',
+  'skip': 'Skip',
+  'become_seller': 'Become a seller'
 };
