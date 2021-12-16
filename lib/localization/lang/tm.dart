@@ -18,5 +18,9 @@ const Map<String, String> tmTm = {
   'in_stock': 'В наличии',
   'out_of_stock': 'Out of stock',
   'contact_seller': 'Contact the seller',
-  'compare': 'Compare'
+  'compare': 'Compare',
+  'sign_in': 'Войти',
+  'sign_up': 'Зарегистрироваться',
+  'skip': 'Пропустить',
+  'become_seller': 'Стать продавцом'
 };

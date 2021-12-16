@@ -18,5 +18,9 @@ const Map<String, String> ruRu = {
   'in_stock': 'В наличии',
   'out_of_stock': 'Нет в наличии',
   'contact_seller': 'Связаться с продавцом',
-  'compare': 'Сравнить'
+  'compare': 'Сравнить',
+  'sign_in': 'Войти',
+  'sign_up': 'Зарегистрироваться',
+  'skip': 'Пропустить',
+  'become_seller': 'Стать продавцом'
 };
