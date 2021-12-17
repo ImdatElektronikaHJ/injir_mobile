@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
 class ShowcaseBannerItemWidget extends StatelessWidget {
@@ -40,7 +41,10 @@ class ShowcaseBannerItemWidget extends StatelessWidget {
           ),
           Text(
             description,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: AppColors.darkerGreyColor),
             textAlign: TextAlign.center,
           ),
         ],
