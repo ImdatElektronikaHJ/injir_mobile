@@ -20,7 +20,7 @@ class AppDimension {
 
   static const iconSizeSmall = 24.0;
   static const iconSizeMedium = 32.0;
-  
+
   static const bannerHeight = 155.0;
 
   static const homeCategoriesHeight = 90.0;
@@ -33,4 +33,6 @@ class AppDimension {
 
   static const productSliderBannerHeight = 300.0;
   static const productElevatedButtonHeight = 50.0;
+
+  static const elevationAppBarElevation = 2.0;
 }
