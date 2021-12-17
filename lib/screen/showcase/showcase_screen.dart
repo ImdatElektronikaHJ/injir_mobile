@@ -48,25 +48,18 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
                   onActionTapped: _signUpTapped,
                 ),
                 ShowcaseActionButton(
-                  child: RichText(
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        WidgetSpan(
-                          child: const Icon(Icons.people),
-                          style: Theme.of(context).textTheme.button,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.people),
+                      Flexible(
+                        child: Text(
+                          'become_seller'.tr.toUpperCase(),
+                          maxLines: 2,
                         ),
-                        TextSpan(
-                          text: ' ',
-                          style: Theme.of(context).textTheme.button,
-                        ),
-                        TextSpan(
-                          text: 'become_seller'.tr.toUpperCase(),
-                          style: Theme.of(context).textTheme.button,
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   onActionTapped: _becomeSellerTapped,
                 ),
