@@ -8,7 +8,7 @@ import 'package:tajir/controller/dashboard_controller.dart';
 import 'package:tajir/screen/become_seller/become_seller_screen.dart';
 import 'package:tajir/screen/cart/cart_screen.dart';
 import 'package:tajir/screen/categories/categories_screen.dart';
-import 'package:tajir/screen/compare/compare_screen.dart';
+import 'package:tajir/screen/compare_categories/compare_categories_screen.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_bottom_nav.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_container.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_top_nav_item.dart';
@@ -119,7 +119,7 @@ class DashboardScreen extends StatelessWidget {
                                 initialRoute: WishlistScreen(),
                                 nestedId: NestedNavigationIds.wishlist),
                             CustomNavigator(
-                                initialRoute: CompareScreen(),
+                                initialRoute: CompareCategoriesScreen(),
                                 nestedId: NestedNavigationIds.compare),
                             CustomNavigator(
                               initialRoute: SearchScreen(),
