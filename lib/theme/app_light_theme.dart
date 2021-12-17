@@ -34,7 +34,6 @@ class AppLightTheme {
 
   static const TextTheme _textTheme = TextTheme(
     button: TextStyle(color: AppColors.whiteColor),
-    bodyText2: TextStyle(color: AppColors.darkerGreyColor),
   );
 
   static final ElevatedButtonThemeData _elevatedButtonTheme =
