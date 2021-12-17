@@ -13,7 +13,7 @@ class ShowcaseActionButton extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.shortestSide;
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: screenWidth / 6, vertical: AppDimension.paddingSmall / 2),
+          horizontal: screenWidth / 4, vertical: AppDimension.paddingSmall / 2),
       child: ElevatedButton(
         onPressed: onActionTapped,
         child: child,
