@@ -29,19 +29,25 @@ class StoresItemScreen extends StatelessWidget {
             padding: const EdgeInsets.only(top: AppDimension.paddingSmall),
             child: Column(children: [
               Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/placeholder/Samsung_Logo.png'),
-                        fit: BoxFit.contain),
+                child: Padding(
+                  padding: const EdgeInsets.all(AppDimension.paddingSmall),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                              'assets/images/placeholder/Samsung_Logo.png'),
+                          fit: BoxFit.contain),
+                    ),
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(10),
+              Padding(
+                padding: EdgeInsets.all(AppDimension.paddingSmall),
                 child: Text(
                   'Samsung',
+                  style: Theme.of(context)
+                  .textTheme
+                  .subtitle2!,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   maxLines: 2,
