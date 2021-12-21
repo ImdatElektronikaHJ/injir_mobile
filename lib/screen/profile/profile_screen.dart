@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/screen/profile/local_widgets/profile_app_bar.dart';
 import 'package:tajir/theme/svg_icons.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -9,26 +9,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(slivers: [
-      const SliverToBoxAdapter(
-        child: SizedBox(
-          height: AppDimension.marginMedium,
-        ),
-      ),
+      const ProfileAppBar(),
       SliverToBoxAdapter(
         child: Column(
           children: [
-            ListTile(
-              leading: Text(
-                'Profile',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(fontWeight: FontWeight.w600),
-              ),
-              trailing: SvgPicture.asset(
-                SvgImages.login,
-              ),
-            ),
             ListTile(
               leading: SvgPicture.asset(
                 SvgImages.person,
