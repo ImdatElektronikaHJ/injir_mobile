@@ -13,6 +13,7 @@ class AppLightTheme {
       backgroundColor: Colors.white,
       fontFamily: 'Avenir',
       textTheme: _textTheme,
+      inputDecorationTheme: _inputDecorationTheme,
       scaffoldBackgroundColor: AppColors.lightBlueColor,
       bottomNavigationBarTheme: _bottomNavigationBarThemeData,
       elevatedButtonTheme: _elevatedButtonTheme);
@@ -34,6 +35,25 @@ class AppLightTheme {
 
   static const TextTheme _textTheme = TextTheme(
     button: TextStyle(color: AppColors.whiteColor),
+  );
+
+  static final _inputDecorationTheme = InputDecorationTheme(
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(
+        AppDimension.borderRadiusMicro,
+      ),
+      borderSide: const BorderSide(
+        color: AppColors.darkBlueColor,
+      ),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(
+        AppDimension.borderRadiusMicro,
+      ),
+      borderSide: const BorderSide(
+        color: AppColors.greyColor,
+      ),
+    ),
   );
 
   static final ElevatedButtonThemeData _elevatedButtonTheme =
