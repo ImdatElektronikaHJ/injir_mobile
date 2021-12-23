@@ -22,5 +22,13 @@ const Map<String, String> ruRu = {
   'sign_in': 'Войти',
   'sign_up': 'Зарегистрироваться',
   'skip': 'Пропустить',
-  'become_seller': 'Стать продавцом'
+  'become_seller': 'Стать продавцом',
+  'create_account': 'Создайте свой аккаунт',
+  'birth_date' : 'Дата рождения',
+  'first_name': 'Имя',
+  'last_name': 'Фамилия',
+  'email_address': 'Email адрес',
+  'send_confirmation': 'Мы отправим вам подтверждение заказа',
+  'phone_number': 'Номер телефона',
+  'password': 'Пароль'
 };

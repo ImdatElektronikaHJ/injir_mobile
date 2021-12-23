@@ -22,5 +22,13 @@ const Map<String, String> enGb = {
   'sign_in': 'Sign in',
   'sign_up': 'Sign up',
   'skip': 'Skip',
-  'become_seller': 'Become a seller'
+  'become_seller': 'Become a seller',
+  'create_account': 'Create your account',
+  'birth_date': 'Date of Birth',
+  'first_name': 'First name',
+  'last_name': 'Last name',
+  'email_address': 'Email address',
+  'send_confirmation': 'We\'ll send your order confirmation here',
+  'phone_number': 'Phone number',
+  'password': 'Password',
 };
