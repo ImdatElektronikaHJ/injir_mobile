@@ -8,7 +8,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [
+    return CustomScrollView(
+      slivers: [
       const ProfileAppBar(),
       SliverToBoxAdapter(
         child: Column(
