@@ -12,7 +12,7 @@ class ProfileAppBar extends StatelessWidget {
     return SliverAppBar(
         backgroundColor: Theme.of(context).backgroundColor,
         centerTitle: false,
-        title: Text('Profile'.tr, style: Theme.of(context).textTheme.headline6!),
+        title: Text('profile'.tr, style: Theme.of(context).textTheme.headline6!),
         actions: [
           Padding(
             padding: const EdgeInsets.all(AppDimension.paddingSmall),
