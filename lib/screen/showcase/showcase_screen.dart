@@ -6,6 +6,7 @@ import 'package:tajir/screen/showcase/local_widgets/showcase_banner_widget.dart'
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:get/get.dart';
+import 'package:tajir/widget/become_seller_button.dart';
 
 class ShowcaseScreen extends StatefulWidget {
   const ShowcaseScreen({Key? key}) : super(key: key);
@@ -47,20 +48,7 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
                   ),
                   onActionTapped: _signUpTapped,
                 ),
-                ShowcaseActionButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.people),
-                      Flexible(
-                        child: Text(
-                          'become_seller'.tr.toUpperCase(),
-                          maxLines: 2,
-                        ),
-                      ),
-                    ],
-                  ),
+                BecomeSellerButton(
                   onActionTapped: _becomeSellerTapped,
                 ),
                 ShowcaseActionButton(
@@ -80,7 +68,9 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
 
   _signInTapped() {}
 
-  _signUpTapped() {}
+  _signUpTapped() {
+    Get.toNamed(AppRoutes.registrationRoute);
+  }
 
   _becomeSellerTapped() {}
 
