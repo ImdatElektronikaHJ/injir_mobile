@@ -52,8 +52,11 @@ class ListProductWidget extends StatelessWidget {
                   salePercentage: '16',
                 )),
             const Center(
-              child: RatingWidget(
-                rating: 1.6,
+              child: Padding(
+                padding: EdgeInsets.all(AppDimension.paddingSmall / 3),
+                child: RatingWidget(
+                  rating: 1.6,
+                ),
               ),
             ),
             const ListProductTitleBlock(
