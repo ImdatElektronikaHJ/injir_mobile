@@ -35,4 +35,7 @@ class AppDimension {
   static const productElevatedButtonHeight = 50.0;
 
   static const elevationAppBarElevation = 2.0;
+
+  static const compareProductWithIconHeight = 350.0;
+  static const compareSpecificationHeight = 35.0;
 }

@@ -13,24 +13,21 @@ class RatingWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDimension.paddingSmall / 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _getRating()!,
-          const SizedBox(
-            width: AppDimension.marginSmall / 2,
-          ),
-          Text(
-            '($rateTotal)',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _getRating()!,
+        const SizedBox(
+          width: AppDimension.marginSmall / 2,
+        ),
+        Text(
+          '($rateTotal)',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ],
     );
   }
 

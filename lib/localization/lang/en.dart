@@ -31,4 +31,6 @@ const Map<String, String> enGb = {
   'send_confirmation': 'We\'ll send your order confirmation here',
   'phone_number': 'Phone number',
   'password': 'Password',
+  'clear_list': 'Clear list',
+  'rating': 'Rating',
 };
