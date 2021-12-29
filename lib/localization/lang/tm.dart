@@ -23,5 +23,15 @@ const Map<String, String> tmTm = {
   'sign_up': 'Зарегистрироваться',
   'skip': 'Пропустить',
   'become_seller': 'Стать продавцом',
-  'search': 'Поиск'
+  'search': 'Поиск',
+  'create_account': 'Create your account',
+  'birth_date' : 'Date of Birth',
+  'first_name': 'First name',
+  'last_name': 'Last name',
+  'email_address': 'email_address',
+  'send_confirmation': 'We\'ll send your order confirmation here',
+  'phone_number': 'Phone number',
+  'password': 'Password',
+  'clear_list': 'Clear list',
+  'rating': 'Rating',
 };

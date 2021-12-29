@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:tajir/theme/app_colors.dart';
-import 'package:tajir/theme/svg_icons.dart';
+import 'package:tajir/screen/stores/local_widgets/stores_app_bar.dart';
 
 import 'local_widgets/stores_item_screen.dart';
 
@@ -12,26 +10,7 @@ class StoresScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
-          child: ListTile(
-            leading: Text(
-              'Магазины',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6!
-                  .copyWith(fontWeight: FontWeight.w600),
-            ),
-            title: Container(
-              alignment: Alignment.topRight,
-              child: SvgPicture.asset(
-                SvgImages.filter
-              ),
-            ),
-            trailing: SvgPicture.asset(
-                SvgImages.katalog
-              ),
-          ),
-        ),
+        const StoresAppBar(),
         SliverGrid(
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 150,
