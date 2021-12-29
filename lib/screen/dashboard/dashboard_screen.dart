@@ -44,8 +44,8 @@ class DashboardScreen extends StatelessWidget {
         return SafeArea(
           top: false,
           child: Scaffold(
-            resizeToAvoidBottomInset:
-                false, //TODO: update it later if not ok! This is related to keyboard background color
+            // resizeToAvoidBottomInset:
+            //     false, //TODO: update it later if not ok! This is related to keyboard background color
             appBar: AppBar(
               centerTitle: false,
               leadingWidth: AppDimension.appBarLeadingWidth,
