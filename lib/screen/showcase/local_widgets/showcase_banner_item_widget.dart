@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
@@ -22,11 +23,7 @@ class ShowcaseBannerItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Image.asset(
-              imageAsset,
-              fit: BoxFit.contain,
-              alignment: Alignment.center,
-            ),
+            child: SvgPicture.asset(imageAsset, fit: BoxFit.contain),
           ),
           const SizedBox(
             height: AppDimension.paddingExtraLarge,
