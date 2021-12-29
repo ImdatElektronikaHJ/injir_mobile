@@ -68,6 +68,14 @@ class _DashboardSearchBarState extends State<DashboardSearchBar>
                       .textTheme
                       .bodyText1
                       ?.copyWith(color: AppColors.lightGreyColor),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.circular(AppDimension.borderRadiusSmall),
+                      borderSide: BorderSide.none),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.circular(AppDimension.borderRadiusSmall),
+                      borderSide: BorderSide.none),
                   border: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.circular(AppDimension.borderRadiusSmall),
@@ -83,8 +91,9 @@ class _DashboardSearchBarState extends State<DashboardSearchBar>
 
   updateExpandStatus(bool isExpanded) {
     if (isExpanded) {
-      _searchController.clear(); //TODO: remove it later, attach listener on search controller
-      FocusScope.of(context).requestFocus(_searchFocusNode);
+      _searchController
+          .clear(); //TODO: remove it later, attach listener on search controller
+      // FocusScope.of(context).requestFocus(_searchFocusNode);
       _controller.forward();
     } else {
       FocusScope.of(context).requestFocus(FocusNode());
