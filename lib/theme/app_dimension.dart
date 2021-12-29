@@ -29,6 +29,8 @@ class AppDimension {
   static const listProductWidth = 160.0;
   static const listProductHeight = 250.0;
 
+  static const searchProductHeight = 135.0;
+
   static const homeBrandsHeight = 30.0;
 
   static const productSliderBannerHeight = 300.0;

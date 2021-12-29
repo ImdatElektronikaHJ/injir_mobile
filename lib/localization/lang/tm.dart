@@ -23,6 +23,7 @@ const Map<String, String> tmTm = {
   'sign_up': 'Зарегистрироваться',
   'skip': 'Пропустить',
   'become_seller': 'Стать продавцом',
+  'search': 'Поиск',
   'create_account': 'Create your account',
   'birth_date' : 'Date of Birth',
   'first_name': 'First name',

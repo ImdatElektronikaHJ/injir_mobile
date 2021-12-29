@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/theme/app_animation.dart';
+import 'package:tajir/theme/app_colors.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class DashboardSearchBar extends StatefulWidget {
   final bool isExpanded;
@@ -15,6 +18,8 @@ class _DashboardSearchBarState extends State<DashboardSearchBar>
     with TickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _curveAnimation;
+  late FocusNode _searchFocusNode;
+  late TextEditingController _searchController;
 
   @override
   void initState() {
@@ -26,6 +31,8 @@ class _DashboardSearchBarState extends State<DashboardSearchBar>
       parent: _controller,
       curve: Curves.fastOutSlowIn,
     );
+    _searchController = TextEditingController();
+    _searchFocusNode = FocusNode();
     super.initState();
   }
 
@@ -35,13 +42,39 @@ class _DashboardSearchBarState extends State<DashboardSearchBar>
         animation: _controller,
         builder: (context, _) {
           return SizeTransition(
-            axisAlignment: 1.0,
+            axisAlignment: -1.0,
             sizeFactor: _curveAnimation,
-            child: SizedBox(
-              height: kBottomNavigationBarHeight,
-              width: MediaQuery.of(context).size.width,
-              child: const ColoredBox(
-                color: Colors.amber,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppDimension.paddingSmall,
+                  horizontal: AppDimension.paddingMedium),
+              child: TextField(
+                controller: _searchController,
+                focusNode: _searchFocusNode,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    ?.copyWith(color: Colors.white),
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppDimension.paddingMedium,
+                      vertical: AppDimension.paddingSmall),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: AppColors.lightGreyColor,
+                  ),
+                  hintText: 'search'.tr,
+                  hintStyle: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(color: AppColors.lightGreyColor),
+                  border: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.circular(AppDimension.borderRadiusSmall),
+                      borderSide: BorderSide.none),
+                  filled: true,
+                  fillColor: AppColors.lightGreyColor.withOpacity(0.2),
+                ),
               ),
             ),
           );
@@ -50,8 +83,11 @@ class _DashboardSearchBarState extends State<DashboardSearchBar>
 
   updateExpandStatus(bool isExpanded) {
     if (isExpanded) {
+      _searchController.clear(); //TODO: remove it later, attach listener on search controller
+      FocusScope.of(context).requestFocus(_searchFocusNode);
       _controller.forward();
     } else {
+      FocusScope.of(context).requestFocus(FocusNode());
       _controller.reverse();
     }
   }

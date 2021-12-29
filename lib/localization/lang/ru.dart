@@ -23,6 +23,7 @@ const Map<String, String> ruRu = {
   'sign_up': 'Зарегистрироваться',
   'skip': 'Пропустить',
   'become_seller': 'Стать продавцом',
+  'search':'Поиск',
   'create_account': 'Создайте свой аккаунт',
   'birth_date': 'Дата рождения',
   'first_name': 'Имя',

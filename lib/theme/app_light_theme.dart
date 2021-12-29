@@ -9,12 +9,12 @@ class AppLightTheme {
   static final ThemeData theme = ThemeData(
       appBarTheme: _appBarTheme,
       brightness: Brightness.light,
-      primarySwatch: generateMaterialColor(AppColors.lightBlueColor),
+      primarySwatch: generateMaterialColor(AppColors.blueColor),
       backgroundColor: Colors.white,
       fontFamily: 'Avenir',
       textTheme: _textTheme,
+      scaffoldBackgroundColor: AppColors.blueColor,
       inputDecorationTheme: _inputDecorationTheme,
-      scaffoldBackgroundColor: AppColors.lightBlueColor,
       bottomNavigationBarTheme: _bottomNavigationBarThemeData,
       elevatedButtonTheme: _elevatedButtonTheme);
 
@@ -60,7 +60,7 @@ class AppLightTheme {
       ElevatedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(
-        AppColors.lightBlueColor,
+        AppColors.blueColor,
       ),
       foregroundColor: MaterialStateProperty.all<Color>(
         AppColors.whiteColor,
