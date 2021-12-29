@@ -22,5 +22,6 @@ const Map<String, String> enGb = {
   'sign_in': 'Sign in',
   'sign_up': 'Sign up',
   'skip': 'Skip',
-  'become_seller': 'Become a seller'
+  'become_seller': 'Become a seller',
+  'search':'Search'
 };

@@ -22,5 +22,6 @@ const Map<String, String> tmTm = {
   'sign_in': 'Войти',
   'sign_up': 'Зарегистрироваться',
   'skip': 'Пропустить',
-  'become_seller': 'Стать продавцом'
+  'become_seller': 'Стать продавцом',
+  'search': 'Поиск'
 };
