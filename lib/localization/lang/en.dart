@@ -23,7 +23,7 @@ const Map<String, String> enGb = {
   'sign_up': 'Sign up',
   'skip': 'Skip',
   'become_seller': 'Become a seller',
-  'search':'Search',
+  'search': 'Search',
   'create_account': 'Create your account',
   'birth_date': 'Date of Birth',
   'first_name': 'First name',
@@ -34,4 +34,6 @@ const Map<String, String> enGb = {
   'password': 'Password',
   'clear_list': 'Clear list',
   'rating': 'Rating',
+  'total': 'Total',
+  'checkout': 'Checkout'
 };
