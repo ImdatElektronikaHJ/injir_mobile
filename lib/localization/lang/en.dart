@@ -35,5 +35,6 @@ const Map<String, String> enGb = {
   'clear_list': 'Clear list',
   'rating': 'Rating',
   'total': 'Total',
-  'checkout': 'Checkout'
+  'checkout': 'Checkout',
+  'wishlist': 'Wishlist',
 };
