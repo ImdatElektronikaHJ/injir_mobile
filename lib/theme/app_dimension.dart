@@ -40,4 +40,6 @@ class AppDimension {
 
   static const compareProductWithIconHeight = 350.0;
   static const compareSpecificationHeight = 35.0;
+
+  static const cartTotalBarHeight = 80.0;
 }
