@@ -25,7 +25,7 @@ const Map<String, String> tmTm = {
   'become_seller': 'Стать продавцом',
   'search': 'Поиск',
   'create_account': 'Create your account',
-  'birth_date' : 'Date of Birth',
+  'birth_date': 'Date of Birth',
   'first_name': 'First name',
   'last_name': 'Last name',
   'email_address': 'email_address',
@@ -34,4 +34,6 @@ const Map<String, String> tmTm = {
   'password': 'Password',
   'clear_list': 'Clear list',
   'rating': 'Rating',
+  'total': 'Всего',
+  'checkout': 'Заказать'
 };
