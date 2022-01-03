@@ -35,5 +35,6 @@ const Map<String, String> ruRu = {
   'clear_list': 'Очистить список',
   'rating': 'Отзывы',
   'total': 'Всего',
-  'checkout': 'Заказать'
+  'checkout': 'Заказать',
+  'wishlist': 'Избранные',
 };

@@ -30,10 +30,11 @@ const Map<String, String> tmTm = {
   'last_name': 'Last name',
   'email_address': 'email_address',
   'send_confirmation': 'We\'ll send your order confirmation here',
-  'phone_number': 'Phone number',
-  'password': 'Password',
-  'clear_list': 'Clear list',
-  'rating': 'Rating',
+  'phone_number': 'Номер телефона',
+  'password': 'Пароль',
+  'clear_list': 'Очистить список',
+  'rating': 'Рейтинг',
   'total': 'Всего',
-  'checkout': 'Заказать'
+  'checkout': 'Заказать',
+  'wishlist': 'Избранные',
 };
