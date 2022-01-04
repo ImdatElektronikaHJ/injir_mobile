@@ -60,28 +60,28 @@ class DashboardScreen extends StatelessWidget {
               ),
               actions: [
                 DashboardTopNavItem(
-                  value: NestedNavigationIds.wishlist,
+                  value: DashboardNavigationIndex.wishlist,
                   groupValue: currentIndex,
                   iconData: CupertinoIcons.heart_fill,
                   onTapped: () => _dashboardController
                       .updateCurrentIndex(DashboardNavigationIndex.wishlist),
                 ),
                 DashboardTopNavItem(
-                  value: NestedNavigationIds.compare,
+                  value: DashboardNavigationIndex.compare,
                   groupValue: currentIndex,
                   iconData: CupertinoIcons.arrow_right_arrow_left,
                   onTapped: () => _dashboardController
                       .updateCurrentIndex(DashboardNavigationIndex.compare),
                 ),
                 DashboardTopNavItem(
-                  value: NestedNavigationIds.search,
+                  value: DashboardNavigationIndex.search,
                   groupValue: currentIndex,
                   iconData: CupertinoIcons.search,
                   onTapped: () => _dashboardController
                       .updateCurrentIndex(DashboardNavigationIndex.search),
                 ),
                 DashboardTopNavItem(
-                  value: NestedNavigationIds.becomeSeller,
+                  value: DashboardNavigationIndex.becomeSeller,
                   groupValue: currentIndex,
                   iconData: CupertinoIcons.person_2_fill,
                   onTapped: () => _dashboardController.updateCurrentIndex(
