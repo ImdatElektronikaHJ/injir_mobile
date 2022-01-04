@@ -33,7 +33,7 @@ class ProductScreen extends StatelessWidget {
               onFavouriteTapped: (bool isInWishlist) {
                 _onFavouriteTapped(isInWishlist);
               },
-              onBackTapped: _onBackTapped,
+              onBackTapped: () => _onBackTapped(context),
             ),
             const ProductThumbInfo(
               inStock: true,
@@ -75,7 +75,7 @@ class ProductScreen extends StatelessWidget {
     print(isInWishlist);
   }
 
-  _onBackTapped() {
-    Get.back(id: NestedNavigationIds.home);
+  _onBackTapped(BuildContext context) {
+    Navigator.of(context).pop();
   }
 }
