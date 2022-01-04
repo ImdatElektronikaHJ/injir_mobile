@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:tajir/const/app_routes.dart';
+import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/screen/profile/local_widgets/profile_app_bar.dart';
 import 'package:tajir/theme/svg_icons.dart';
 
@@ -33,6 +36,9 @@ class ProfileScreen extends StatelessWidget {
               trailing: SvgPicture.asset(
                 SvgImages.arrowright,
               ),
+              onTap: () {
+                _goToAddressScreen();
+              },
             ),
             ListTile(
               leading: SvgPicture.asset(
@@ -58,5 +64,8 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     ]);
+  }
+  _goToAddressScreen() {
+    Get.toNamed(AppRoutes.addressRoute, id: NestedNavigationIds.profile);
   }
 }
