@@ -66,6 +66,6 @@ class ProfileScreen extends StatelessWidget {
     ]);
   }
   _goToAddressScreen() {
-    Get.toNamed(AppRoutes.addressRoute, id: NestedNavigationIds.profile);
+    Get.toNamed(AppRoutes.profileAddressRoute, id: NestedNavigationIds.profile);
   }
 }
