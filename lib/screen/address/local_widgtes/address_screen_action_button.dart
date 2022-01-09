@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
 class AddressScreenActionButton extends StatelessWidget {
-  final double padding;
   final String title;
   final Function()? onActionTapped;
   
   const AddressScreenActionButton({Key? key,
-      this.padding = AppDimension.paddingMedium,
       required this.title,
       this.onActionTapped})
       : super(key: key);
@@ -16,8 +14,8 @@ class AddressScreenActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: padding, vertical: AppDimension.paddingSmall),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppDimension.paddingMedium, vertical: AppDimension.paddingSmall),
       child: ElevatedButton(onPressed: onActionTapped, child: Text(title)),
     );
   }
