@@ -47,7 +47,7 @@ class CustomNavigator extends StatelessWidget {
         case AppRoutes.compareRoute:
           screen = const CompareScreen();
           break;
-        case AppRoutes.addressRoute:
+        case AppRoutes.profileAddressRoute:
           screen = const AddressScreen();
           break;
 
