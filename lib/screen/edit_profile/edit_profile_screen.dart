@@ -16,36 +16,33 @@ class EditProfileScreen extends StatelessWidget {
         slivers: [
           const EditProfileAppBar(),
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SimpleTextFieldWithHint(
-                    fieldName: "first_name".tr,
-                  ),
-                  SimpleTextFieldWithHint(
-                    fieldName: "last_name".tr,
-                  ),
-                  SimpleTextFieldWithHint(
-                    fieldName: "email_address".tr,
-                    hint: "send_confirmation".tr,
-                  ),
-                  SimpleTextFieldWithHint(
-                    fieldName: "Date of birth".tr,
-                  ),
-                  SimpleTextFieldWithHint(
-                    fieldName: "Gender".tr,
-                  ),
-                  SimpleTextFieldWithHint(
-                    fieldName: "phone_number".tr,
-                  ),
-                  EditProfileActionButton(
-                    onActionTapped: () {},
-                    title: 'save'.tr.toUpperCase(),
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SimpleTextFieldWithHint(
+                  fieldName: "first_name".tr,
+                ),
+                SimpleTextFieldWithHint(
+                  fieldName: "last_name".tr,
+                ),
+                SimpleTextFieldWithHint(
+                  fieldName: "email_address".tr,
+                  hint: "send_confirmation".tr,
+                ),
+                SimpleTextFieldWithHint(
+                  fieldName: "Date of birth".tr,
+                ),
+                SimpleTextFieldWithHint(
+                  fieldName: "Gender".tr,
+                ),
+                SimpleTextFieldWithHint(
+                  fieldName: "phone_number".tr,
+                ),
+                EditProfileActionButton(
+                  onActionTapped: () {},
+                  title: 'save'.tr.toUpperCase(),
+                ),
+              ],
             ),
           ),
         ],
