@@ -17,29 +17,26 @@ class AddressScreen extends StatelessWidget {
           slivers: [
             const AddressScreenAppBar(),
             SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SimpleTextFieldWithHint(
-                      fieldName: "Region".tr,
-                    ),
-                    SimpleTextFieldWithHint(
-                      fieldName: "City".tr,
-                    ),
-                    SimpleTextFieldWithHint(
-                      fieldName: "Street".tr,
-                    ),
-                    SimpleTextFieldWithHint(
-                      fieldName: "Address".tr,
-                    ),
-                    AddressScreenActionButton(
-                      onActionTapped: () {},
-                      title: 'save'.tr.toUpperCase(),
-                    ),
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SimpleTextFieldWithHint(
+                    fieldName: "Region".tr,
+                  ),
+                  SimpleTextFieldWithHint(
+                    fieldName: "City".tr,
+                  ),
+                  SimpleTextFieldWithHint(
+                    fieldName: "Street".tr,
+                  ),
+                  SimpleTextFieldWithHint(
+                    fieldName: "Address".tr,
+                  ),
+                  AddressScreenActionButton(
+                    onActionTapped: () {},
+                    title: 'save'.tr.toUpperCase(),
+                  ),
+                ],
               ),
             ),
           ],
