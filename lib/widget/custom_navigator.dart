@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/const/app_routes.dart';
+import 'package:tajir/screen/address/address_screen.dart';
 import 'package:tajir/screen/become_seller/become_seller_screen.dart';
 import 'package:tajir/screen/category/category_screen.dart';
 import 'package:tajir/screen/compare/compare_screen.dart';
@@ -45,6 +46,9 @@ class CustomNavigator extends StatelessWidget {
 
         case AppRoutes.compareRoute:
           screen = const CompareScreen();
+          break;
+        case AppRoutes.profileAddressRoute:
+          screen = const AddressScreen();
           break;
 
         case AppRoutes.compareCategoriesRoute:
