@@ -37,6 +37,9 @@ class ProfileScreen extends StatelessWidget {
               trailing: SvgPicture.asset(
                 SvgImages.arrowright,
               ),
+              onTap: () {
+                _goToAddressScreen();
+              },
             ),
             ListTile(
               leading: SvgPicture.asset(
