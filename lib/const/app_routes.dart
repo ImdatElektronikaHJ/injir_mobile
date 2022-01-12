@@ -8,6 +8,7 @@ class AppRoutes {
   static const String cartRoute = '/cart';
   static const String storesRoute = '/stores';
   static const String profileRoute = '/profile';
+  static const String editProfileRoute = '/edit_profile';
   static const String profileAddressRoute = '/profile_address';
   static const String categoryRoute = '/category';
   static const String productRoute = '/product';

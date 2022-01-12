@@ -26,6 +26,7 @@ class ProfileScreen extends StatelessWidget {
               trailing: SvgPicture.asset(
                 SvgImages.arrowright,
               ),
+              onTap: () => _goToEditProfileScreen(),
             ),
             ListTile(
               leading: SvgPicture.asset(
@@ -65,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
       ),
     ]);
   }
-  _goToAddressScreen() {
-    Get.toNamed(AppRoutes.profileAddressRoute, id: NestedNavigationIds.profile);
+  _goToEditProfileScreen() {
+    Get.toNamed(AppRoutes.editprofileRoute, id: NestedNavigationIds.profile);
   }
 }
