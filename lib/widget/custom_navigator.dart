@@ -52,7 +52,7 @@ class CustomNavigator extends StatelessWidget {
           screen = const AddressScreen();
           break;
 
-        case AppRoutes.editprofileRoute:
+        case AppRoutes.editProfileRoute:
           screen = const EditProfileScreen();
           break;
 
