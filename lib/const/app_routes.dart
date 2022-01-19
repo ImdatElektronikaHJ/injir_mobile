@@ -17,4 +17,6 @@ class AppRoutes {
   static const String showcaseRoute = '/showcase';
   static const String compareCategoriesRoute = '/compare_categories';
   static const String registrationRoute = '/registration';
+  static const String checkoutRoute = '/checkout';
+  static const String checkoutSummaryRoute = '/checkout_summary';
 }
