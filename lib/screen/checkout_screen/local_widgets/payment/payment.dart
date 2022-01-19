@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tajir/screen/checkout_screen/local_widgets/page_title.dart';
 import 'package:tajir/theme/app_dimension.dart';
-import 'package:tajir/util/card_number_input_formatted.dart';
+import 'package:tajir/util/card_number_input_formatter.dart';
 import 'package:tajir/util/expiry_date_input_formatter.dart';
 import 'package:tajir/widget/simple_text_field_with_hint.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
