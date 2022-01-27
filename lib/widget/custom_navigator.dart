@@ -4,6 +4,8 @@ import 'package:tajir/const/app_routes.dart';
 import 'package:tajir/screen/address/address_screen.dart';
 import 'package:tajir/screen/become_seller/become_seller_screen.dart';
 import 'package:tajir/screen/category/category_screen.dart';
+import 'package:tajir/screen/checkout_screen/checkout_screen.dart';
+import 'package:tajir/screen/checkout_summary/checkout_summary_screen.dart';
 import 'package:tajir/screen/compare/compare_screen.dart';
 import 'package:tajir/screen/compare_categories/compare_categories_screen.dart';
 import 'package:tajir/screen/edit_profile/edit_profile_screen.dart';
@@ -58,6 +60,14 @@ class CustomNavigator extends StatelessWidget {
 
         case AppRoutes.compareCategoriesRoute:
           screen = const CompareCategoriesScreen();
+          break;
+
+        case AppRoutes.checkoutRoute:
+          screen = const CheckoutScreen();
+          break;
+
+        case AppRoutes.checkoutSummaryRoute:
+          screen = const CheckoutSummaryScreen();
           break;
 
         case AppRoutes.searchRoute:

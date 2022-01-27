@@ -38,6 +38,7 @@ class AppLightTheme {
   );
 
   static final _inputDecorationTheme = InputDecorationTheme(
+    
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(
         AppDimension.borderRadiusMicro,
@@ -52,6 +53,22 @@ class AppLightTheme {
       ),
       borderSide: const BorderSide(
         color: AppColors.greyColor,
+      ),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(
+        AppDimension.borderRadiusMicro,
+      ),
+      borderSide: const BorderSide(
+        color: AppColors.redColor,
+      ),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(
+        AppDimension.borderRadiusMicro,
+      ),
+      borderSide: const BorderSide(
+        color: AppColors.redColor,
       ),
     ),
   );

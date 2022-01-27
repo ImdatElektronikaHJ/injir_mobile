@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:tajir/const/app_routes.dart';
+import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/screen/cart/local_widgets/cart_app_bar.dart';
 import 'package:tajir/screen/cart/local_widgets/cart_product_item.dart';
 import 'package:tajir/screen/cart/local_widgets/cart_total_bar.dart';
@@ -44,7 +47,11 @@ class CartScreen extends StatelessWidget {
           ],
         ),
       ),
-      const CartTotalBar(),
+      CartTotalBar(
+        onCheckoutTapped: () {
+          Get.toNamed(AppRoutes.checkoutRoute, id: NestedNavigationIds.cart);
+        },
+      ),
     ]);
   }
 }
