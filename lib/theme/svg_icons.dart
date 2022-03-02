@@ -7,4 +7,5 @@ class SvgImages {
   static String local = "assets/images/svg/local.svg";
   static String clock = "assets/images/svg/clock.svg";
   static String lang = "assets/images/svg/lang.svg";
+  static String become_seller = "assets/images/svg/ILUSTRATION.svg";
 }
