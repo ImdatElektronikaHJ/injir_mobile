@@ -41,106 +41,109 @@ class DashboardScreen extends StatelessWidget {
       child: Obx(() {
         int currentIndex = _dashboardController.currentIndex;
         bool searchBarExpanded = _dashboardController.searchBarExpanded;
-        return SafeArea(
-          top: false,
-          child: Scaffold(
-            // resizeToAvoidBottomInset:
-            //     false, //TODO: update it later if not ok! This is related to keyboard background color
-            appBar: AppBar(
-              centerTitle: false,
-              leadingWidth: AppDimension.appBarLeadingWidth,
-              automaticallyImplyLeading: false,
-              leading: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(AppDimension.paddingSmall),
-                  child: Image.asset(
-                    'assets/images/tajir_logo_text.png',
-                  ),
-                ),
-              ),
-              actions: [
-                DashboardTopNavItem(
-                  value: DashboardNavigationIndex.wishlist,
-                  groupValue: currentIndex,
-                  iconData: CupertinoIcons.heart_fill,
-                  onTapped: () => _dashboardController
-                      .updateCurrentIndex(DashboardNavigationIndex.wishlist),
-                ),
-                DashboardTopNavItem(
-                  value: DashboardNavigationIndex.compare,
-                  groupValue: currentIndex,
-                  iconData: CupertinoIcons.arrow_right_arrow_left,
-                  onTapped: () => _dashboardController
-                      .updateCurrentIndex(DashboardNavigationIndex.compare),
-                ),
-                DashboardTopNavItem(
-                  value: DashboardNavigationIndex.search,
-                  groupValue: currentIndex,
-                  iconData: CupertinoIcons.search,
-                  onTapped: () => _dashboardController
-                      .updateCurrentIndex(DashboardNavigationIndex.search),
-                ),
-                DashboardTopNavItem(
-                  value: DashboardNavigationIndex.becomeSeller,
-                  groupValue: currentIndex,
-                  iconData: CupertinoIcons.person_2_fill,
-                  onTapped: () => _dashboardController.updateCurrentIndex(
-                      DashboardNavigationIndex.becomeSeller),
-                ),
-                const SizedBox(
-                  width: AppDimension.paddingMedium,
-                )
-              ],
-            ),
-            body: WillPopScope(
-              onWillPop: _dashboardController.onWillPop,
-              child: Column(
-                children: [
-                  DashboardSearchBar(isExpanded: searchBarExpanded),
-                  Expanded(
-                    child: DashboardContainer(
-                      child: FadeIndexedStack(
-                          index: currentIndex,
-                          children: const [
-                            CustomNavigator(
-                                initialRoute: HomeScreen(),
-                                nestedId: NestedNavigationIds.home),
-                            CustomNavigator(
-                                initialRoute: CategoriesScreen(),
-                                nestedId: NestedNavigationIds.categories),
-                            CustomNavigator(
-                                initialRoute: CartScreen(),
-                                nestedId: NestedNavigationIds.cart),
-                            CustomNavigator(
-                                initialRoute: StoresScreen(),
-                                nestedId: NestedNavigationIds.stores),
-                            CustomNavigator(
-                                initialRoute: ProfileScreen(),
-                                nestedId: NestedNavigationIds.profile),
-                            CustomNavigator(
-                                initialRoute: WishlistScreen(),
-                                nestedId: NestedNavigationIds.wishlist),
-                            CustomNavigator(
-                                initialRoute: CompareCategoriesScreen(),
-                                nestedId: NestedNavigationIds.compare),
-                            CustomNavigator(
-                              initialRoute: SearchScreen(),
-                              nestedId: NestedNavigationIds.search,
-                            ),
-                            CustomNavigator(
-                                initialRoute: BecomeSellerScreen(),
-                                nestedId: NestedNavigationIds.becomeSeller),
-                          ]),
+        return ColoredBox(
+          color: Colors.white,
+          child: SafeArea(
+            top: false,
+            child: Scaffold(
+              // resizeToAvoidBottomInset:
+              //     false, //TODO: update it later if not ok! This is related to keyboard background color
+              appBar: AppBar(
+                centerTitle: false,
+                leadingWidth: AppDimension.appBarLeadingWidth,
+                automaticallyImplyLeading: false,
+                leading: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(AppDimension.paddingSmall),
+                    child: Image.asset(
+                      'assets/images/tajir_logo_text.png',
                     ),
                   ),
+                ),
+                actions: [
+                  DashboardTopNavItem(
+                    value: DashboardNavigationIndex.wishlist,
+                    groupValue: currentIndex,
+                    iconData: CupertinoIcons.heart_fill,
+                    onTapped: () => _dashboardController
+                        .updateCurrentIndex(DashboardNavigationIndex.wishlist),
+                  ),
+                  DashboardTopNavItem(
+                    value: DashboardNavigationIndex.compare,
+                    groupValue: currentIndex,
+                    iconData: CupertinoIcons.arrow_right_arrow_left,
+                    onTapped: () => _dashboardController
+                        .updateCurrentIndex(DashboardNavigationIndex.compare),
+                  ),
+                  DashboardTopNavItem(
+                    value: DashboardNavigationIndex.search,
+                    groupValue: currentIndex,
+                    iconData: CupertinoIcons.search,
+                    onTapped: () => _dashboardController
+                        .updateCurrentIndex(DashboardNavigationIndex.search),
+                  ),
+                  DashboardTopNavItem(
+                    value: DashboardNavigationIndex.becomeSeller,
+                    groupValue: currentIndex,
+                    iconData: CupertinoIcons.person_2_fill,
+                    onTapped: () => _dashboardController.updateCurrentIndex(
+                        DashboardNavigationIndex.becomeSeller),
+                  ),
+                  const SizedBox(
+                    width: AppDimension.paddingMedium,
+                  )
                 ],
               ),
+              body: WillPopScope(
+                onWillPop: _dashboardController.onWillPop,
+                child: Column(
+                  children: [
+                    DashboardSearchBar(isExpanded: searchBarExpanded),
+                    Expanded(
+                      child: DashboardContainer(
+                        child: FadeIndexedStack(
+                            index: currentIndex,
+                            children: const [
+                              CustomNavigator(
+                                  initialRoute: HomeScreen(),
+                                  nestedId: NestedNavigationIds.home),
+                              CustomNavigator(
+                                  initialRoute: CategoriesScreen(),
+                                  nestedId: NestedNavigationIds.categories),
+                              CustomNavigator(
+                                  initialRoute: CartScreen(),
+                                  nestedId: NestedNavigationIds.cart),
+                              CustomNavigator(
+                                  initialRoute: StoresScreen(),
+                                  nestedId: NestedNavigationIds.stores),
+                              CustomNavigator(
+                                  initialRoute: ProfileScreen(),
+                                  nestedId: NestedNavigationIds.profile),
+                              CustomNavigator(
+                                  initialRoute: WishlistScreen(),
+                                  nestedId: NestedNavigationIds.wishlist),
+                              CustomNavigator(
+                                  initialRoute: CompareCategoriesScreen(),
+                                  nestedId: NestedNavigationIds.compare),
+                              CustomNavigator(
+                                initialRoute: SearchScreen(),
+                                nestedId: NestedNavigationIds.search,
+                              ),
+                              CustomNavigator(
+                                  initialRoute: BecomeSellerScreen(),
+                                  nestedId: NestedNavigationIds.becomeSeller),
+                            ]),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              bottomNavigationBar: DashboardBottomNav(
+                  onItemSelected: (pos) {
+                    _dashboardController.updateCurrentIndex(pos);
+                  },
+                  currentIndex: currentIndex),
             ),
-            bottomNavigationBar: DashboardBottomNav(
-                onItemSelected: (pos) {
-                  _dashboardController.updateCurrentIndex(pos);
-                },
-                currentIndex: currentIndex),
           ),
         );
       }),
