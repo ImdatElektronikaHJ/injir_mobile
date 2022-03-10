@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:tajir/const/app_routes.dart';
+import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/theme/svg_icons.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -15,16 +19,21 @@ class StoresAppBar extends StatelessWidget {
           title:
               Text('stores'.tr, style: Theme.of(context).textTheme.headline6!),
           actions: [
-            Padding(
-              padding: const EdgeInsets.all(AppDimension.paddingSmall),
-              child: SvgPicture.asset(SvgImages.filter),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(AppDimension.paddingSmall),
-              child: SvgPicture.asset(SvgImages.katalog),
-            ),
+            IconButton(
+              onPressed: () {
+                _goToSortScreen();
+              },
+              icon: SvgPicture.asset(SvgImages.filter)),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(SvgImages.katalog)),
           ],
           floating: true,
         );
+  }
+
+
+    _goToSortScreen() {
+    Get.toNamed(AppRoutes.sortRoute, id: NestedNavigationIds.stores);
   }
 }
