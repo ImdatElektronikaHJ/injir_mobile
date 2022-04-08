@@ -13,6 +13,7 @@ import 'package:tajir/screen/order_history/order_history_screen.dart';
 import 'package:tajir/screen/filter/filter_screen.dart';
 import 'package:tajir/screen/product/product_screen.dart';
 import 'package:tajir/screen/search/search_screen.dart';
+import 'package:tajir/screen/sort/sort_screen.dart';
 import 'package:tajir/screen/wishlist/wishlist_screen.dart';
 
 class CustomNavigator extends StatelessWidget {
@@ -47,6 +48,10 @@ class CustomNavigator extends StatelessWidget {
 
         case AppRoutes.productRoute:
           screen = const ProductScreen();
+          break;
+
+        case AppRoutes.sortRoute:
+          screen = const SortScreen();
           break;
 
         case AppRoutes.compareRoute:

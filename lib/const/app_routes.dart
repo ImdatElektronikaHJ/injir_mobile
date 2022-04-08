@@ -15,6 +15,8 @@ class AppRoutes {
   static const String orderHistoryRoute = '/order_history';
   static const String categoryRoute = '/category';
   static const String productRoute = '/product';
+
+  static const String sortRoute = '/sort';
   static const String becomeSellerRoute = '/become_seller';
   static const String compareRoute = '/compare';
   static const String searchRoute = '/search';

@@ -14,25 +14,26 @@ class StoresAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Theme.of(context).backgroundColor,
-      centerTitle: false,
-      title: Text('stores'.tr, style: Theme.of(context).textTheme.headline6!),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset(SvgImages.filter),
-        ),
-        IconButton(
-          onPressed: () {
-            _goToFilterScreen();
-          },
-          icon: SvgPicture.asset(SvgImages.katalog),
-        ),
-      ],
-      floating: true,
-    );
+backgroundColor: Theme.of(context).backgroundColor,
+          centerTitle: false,
+          title:
+              Text('stores'.tr, style: Theme.of(context).textTheme.headline6!),
+          actions: [
+            IconButton(
+              onPressed: () {
+                _goToSortScreen();
+              },
+              icon: SvgPicture.asset(SvgImages.filter)),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(SvgImages.katalog)),
+          ],
+          floating: true,
+        );
   }
-  _goToFilterScreen() {
-    Get.toNamed(AppRoutes.filterRoute, id: NestedNavigationIds.stores);
+
+
+    _goToSortScreen() {
+    Get.toNamed(AppRoutes.sortRoute, id: NestedNavigationIds.stores);
   }
 }
