@@ -14,7 +14,7 @@ class StoresAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+backgroundColor: Theme.of(context).backgroundColor,
           centerTitle: false,
           title:
               Text('stores'.tr, style: Theme.of(context).textTheme.headline6!),

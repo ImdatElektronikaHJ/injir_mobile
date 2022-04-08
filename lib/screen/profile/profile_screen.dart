@@ -50,6 +50,9 @@ class ProfileScreen extends StatelessWidget {
               trailing: SvgPicture.asset(
                 SvgImages.arrowright,
               ),
+              onTap: () {
+                _goToOrderHistoryScreen();
+              },
             ),
             ListTile(
               leading: SvgPicture.asset(
@@ -68,5 +71,9 @@ class ProfileScreen extends StatelessWidget {
   }
   _goToEditProfileScreen() {
     Get.toNamed(AppRoutes.editProfileRoute, id: NestedNavigationIds.profile);
+  }
+
+  _goToOrderHistoryScreen() {
+    Get.toNamed(AppRoutes.orderHistoryRoute, id: NestedNavigationIds.profile);
   }
 }
