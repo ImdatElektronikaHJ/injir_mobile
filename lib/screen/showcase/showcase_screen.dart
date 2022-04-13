@@ -66,7 +66,9 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
     );
   }
 
-  _signInTapped() {}
+  _signInTapped() {
+    Get.toNamed(AppRoutes.loginRoute);
+  }
 
   _signUpTapped() {
     Get.toNamed(AppRoutes.registrationRoute);
