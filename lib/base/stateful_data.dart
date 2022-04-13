@@ -1,17 +1,17 @@
 enum Status { loading, completed, error, none }
 
-class StatefulData<T> {
+class StatefullData<T> {
   Status status;
   T? data;
   dynamic error;
 
-  StatefulData.loading() : status = Status.loading;
+  StatefullData.loading() : status = Status.loading;
 
-  StatefulData.completed(this.data) : status = Status.completed;
+  StatefullData.completed(this.data) : status = Status.completed;
 
-  StatefulData.error(this.error) : status = Status.error;
+  StatefullData.error(this.error) : status = Status.error;
 
-  StatefulData.empty() : status = Status.none;
+  StatefullData.empty() : status = Status.none;
 
   @override
   String toString() {
