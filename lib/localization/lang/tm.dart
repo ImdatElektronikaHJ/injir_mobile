@@ -32,6 +32,7 @@ const Map<String, String> tmTm = {
   'send_confirmation': 'We\'ll send your order confirmation here',
   'phone_number': 'Номер телефона',
   'password': 'Пароль',
+  'password_confirm': 'Confirm password',
   'clear_list': 'Очистить список',
   'rating': 'Рейтинг',
   'total': 'Всего',
