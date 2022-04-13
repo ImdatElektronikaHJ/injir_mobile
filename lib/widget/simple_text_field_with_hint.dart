@@ -11,7 +11,9 @@ class SimpleTextFieldWithHint extends StatelessWidget {
   final TextEditingController? controller;
   final List<TextInputFormatter>? inputFormatters;
   final Function(String)? onValueChanged;
+  final String? Function(String?)? validation;
   final String? placeHolder;
+  final Widget? suffix;
   const SimpleTextFieldWithHint(
       {Key? key,
       this.obscureText = false,
@@ -21,7 +23,9 @@ class SimpleTextFieldWithHint extends StatelessWidget {
       this.controller,
       this.inputFormatters,
       this.onValueChanged,
-      this.placeHolder})
+      this.placeHolder,
+      this.validation,
+      this.suffix})
       : super(key: key);
 
   @override
@@ -41,6 +45,8 @@ class SimpleTextFieldWithHint extends StatelessWidget {
             controller: controller,
             onValueChanged: onValueChanged,
             placeHolder: placeHolder,
+            validation: validation,
+            suffix: suffix,
           ),
           Visibility(
             visible: hint != null,

@@ -10,6 +10,8 @@ class SimpleTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final Function(String)? onValueChanged;
   final String? placeHolder;
+  final Widget? suffix;
+  final String? Function(String?)? validation;
 
   const SimpleTextField({
     Key? key,
@@ -20,6 +22,8 @@ class SimpleTextField extends StatelessWidget {
     this.inputFormatters,
     this.onValueChanged,
     this.placeHolder,
+    this.validation,
+    this.suffix,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -35,20 +39,22 @@ class SimpleTextField extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(
               vertical: AppDimension.marginSmall / 2),
-          child: TextField(
+          child: TextFormField(
             controller: controller,
+            autocorrect: false,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             obscureText: obscureText,
             maxLength: maxLength,
             inputFormatters: inputFormatters,
             onEditingComplete: () {
               FocusScope.of(context).setFirstFocus(FocusScopeNode());
             },
-            onChanged: (text) {
-              onValueChanged!(text);
-            },
+            validator: validation,
+            onChanged: onValueChanged,
             decoration: InputDecoration(
               counterText: "",
               hintText: placeHolder,
+              suffixIcon: suffix,
             ),
           ),
         ),
@@ -56,4 +62,3 @@ class SimpleTextField extends StatelessWidget {
     );
   }
 }
-
