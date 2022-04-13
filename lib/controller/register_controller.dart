@@ -15,7 +15,7 @@ class RegisterController extends GetxController {
   RxBool isConfirmPasswordObscured = RxBool(true);
   RxBool isPrivacyChecked = RxBool(false);
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-  Rx<StatefullData> registerResponse = Rx(StatefullData.empty());
+  Rx<StatefulData> registerResponse = Rx(StatefulData.empty());
 
   String? _firstName;
   String? _lastName;
@@ -193,15 +193,15 @@ class RegisterController extends GetxController {
   }
 
   void _makeRegistration() async {
-    registerResponse.value = StatefullData.loading();
+    registerResponse.value = StatefulData.loading();
     try {
       await _accountRegistrationRepository
           .makeRegistration(_registrationAccount);
-      registerResponse.value = StatefullData.completed('');
+      registerResponse.value = StatefulData.completed('');
       Get.offAndToNamed(AppRoutes.dashboardRoute);
       _clearAll();
     } catch (e) {
-      registerResponse.value = StatefullData.error(e);
+      registerResponse.value = StatefulData.error(e);
       print(e);
     }
   }

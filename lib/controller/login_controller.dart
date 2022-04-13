@@ -13,7 +13,7 @@ class LoginController extends GetxController {
 
   final Login _login = Login();
 
-  Rx<StatefullData> loginResponse = Rx<StatefullData>(StatefullData.empty());
+  Rx<StatefulData> loginResponse = Rx<StatefulData>(StatefulData.empty());
 
   String? _mail;
   String? _password;
@@ -86,9 +86,9 @@ class LoginController extends GetxController {
     //   },
     // ];
     if (loginFormKey.currentState!.validate()) {
-      loginResponse.value = StatefullData.loading();
+      loginResponse.value = StatefulData.loading();
       await Future.delayed(const Duration(milliseconds: 2000));
-      loginResponse.value = StatefullData.completed('');
+      loginResponse.value = StatefulData.completed('');
       Get.offAndToNamed(AppRoutes.dashboardRoute);
       _clearAll();
     }
