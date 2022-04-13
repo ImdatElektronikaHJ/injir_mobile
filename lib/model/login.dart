@@ -1,6 +1,6 @@
 class Login {
-  final String? phoneNumber;
-  final String? password;
+  String? phoneNumber;
+  String? password;
 
   Login({this.phoneNumber, this.password});
 }

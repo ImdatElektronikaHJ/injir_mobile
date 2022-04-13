@@ -32,6 +32,7 @@ const Map<String, String> ruRu = {
   'send_confirmation': 'Мы отправим вам подтверждение заказа',
   'phone_number': 'Номер телефона',
   'password': 'Пароль',
+  'password_confirm': 'Подтвердите пароль',
   'clear_list': 'Очистить список',
   'rating': 'Отзывы',
   'total': 'Всего',
