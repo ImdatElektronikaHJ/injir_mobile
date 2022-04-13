@@ -21,4 +21,5 @@ class AppRoutes {
   static const String registrationRoute = '/registration';
   static const String checkoutRoute = '/checkout';
   static const String checkoutSummaryRoute = '/checkout_summary';
+  static const String loginRoute = '/login';
 }
