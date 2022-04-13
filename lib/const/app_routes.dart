@@ -9,7 +9,10 @@ class AppRoutes {
   static const String storesRoute = '/stores';
   static const String profileRoute = '/profile';
   static const String editProfileRoute = '/edit_profile';
+  static const String filterRoute = '/filter';
+  static const String sortRoute = '/sort';
   static const String profileAddressRoute = '/profile_address';
+  static const String orderHistoryRoute = '/order_history';
   static const String categoryRoute = '/category';
   static const String productRoute = '/product';
   static const String becomeSellerRoute = '/become_seller';

@@ -10,8 +10,11 @@ import 'package:tajir/screen/compare/compare_screen.dart';
 import 'package:tajir/screen/compare_categories/compare_categories_screen.dart';
 import 'package:tajir/screen/edit_profile/edit_profile_screen.dart';
 import 'package:tajir/screen/login/login_screen.dart';
+import 'package:tajir/screen/order_history/order_history_screen.dart';
+import 'package:tajir/screen/filter/filter_screen.dart';
 import 'package:tajir/screen/product/product_screen.dart';
 import 'package:tajir/screen/search/search_screen.dart';
+import 'package:tajir/screen/sort/sort_screen.dart';
 import 'package:tajir/screen/wishlist/wishlist_screen.dart';
 
 class CustomNavigator extends StatelessWidget {
@@ -48,17 +51,28 @@ class CustomNavigator extends StatelessWidget {
           screen = const ProductScreen();
           break;
 
+        case AppRoutes.sortRoute:
+          screen = const SortScreen();
+          break;
+
         case AppRoutes.compareRoute:
           screen = const CompareScreen();
           break;
         case AppRoutes.profileAddressRoute:
           screen = const AddressScreen();
           break;
+        case AppRoutes.orderHistoryRoute:
+          screen = const OrderHistoryScreen();
+          break;
 
         case AppRoutes.editProfileRoute:
           screen = const EditProfileScreen();
           break;
 
+        case AppRoutes.filterRoute:
+          screen = const FilterScreen();
+          break;
+    
         case AppRoutes.compareCategoriesRoute:
           screen = const CompareCategoriesScreen();
           break;

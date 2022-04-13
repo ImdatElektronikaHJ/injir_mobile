@@ -24,17 +24,17 @@ class HttpClient {
     _dio.interceptors.add(ApiAuthInterceptor(
         mainDio: _dio, localizationService: _localizationService));
   }
- 
+
   static HttpClient get instance => _singleton;
 
   Future<dynamic> fetchData(String url, {Map<String, String>? params}) async {
     dynamic responseJson;
-    String uri = APIBase.baseURL + url + queryParameters(params);
+    String uri = APIBase.baseURL + url;
 
     print('Method is GET and current uri is: $uri');
     try {
       final response = await _dio
-          .get(uri)
+          .get(uri, queryParameters: params)
           .timeout(const Duration(milliseconds: requestTimeoutMilliseconds));
 
       responseJson = json.decode(response.data.toString());
@@ -48,29 +48,15 @@ class HttpClient {
     return responseJson;
   }
 
-  String queryParameters(Map<String, String>? params) {
-    if (params != null) {
-      final jsonString = Uri(queryParameters: params);
-      return '&${jsonString.query}';
-    }
-    return '';
-  }
-
   Future<dynamic> postData(String url,
       {dynamic body, Map<String, String>? params}) async {
     dynamic responseJson;
-    String uri = APIBase.baseURL + url + queryParameters(params);
+    String uri = APIBase.baseURL + url;
 
     print('Method is POST and current uri is: $uri');
     try {
-      Response response;
-      if (body != null) {
-        response = await _dio.post(uri, data: body);
-      } else {
-        response = await _dio.post(
-          uri,
-        );
-      }
+      Response response =
+          await _dio.post(uri, data: body, queryParameters: params);
       responseJson = json.decode(response.data.toString());
     } on DioError catch (e) {
       if (e.type == DioErrorType.response) {
@@ -85,17 +71,11 @@ class HttpClient {
   Future<dynamic> putData(String url,
       {dynamic body, Map<String, String>? params}) async {
     dynamic responseJson;
-    String uri = APIBase.baseURL + url + queryParameters(params);
+    String uri = APIBase.baseURL + url;
     print('Method is PUT and current uri is: $uri');
     try {
-      Response response;
-      if (body != null) {
-        response = await _dio.put(uri, data: body);
-      } else {
-        response = await _dio.put(
-          uri,
-        );
-      }
+      Response response =
+          await _dio.put(uri, data: body, queryParameters: params);
       responseJson = json.decode(response.data.toString());
     } on DioError catch (e) {
       if (e.type == DioErrorType.response) {
@@ -110,17 +90,11 @@ class HttpClient {
   Future<dynamic> delete(String url,
       {dynamic body, Map<String, String>? params}) async {
     dynamic responseJson;
-    String uri = APIBase.baseURL + url + queryParameters(params);
+    String uri = APIBase.baseURL + url;
     print('Method is DELETE and current uri is: $uri');
     try {
-      Response response;
-      if (body != null) {
-        response = await _dio.delete(uri, data: body);
-      } else {
-        response = await _dio.delete(
-          uri,
-        );
-      }
+      Response response =
+          await _dio.delete(uri, data: body, queryParameters: params);
       responseJson = json.decode(response.data.toString());
     } on DioError catch (e) {
       if (e.type == DioErrorType.response) {
