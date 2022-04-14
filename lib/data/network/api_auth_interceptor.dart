@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tajir/data/network/api_key_secret.dart';
 import 'package:tajir/data/network/api_path.dart';
 import 'package:tajir/data/shared_preferences/storage_token.dart';
@@ -33,25 +34,29 @@ class ApiAuthInterceptor extends QueuedInterceptor {
         options.headers[AuthHeaderUtil.authorizationHeader] = "Bearer $token";
         return handler.next(options);
       } else {
-        Dio dio = Dio(BaseOptions(
-          responseType: ResponseType.plain,
-          connectTimeout: requestTimeoutMilliseconds,
-        ));
-        dio.options.headers[AuthHeaderUtil.authorizationHeader] =
-            AuthHeaderUtil.instance.getBasicAuth(
-                ApiClientSecret.clientKey, ApiClientSecret.clientSecret);
-        String tokenUrl =
-            APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchToken);
-        Response response = await dio.post(
-          tokenUrl,
-        );
-        if (response.statusCode == 200) {
+        try {
+          Dio dio = Dio(BaseOptions(
+            responseType: ResponseType.plain,
+            connectTimeout: requestTimeoutMilliseconds,
+          ));
+          dio.options.headers[AuthHeaderUtil.authorizationHeader] =
+              AuthHeaderUtil.instance.getBasicAuth(
+                  ApiClientSecret.clientKey, ApiClientSecret.clientSecret);
+          String tokenUrl =
+              APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchToken);
+          Response response = await dio.post(
+            tokenUrl,
+          );
           String newToken =
               json.decode(response.data.toString())['access_token'];
           StorageToken.saveNewAccessToken(newToken);
           options.headers[AuthHeaderUtil.authorizationHeader] =
               "Bearer $newToken";
           return handler.next(options);
+        } catch (e) {
+          if (kDebugMode) {
+            print('Getting token is error: $e');
+          }
         }
       }
     }
@@ -84,36 +89,55 @@ class ApiAuthInterceptor extends QueuedInterceptor {
               dio.options.headers[AuthHeaderUtil.authorizationHeader] =
                   "Bearer $token";
             }
-            await dio.post(
-                APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchLogin),
-                data: phonePasswordEncoded);
 
-            Options opts = Options(
-                method: err.requestOptions.method,
-                headers: err.requestOptions.headers);
+            try {
+              await dio.post(
+                  APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchLogin),
+                  data: phonePasswordEncoded);
+            } on DioError catch (e) {
+              if (e.response != null) {
+                Map<String, dynamic> loginResponse =
+                    json.decode(e.response!.data.toString());
+                List<String> loginErrors =
+                    List<String>.from(loginResponse['error']);
+                if (e.response?.statusCode == 403 && loginErrors.contains(
+                    // ignore: unnecessary_string_escapes
+                    'The entered phone number and \/ or password is incorrect')) {
+                  StorageLogin.clearLogin();
+                }
+              }
+            }
 
-            Response cloneRequest = await dio.request(err.requestOptions.path,
-                options: opts,
-                data: err.requestOptions.data,
-                queryParameters: err.requestOptions.queryParameters);
+            try {
+              Options opts = Options(
+                  method: err.requestOptions.method,
+                  headers: err.requestOptions.headers);
 
-            return handler.resolve(cloneRequest);
+              Response cloneRequest = await dio.request(err.requestOptions.path,
+                  options: opts,
+                  data: err.requestOptions.data,
+                  queryParameters: err.requestOptions.queryParameters);
+
+              return handler.resolve(cloneRequest);
+            } on DioError catch (e) {
+              return handler.reject(e);
+            }
           }
           break;
         case 401:
-          Dio dio = Dio(BaseOptions(
-            responseType: ResponseType.plain,
-            connectTimeout: requestTimeoutMilliseconds,
-          ));
-          dio.options.headers[AuthHeaderUtil.authorizationHeader] =
-              AuthHeaderUtil.instance.getBasicAuth(
-                  ApiClientSecret.clientKey, ApiClientSecret.clientSecret);
-          String tokenUrl =
-              APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchToken);
-          Response response = await dio.post(
-            tokenUrl,
-          );
-          if (response.statusCode == 200) {
+          try {
+            Dio dio = Dio(BaseOptions(
+              responseType: ResponseType.plain,
+              connectTimeout: requestTimeoutMilliseconds,
+            ));
+            dio.options.headers[AuthHeaderUtil.authorizationHeader] =
+                AuthHeaderUtil.instance.getBasicAuth(
+                    ApiClientSecret.clientKey, ApiClientSecret.clientSecret);
+            String tokenUrl =
+                APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchToken);
+            Response response = await dio.post(
+              tokenUrl,
+            );
             String newToken =
                 json.decode(response.data.toString())['access_token'];
             await StorageToken.saveNewAccessToken(newToken);
@@ -132,8 +156,9 @@ class ApiAuthInterceptor extends QueuedInterceptor {
                 queryParameters: err.requestOptions.queryParameters);
 
             return handler.resolve(cloneRequest);
+          } on DioError catch (e) {
+            return handler.reject(e);
           }
-          break;
         case 403:
           Login? login = await StorageLogin.getLogin();
           if (login != null) {
@@ -156,20 +181,39 @@ class ApiAuthInterceptor extends QueuedInterceptor {
                 dio.options.headers[AuthHeaderUtil.authorizationHeader] =
                     "Bearer $token";
               }
-              await dio.post(
-                  APIBase.baseURL + APIPathHelper.getValue(APIPath.fetchLogin),
-                  data: phonePasswordEncoded);
+              try {
+                await dio.post(
+                    APIBase.baseURL +
+                        APIPathHelper.getValue(APIPath.fetchLogin),
+                    data: phonePasswordEncoded);
+              } on DioError catch (e) {
+                if (e.response != null) {
+                  Map<String, dynamic> loginResponse =
+                      json.decode(e.response!.data.toString());
+                  List<String> loginErrors =
+                      List<String>.from(loginResponse['error']);
+                  if (e.response?.statusCode == 403 && loginErrors.contains(
+                      // ignore: unnecessary_string_escapes
+                      'The entered phone number and \/ or password is incorrect')) {
+                    StorageLogin.clearLogin();
+                  }
+                }
+              }
 
               Options opts = Options(
                   method: err.requestOptions.method,
                   headers: err.requestOptions.headers);
+              try {
+                Response cloneRequest = await dio.request(
+                    err.requestOptions.path,
+                    options: opts,
+                    data: err.requestOptions.data,
+                    queryParameters: err.requestOptions.queryParameters);
 
-              Response cloneRequest = await dio.request(err.requestOptions.path,
-                  options: opts,
-                  data: err.requestOptions.data,
-                  queryParameters: err.requestOptions.queryParameters);
-
-              return handler.resolve(cloneRequest);
+                return handler.resolve(cloneRequest);
+              } on DioError catch (e) {
+                return handler.reject(e);
+              }
             } else if (errors.contains(
                 // ignore: unnecessary_string_escapes
                 'The entered phone number and \/ or password is incorrect')) {
