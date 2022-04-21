@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/screen/checkout_screen/local_widgets/page_title.dart';
+import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
@@ -48,6 +49,7 @@ class _ShippingMethodWidgetState extends State<ShippingMethodWidget> {
                   AppDimension.marginLarge + AppDimension.marginExtraLarge,
               vertical: AppDimension.paddingMedium),
           child: ElevatedButton(
+            style: AppButtonStyle.elevatedButtonStyleLarge,
             onPressed: () {
               widget.onNextPressed();
             },

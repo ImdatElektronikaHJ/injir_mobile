@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
@@ -43,7 +44,7 @@ class ProductButtons extends StatelessWidget {
                     onTapped: () {
                       print('das');
                     },
-                    buttonColor: AppColors.darkBlueColor,
+                    buttonColor: Get.theme.colorScheme.primary,
                   ),
                 ),
               ],

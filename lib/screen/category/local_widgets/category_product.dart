@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/product_counter/product_counter_widget.dart';
@@ -118,6 +119,7 @@ class CategoryProdcut extends StatelessWidget {
                 Container(
                   alignment: Alignment.topLeft,
                   child: ElevatedButton(
+                    style: AppButtonStyle.elevatedButtonStyleSmall,
                     onPressed: () {},
                     child: Text('to_cart'.tr),
                   ),

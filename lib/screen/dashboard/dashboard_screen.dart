@@ -52,6 +52,7 @@ class DashboardScreen extends StatelessWidget {
                 centerTitle: false,
                 leadingWidth: AppDimension.appBarLeadingWidth,
                 automaticallyImplyLeading: false,
+                elevation: 0.0,
                 leading: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(AppDimension.paddingSmall),

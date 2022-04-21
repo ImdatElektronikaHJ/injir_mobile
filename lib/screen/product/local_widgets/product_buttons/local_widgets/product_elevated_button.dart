@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/theme/app_button_style.dart';
 
 class ProductElevatedButton extends StatelessWidget {
   final String title;
@@ -13,25 +13,10 @@ class ProductElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () => onTapped(),
-      style: ElevatedButton.styleFrom(
-        primary: buttonColor,
-        minimumSize: Size(MediaQuery.of(context).size.width,
-            AppDimension.productElevatedButtonHeight),
-        elevation: 0.0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(
-              AppDimension.borderRadiusSmall,
-            ),
-          ),
-        ),
-      ),
+      style: AppButtonStyle.elevatedButtonStyleLarge.copyWith(
+          backgroundColor: MaterialStateProperty.all<Color>(buttonColor!)),
       child: Text(
         title,
-        style: Theme.of(context)
-            .textTheme
-            .button!
-            .copyWith(fontSize: 18.0, fontWeight: FontWeight.bold),
       ),
     );
   }

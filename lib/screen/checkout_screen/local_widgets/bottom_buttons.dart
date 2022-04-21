@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -27,22 +29,25 @@ class BottomButtons extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(right: AppDimension.paddingMedium),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: AppColors.lightGreyColor,
-                  elevation: 0.0,
+                style: AppButtonStyle.elevatedButtonStyleLarge.copyWith(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Get.theme.colorScheme.secondaryContainer),
+                  elevation: MaterialStateProperty.all<double>(0.0),
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Get.theme.colorScheme.onSecondaryContainer),
                 ),
                 onPressed: () {
                   onBackPressed();
                 },
-                child: Text('back'.tr.toUpperCase(),
-                    style: Theme.of(context).textTheme.button!.copyWith(
-                          color: AppColors.blackColor,
-                        )),
+                child: Text(
+                  'back'.tr.toUpperCase(),
+                ),
               ),
             ),
           ),
           Expanded(
             child: ElevatedButton(
+              style: AppButtonStyle.elevatedButtonStyleLarge,
               onPressed: () {
                 onNextPressed();
               },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
@@ -11,7 +12,6 @@ class CartTotalBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(AppDimension.paddingMedium),
-      height: AppDimension.cartTotalBarHeight,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -24,12 +24,13 @@ class CartTotalBar extends StatelessWidget {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
         children: [
-          Flexible(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
@@ -49,12 +50,11 @@ class CartTotalBar extends StatelessWidget {
               ],
             ),
           ),
-          Flexible(
-            child: SizedBox.expand(
-              child: ElevatedButton(
-                onPressed: onCheckoutTapped,
-                child: Text('checkout'.tr.toUpperCase()),
-              ),
+          Expanded(
+            child: ElevatedButton(
+              style: AppButtonStyle.elevatedButtonStyleLarge,
+              onPressed: onCheckoutTapped,
+              child: Text('checkout'.tr.toUpperCase()),
             ),
           ),
         ],
