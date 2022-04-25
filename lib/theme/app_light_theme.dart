@@ -6,6 +6,39 @@ import 'app_colors.dart';
 import 'color_swatch_generator.dart';
 
 class AppLightTheme {
+  AppLightTheme._();
+
+  static final appTheme = ThemeData(
+    brightness: Brightness.light,
+    primarySwatch: generateMaterialColor(AppColors.blueColor),
+    colorScheme: const ColorScheme.light(
+      primary: AppColors.blueColor,
+      onPrimary: Colors.white,
+      primaryContainer: Colors.white,
+      onPrimaryContainer: AppColors.blackColor,
+      secondaryContainer: AppColors.lightGreyColor,
+      onSecondaryContainer: AppColors.blackColor,
+      error: AppColors.redColor,
+      onError: Colors.white,
+    ),
+    hintColor: AppColors.darkerGreyColor,
+    errorColor: AppColors.redColor,
+    highlightColor: AppColors.blueColor,
+    scaffoldBackgroundColor: AppColors.blueColor,
+    backgroundColor: AppColors.whiteColor,
+    toggleableActiveColor: AppColors.blueColor,
+    dialogBackgroundColor: AppColors.blueColor,
+    dividerColor: AppColors.darkerGreyColor,
+    disabledColor: AppColors.greyColor,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: MaterialStateProperty.all<Color>(
+          AppColors.whiteColor,
+        ),
+      ),
+    ),
+  );
+
   static final ThemeData theme = ThemeData(
       appBarTheme: _appBarTheme,
       brightness: Brightness.light,

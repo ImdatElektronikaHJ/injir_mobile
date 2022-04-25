@@ -4,7 +4,6 @@ import 'package:tajir/screen/product/local_widgets/product_buttons/local_widgets
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/widget/product_counter/product_counter_widget.dart';
 
-
 class ProductAddToCartWidget extends StatefulWidget {
   const ProductAddToCartWidget({Key? key}) : super(key: key);
 
@@ -27,15 +26,18 @@ class _ProductAddToCartWidgetState extends State<ProductAddToCartWidget> {
                 });
               },
             )
-          : ProductElevatedButton(
-              key: UniqueKey(),
-              title: 'to_cart'.tr,
-              onTapped: () {
-                setState(() {
-                  addedToCart = true;
-                });
-              },
-              buttonColor: AppColors.lightRedColor,
+          : SizedBox(
+            width: double.maxFinite,
+              child: ProductElevatedButton(
+                key: UniqueKey(),
+                title: 'to_cart'.tr,
+                onTapped: () {
+                  setState(() {
+                    addedToCart = true;
+                  });
+                },
+                buttonColor: AppColors.lightRedColor,
+              ),
             ),
     );
   }

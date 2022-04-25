@@ -73,7 +73,7 @@ class ApiAuthInterceptor extends QueuedInterceptor {
               json.decode(err.response!.data.toString());
           List<String> errors = List<String>.from(errResponse['error']);
           Login? login = await StorageLogin.getLogin();
-          if (login != null && errors.contains('User is not logged in')) {
+          if (login != null && errors.contains('User is not logged.')) {
             final phonePasswordEncoded = jsonEncode(<String, String>{
               "email": login.phoneNumber!,
               "password": login.password!
