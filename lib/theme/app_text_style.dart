@@ -5,20 +5,20 @@ class AppTextStyle {
   AppTextStyle._();
 
   static final avenirLight = TextStyle(
-    fontFamily: 'Avenir',
+    fontFamily: 'AvenirNext',
     fontWeight: FontWeight.w300,
     fontSize: AppDimension.fontSizeDefault,
   );
 
   static final avenirBold = TextStyle(
-    fontFamily: 'Avenir',
+    fontFamily: 'AvenirNext',
     fontWeight: FontWeight.w700,
     fontSize: AppDimension.fontSizeDefault,
   );
 
   static final avenirRegular = TextStyle(
-    fontFamily: 'Avenir',
-    fontWeight: FontWeight.w500,
+    fontFamily: 'AvenirNext',
+    fontWeight: FontWeight.w400,
     fontSize: AppDimension.fontSizeDefault,
   );
 }
