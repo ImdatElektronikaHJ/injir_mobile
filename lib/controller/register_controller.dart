@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:tajir/base/stateful_data.dart';
+import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/const/app_routes.dart';
 import 'package:tajir/model/registration_account.dart';
 import 'package:tajir/theme/app_colors.dart';
@@ -15,7 +15,7 @@ class RegisterController extends GetxController {
   RxBool isConfirmPasswordObscured = RxBool(true);
   RxBool isPrivacyChecked = RxBool(false);
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-  Rx<StatefulData> registerResponse = Rx(StatefulData.empty());
+  Rx<StatefullData> registerResponse = Rx(StatefullData.empty());
 
   String? _firstName;
   String? _lastName;
@@ -193,15 +193,15 @@ class RegisterController extends GetxController {
   }
 
   void _makeRegistration() async {
-    registerResponse.value = StatefulData.loading();
+    registerResponse.value = StatefullData.loading();
     try {
       await _accountRegistrationRepository
           .makeRegistration(_registrationAccount);
-      registerResponse.value = StatefulData.completed('');
+      registerResponse.value = StatefullData.completed('');
       Get.offAndToNamed(AppRoutes.dashboardRoute);
       _clearAll();
     } catch (e) {
-      registerResponse.value = StatefulData.error(e);
+      registerResponse.value = StatefullData.error(e);
       print(e);
     }
   }
