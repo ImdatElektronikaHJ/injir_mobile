@@ -50,4 +50,9 @@ const Map<String, String> tmTm = {
   'back': 'Back',
   'next': 'Next',
   'pay': 'Pay',
+  'tajir_welcome': 'Добро пожаловать в Tajir',
+  'fill_email_password_login':
+      'Пожалуйста, заполните адрес электронной почты и пароль, чтобы войти в свою учетную запись приложения.',
+  'login_now': 'Войти Сейчас',
+  'email': 'Электронная почта',
 };

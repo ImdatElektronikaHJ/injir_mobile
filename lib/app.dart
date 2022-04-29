@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:tajir/localization/localization_service.dart';
 import 'package:tajir/screen/dashboard/dashboard_screen.dart';
+import 'package:tajir/screen/init_login/init_login_screen.dart';
 import 'package:tajir/screen/login/login_screen.dart';
 import 'package:tajir/screen/registration/registration_screen.dart';
 import 'package:tajir/screen/showcase/showcase_screen.dart';
@@ -50,8 +51,8 @@ class TajirApp extends StatelessWidget {
             page: () => RegistrationScreen(),
           ),
           GetPage(
-            name: AppRoutes.loginRoute,
-            page: () => LoginScreen(),
+            name: AppRoutes.initLoginRoute,
+            page: () =>  InitLoginScreen(),
           ),
         ]);
   }

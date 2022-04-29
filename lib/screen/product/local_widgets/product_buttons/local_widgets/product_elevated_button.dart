@@ -13,7 +13,7 @@ class ProductElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () => onTapped(),
-      style: AppButtonStyle.elevatedButtonStyleLarge.copyWith(
+      style: AppButtonStyle.elevatedButtonStyleMedium.copyWith(
           backgroundColor: MaterialStateProperty.all<Color>(buttonColor!)),
       child: Text(
         title,

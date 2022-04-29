@@ -50,4 +50,9 @@ const Map<String, String> enGb = {
   'back': 'Back',
   'next': 'Next',
   'pay': 'Pay',
+  'tajir_welcome': 'Welcome to Tajir',
+  'fill_email_password_login':
+      'Please fill E-mail & password to login your app account.',
+  'login_now': 'Login Now',
+  'email': 'E-mail',
 };

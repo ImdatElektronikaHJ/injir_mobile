@@ -25,4 +25,5 @@ class AppRoutes {
   static const String checkoutRoute = '/checkout';
   static const String checkoutSummaryRoute = '/checkout_summary';
   static const String loginRoute = '/login';
+  static const String initLoginRoute = '/init_login';
 }

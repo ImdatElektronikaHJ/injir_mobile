@@ -52,7 +52,7 @@ class CartTotalBar extends StatelessWidget {
           ),
           Expanded(
             child: ElevatedButton(
-              style: AppButtonStyle.elevatedButtonStyleLarge,
+              style: AppButtonStyle.elevatedButtonStyleMedium,
               onPressed: onCheckoutTapped,
               child: Text('checkout'.tr.toUpperCase()),
             ),
