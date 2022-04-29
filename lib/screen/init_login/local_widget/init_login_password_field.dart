@@ -5,7 +5,11 @@ import 'package:tajir/theme/app_text_style.dart';
 
 class InitLoginPasswordField extends StatelessWidget {
   final String? Function(String?)? validator;
-  const InitLoginPasswordField({Key? key, this.validator}) : super(key: key);
+  final bool isEnabled;
+  final void Function(String?)? onPasswordUpdated;
+  const InitLoginPasswordField(
+      {Key? key, this.validator, this.onPasswordUpdated, this.isEnabled = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,16 @@ class InitLoginPasswordField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            enabled: isEnabled,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            onChanged: onPasswordUpdated,
             validator: validator,
-            decoration: const InputDecoration(hintText: '*****************'),
+            obscureText: true,
+            keyboardType: TextInputType.visiblePassword,
+            textInputAction: TextInputAction.done,
+            decoration: const InputDecoration(
+              hintText: '*****************',
+            ),
           ),
         ],
       ),
