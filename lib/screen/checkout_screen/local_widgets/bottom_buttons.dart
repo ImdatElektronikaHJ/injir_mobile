@@ -29,7 +29,7 @@ class BottomButtons extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(right: AppDimension.paddingMedium),
               child: ElevatedButton(
-                style: AppButtonStyle.elevatedButtonStyleLarge.copyWith(
+                style: AppButtonStyle.elevatedButtonStyleMedium.copyWith(
                   backgroundColor: MaterialStateProperty.all<Color>(
                       Get.theme.colorScheme.secondaryContainer),
                   elevation: MaterialStateProperty.all<double>(0.0),
@@ -47,7 +47,7 @@ class BottomButtons extends StatelessWidget {
           ),
           Expanded(
             child: ElevatedButton(
-              style: AppButtonStyle.elevatedButtonStyleLarge,
+              style: AppButtonStyle.elevatedButtonStyleMedium,
               onPressed: () {
                 onNextPressed();
               },

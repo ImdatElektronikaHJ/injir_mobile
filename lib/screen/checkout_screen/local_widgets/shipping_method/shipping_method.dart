@@ -49,7 +49,7 @@ class _ShippingMethodWidgetState extends State<ShippingMethodWidget> {
                   AppDimension.marginLarge + AppDimension.marginExtraLarge,
               vertical: AppDimension.paddingMedium),
           child: ElevatedButton(
-            style: AppButtonStyle.elevatedButtonStyleLarge,
+            style: AppButtonStyle.elevatedButtonStyleMedium,
             onPressed: () {
               widget.onNextPressed();
             },

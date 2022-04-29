@@ -7,6 +7,14 @@ class AppButtonStyle {
   AppButtonStyle._();
 
   static final elevatedButtonStyleLarge = ElevatedButton.styleFrom(
+    padding: const EdgeInsets.all(AppDimension.paddingExtraLarge),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppDimension.borderRadiusMedium),
+    ),
+    textStyle: AppTextStyle.avenirRegular
+        .copyWith(fontSize: AppDimension.fontSizeLarge),
+  );
+  static final elevatedButtonStyleMedium = ElevatedButton.styleFrom(
     padding: const EdgeInsets.all(AppDimension.paddingMedium),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AppDimension.borderRadiusMedium),
