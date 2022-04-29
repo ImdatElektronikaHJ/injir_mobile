@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tajir/base/stateful_data.dart';
+import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/controller/login_controller.dart';
 import 'package:tajir/screen/login/local_widgets/login_action_button.dart';
 import 'package:tajir/screen/login/local_widgets/login_app_bar.dart';

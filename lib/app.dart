@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:tajir/localization/localization_service.dart';
 import 'package:tajir/screen/dashboard/dashboard_screen.dart';
 import 'package:tajir/screen/init_login/init_login_screen.dart';
-import 'package:tajir/screen/login/login_screen.dart';
+import 'package:tajir/screen/init_registration/init_registration_screen.dart';
 import 'package:tajir/screen/registration/registration_screen.dart';
 import 'package:tajir/screen/showcase/showcase_screen.dart';
 import 'package:tajir/screen/splash/splash_screen.dart';
-import 'package:tajir/theme/app_dark_theme.dart';
 import 'package:tajir/theme/app_light_theme.dart';
 import 'package:tajir/theme/app_theme_service.dart';
 
@@ -52,7 +49,11 @@ class TajirApp extends StatelessWidget {
           ),
           GetPage(
             name: AppRoutes.initLoginRoute,
-            page: () =>  InitLoginScreen(),
+            page: () => InitLoginScreen(),
+          ),
+          GetPage(
+            name: AppRoutes.initRegistrationRoute,
+            page: () => const InitRegistrationScreen(),
           ),
         ]);
   }

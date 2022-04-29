@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:tajir/base/stateful_data.dart';
+import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/const/app_routes.dart';
 import 'package:tajir/model/login.dart';
 import 'package:tajir/util/validator.dart';
@@ -9,11 +9,13 @@ import 'package:tajir/util/validator.dart';
 class LoginController extends GetxController {
   RxBool isTextObscured = RxBool(true);
 
+  
+
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   final Login _login = Login();
 
-  Rx<StatefulData> loginResponse = Rx<StatefulData>(StatefulData.empty());
+  Rx<StatefullData> loginResponse = Rx<StatefullData>(StatefullData.empty());
 
   String? _mail;
   String? _password;
@@ -86,9 +88,9 @@ class LoginController extends GetxController {
     //   },
     // ];
     if (loginFormKey.currentState!.validate()) {
-      loginResponse.value = StatefulData.loading();
+      loginResponse.value = StatefullData.loading();
       await Future.delayed(const Duration(milliseconds: 2000));
-      loginResponse.value = StatefulData.completed('');
+      loginResponse.value = StatefullData.completed('');
       Get.offAndToNamed(AppRoutes.dashboardRoute);
       _clearAll();
     }

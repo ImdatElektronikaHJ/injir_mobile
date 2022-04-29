@@ -4,8 +4,12 @@ import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/theme/app_text_style.dart';
 
 class InitLoginEmailField extends StatelessWidget {
+  final bool isEnabled;
   final String? Function(String?)? validator;
-  const InitLoginEmailField({Key? key, this.validator}) : super(key: key);
+  final void Function(String?)? onEmailUpdated;
+  const InitLoginEmailField(
+      {Key? key, this.validator, this.onEmailUpdated, this.isEnabled = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,12 @@ class InitLoginEmailField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            enabled: isEnabled,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            onChanged: onEmailUpdated,
             validator: validator,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
             decoration:
                 const InputDecoration(hintText: 'Tajirtrading@gmail.com'),
           ),
