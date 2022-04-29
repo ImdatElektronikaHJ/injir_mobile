@@ -12,7 +12,7 @@ class InitLoginBecomeSellerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Get.size.width * 3 / 5,
+      width: Get.size.shortestSide * 3 / 5,
       child: ElevatedButton(
         onPressed: onBecomeSellerTapped,
         child: Row(

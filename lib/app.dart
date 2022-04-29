@@ -53,7 +53,7 @@ class TajirApp extends StatelessWidget {
           ),
           GetPage(
             name: AppRoutes.initRegistrationRoute,
-            page: () => const InitRegistrationScreen(),
+            page: () => InitRegistrationScreen(),
           ),
         ]);
   }
