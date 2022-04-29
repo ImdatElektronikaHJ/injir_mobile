@@ -10,6 +10,7 @@ class AppLightTheme {
 
   static final appTheme = ThemeData(
     brightness: Brightness.light,
+    fontFamily: 'AvenirNext',
     primarySwatch: generateMaterialColor(AppColors.blueColor),
     colorScheme: const ColorScheme.light(
       primary: AppColors.blueColor,
@@ -37,6 +38,7 @@ class AppLightTheme {
         ),
       ),
     ),
+    inputDecorationTheme: _inputDecorationTheme
   );
 
   static final ThemeData theme = ThemeData(
@@ -73,7 +75,7 @@ class AppLightTheme {
   static final _inputDecorationTheme = InputDecorationTheme(
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(
-        AppDimension.borderRadiusMicro,
+        AppDimension.borderRadiusSmall,
       ),
       borderSide: const BorderSide(
         color: AppColors.darkBlueColor,
@@ -81,7 +83,7 @@ class AppLightTheme {
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(
-        AppDimension.borderRadiusMicro,
+        AppDimension.borderRadiusSmall,
       ),
       borderSide: const BorderSide(
         color: AppColors.greyColor,
@@ -89,7 +91,7 @@ class AppLightTheme {
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(
-        AppDimension.borderRadiusMicro,
+        AppDimension.borderRadiusSmall,
       ),
       borderSide: const BorderSide(
         color: AppColors.redColor,
@@ -97,7 +99,7 @@ class AppLightTheme {
     ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(
-        AppDimension.borderRadiusMicro,
+        AppDimension.borderRadiusSmall,
       ),
       borderSide: const BorderSide(
         color: AppColors.amberColor,
@@ -105,7 +107,7 @@ class AppLightTheme {
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(
-        AppDimension.borderRadiusMicro,
+        AppDimension.borderRadiusSmall,
       ),
       borderSide: const BorderSide(
         color: AppColors.redColor,
