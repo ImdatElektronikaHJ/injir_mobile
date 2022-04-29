@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
 class ShowcaseActionButton extends StatelessWidget {
@@ -10,13 +12,15 @@ class ShowcaseActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.shortestSide;
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: screenWidth / 4, vertical: AppDimension.paddingSmall / 2),
+    double screenWidth = Get.size.shortestSide;
+    return Container(
+      width: screenWidth * 3 / 5,
+      padding:
+          const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall / 2),
       child: ElevatedButton(
         onPressed: onActionTapped,
         child: child,
+        style: AppButtonStyle.elevatedButtonStyleSmall,
       ),
     );
   }
