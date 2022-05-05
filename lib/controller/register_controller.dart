@@ -163,7 +163,7 @@ class RegisterController extends GetxController {
   void _addToRegisterModel() {
     _registrationAccount.firstName = _firstName;
     _registrationAccount.lastName = _lastName;
-    _registrationAccount.telephone = _phone;
+    _registrationAccount.phone = _phone;
     _registrationAccount.password = _password;
     _registrationAccount.email = _mail;
   }

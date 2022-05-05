@@ -60,4 +60,6 @@ const Map<String, String> ruRu = {
   'field_max_min_length': 'Длина строки должна быть между {#} и {#}',
   'field_min_length': 'Длина строки должна быть не менее {#} символов',
   'field_max_length': 'Длина строки должна быть не более {#} символов',
+  'create_user' : 'Создать Аккаунт',
+  'fields_must_be_same' : 'Поля должны быть одинаковыми'
 };
