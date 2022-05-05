@@ -60,4 +60,6 @@ const Map<String, String> enGb = {
   'field_max_min_length': 'The string length must be between {#} and {#} characters',
   'field_min_length': 'The string length must be minimum {#} letters',
   'field_max_length': 'The string length must be maximum {#} letters',
+  'create_user' : 'Create Account',
+  'fields_must_be_same' : 'Fields must be the same'
 };
