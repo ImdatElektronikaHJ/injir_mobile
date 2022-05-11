@@ -55,9 +55,13 @@ const Map<String, String> enGb = {
       'Please fill E-mail & password to login your app account.',
   'login_now': 'Login Now',
   'email': 'E-mail',
-  'fill_field' : 'Fill this field',
-  'check_spelling':'Check spelling',
-  'field_max_min_length': 'The string length must be between {#} and {#} characters',
+  'fill_field': 'Fill this field',
+  'check_spelling': 'Check spelling',
+  'field_max_min_length':
+      'The string length must be between {#} and {#} characters',
   'field_min_length': 'The string length must be minimum {#} letters',
   'field_max_length': 'The string length must be maximum {#} letters',
+  'agree_with': 'I agree with ',
+  'privacy_policy': 'Privacy Policy',
+  'check_checkbox': 'Please check checkbox if you agree',
 };
