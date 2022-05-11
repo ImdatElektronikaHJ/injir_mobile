@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
 class SimpleTextField extends StatelessWidget {
@@ -33,7 +34,8 @@ class SimpleTextField extends StatelessWidget {
         Text(
           fieldName,
           style: Theme.of(context).textTheme.caption!.copyWith(
-                fontSize: 14.0,
+                color: Get.theme.hintColor,
+                fontSize: AppDimension.fontSizeDefault,
               ),
         ),
         Padding(
