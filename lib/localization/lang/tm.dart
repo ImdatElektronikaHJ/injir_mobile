@@ -60,6 +60,9 @@ const Map<String, String> tmTm = {
   'field_max_min_length': 'Длина строки должна быть между {#} и {#}',
   'field_min_length': 'Длина строки должна быть не менее {#} символов',
   'field_max_length': 'Длина строки должна быть не более {#} символов',
+  'agree_with': 'I agree with ',
+  'privacy_policy': 'Пользовательское соглашение',
+  'check_checkbox': 'Please check checkbox if you agree',
   'create_user' : 'Создать Аккаунт',
   'fields_must_be_same' : 'Поля должны быть одинаковыми'
 };

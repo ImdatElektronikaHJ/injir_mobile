@@ -1,21 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:tajir/theme/app_colors.dart';
+import 'package:get/get.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 class RegistrationAppBar extends StatelessWidget {
-  const RegistrationAppBar({Key? key}) : super(key: key);
+  final void Function()? onBackTapped;
+  const RegistrationAppBar({Key? key, this.onBackTapped}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      iconTheme: const IconThemeData(color: AppColors.blackColor),
-      floating: true,
-      backgroundColor: AppColors.whiteColor,
-      elevation: 1.0,
-      title: Text(
-        'create_account'.tr,
-        style: Theme.of(context).textTheme.headline6,
+    return SliverPersistentHeader(
+        floating: true, delegate: RegisterPersistentHeader(onBackTapped));
+  }
+}
+
+class RegisterPersistentHeader extends SliverPersistentHeaderDelegate {
+  final void Function()? onBackTapped;
+  RegisterPersistentHeader([this.onBackTapped]);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      padding:
+          const EdgeInsets.symmetric(horizontal: AppDimension.paddingMedium),
+      alignment: Alignment.centerLeft,
+      color: Get.theme.backgroundColor,
+      child: IconButton(
+        padding: EdgeInsets.zero,
+        constraints: const BoxConstraints(),
+        onPressed: onBackTapped,
+        splashRadius: 1.0,
+        icon: const Icon(Icons.arrow_back),
       ),
     );
   }
+
+  @override
+  double get minExtent => kToolbarHeight;
+
+  @override
+  double get maxExtent => kToolbarHeight;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      true;
 }

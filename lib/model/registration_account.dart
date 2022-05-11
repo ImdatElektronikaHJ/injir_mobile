@@ -3,6 +3,11 @@ class RegistrationAccount {
   String? lastName;
   String? password;
   String? email;
+  // String? confirmPassword;
+  String? telephone;
+  String? city;
+  String? address;
+  String? addressOptional;
   String? confirmPassword;
   String? phone;
   int taxId;
@@ -14,6 +19,9 @@ class RegistrationAccount {
     this.lastName,
     this.email,
     this.password,
+    // this.confirmPassword,
+    this.telephone,
+    this.city,
     this.confirmPassword,
     this.phone,
     this.taxId = 1,
@@ -27,7 +35,13 @@ class RegistrationAccount {
         'lastname': lastName,
         'email': email,
         'password': password,
-        'telephone': '$phone',
+        'confirm': password,
+        'telephone': '$telephone',
+        // 'city': city,
+        // 'address_1': address,
+        // 'address_2': addressOptional,
+        'country_id': countryId,
+        'zone_id': zoneId,
         'customer_group_id': customerGroupId,
         'tax_id': taxId,
         'agree': agree,
