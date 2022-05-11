@@ -8,9 +8,9 @@ class RegistrationAccount {
   String? city;
   String? address;
   String? addressOptional;
+  String? confirmPassword;
+  String? phone;
   int taxId;
-  int? countryId;
-  int? zoneId;
   int customerGroupId;
   int newsletter;
   int agree;
@@ -22,11 +22,9 @@ class RegistrationAccount {
     // this.confirmPassword,
     this.telephone,
     this.city,
+    this.confirmPassword,
+    this.phone,
     this.taxId = 1,
-    this.address,
-    this.addressOptional,
-    this.countryId = 216,
-    this.zoneId = 3396,
     this.customerGroupId = 1,
     this.agree = 1,
     this.newsletter = 1,

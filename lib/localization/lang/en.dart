@@ -64,4 +64,6 @@ const Map<String, String> enGb = {
   'agree_with': 'I agree with ',
   'privacy_policy': 'Privacy Policy',
   'check_checkbox': 'Please check checkbox if you agree',
+  'create_user' : 'Create Account',
+  'fields_must_be_same' : 'Fields must be the same'
 };

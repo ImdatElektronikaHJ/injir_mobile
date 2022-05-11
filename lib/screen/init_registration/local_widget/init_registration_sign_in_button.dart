@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/theme/app_button_style.dart';
 
-class InitLoginSignUpButton extends StatelessWidget {
-  final void Function()? onSingUpTapped;
-  const InitLoginSignUpButton({Key? key, this.onSingUpTapped})
+class InitRegistrationSignInButton extends StatelessWidget {
+  final void Function()? onSingInTapped;
+  const InitRegistrationSignInButton({Key? key, this.onSingInTapped})
       : super(key: key);
 
   @override
@@ -12,8 +12,8 @@ class InitLoginSignUpButton extends StatelessWidget {
     return SizedBox(
       width: Get.size.shortestSide * 3 / 5,
       child: ElevatedButton(
-        onPressed: onSingUpTapped,
-        child: Text('sign_up'.tr.toUpperCase()),
+        onPressed: onSingInTapped,
+        child: Text('sign_in'.tr.toUpperCase()),
         style: AppButtonStyle.elevatedButtonStyleSmall,
       ),
     );

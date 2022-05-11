@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_text_style.dart';
 
-class InitLoginBecomeSellerButton extends StatelessWidget {
+class InitRegistrationBecomeSellerButton extends StatelessWidget {
   final void Function()? onBecomeSellerTapped;
 
-  const InitLoginBecomeSellerButton({Key? key, this.onBecomeSellerTapped})
+  const InitRegistrationBecomeSellerButton({Key? key, this.onBecomeSellerTapped})
       : super(key: key);
 
   @override

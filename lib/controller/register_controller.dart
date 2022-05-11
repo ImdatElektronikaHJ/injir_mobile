@@ -157,14 +157,14 @@ class RegisterController extends GetxController {
   void register() {
     Get.closeAllSnackbars();
     if (!isPrivacyChecked) {
-      showDialog();
+      _showDialog();
     }
     if (registerFormKey.currentState!.validate() && isPrivacyChecked) {
       _makeRegistration();
     }
   }
 
-  void showDialog() {
+  void _showDialog() {
     Get.showSnackbar(GetSnackBar(
       message: 'check_checkbox'.tr,
       snackPosition: SnackPosition.BOTTOM,

@@ -28,7 +28,7 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const ShowcaseBannerWidget(),
                 const SizedBox(
@@ -71,7 +71,7 @@ class _ShowcaseScreenState extends State<ShowcaseScreen> {
   }
 
   _signUpTapped() {
-    Get.toNamed(AppRoutes.registrationRoute);
+    Get.toNamed(AppRoutes.initRegistrationRoute);
   }
 
   _becomeSellerTapped() {}

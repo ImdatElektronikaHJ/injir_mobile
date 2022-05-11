@@ -63,4 +63,6 @@ const Map<String, String> tmTm = {
   'agree_with': 'I agree with ',
   'privacy_policy': 'Пользовательское соглашение',
   'check_checkbox': 'Please check checkbox if you agree',
+  'create_user' : 'Создать Аккаунт',
+  'fields_must_be_same' : 'Поля должны быть одинаковыми'
 };
