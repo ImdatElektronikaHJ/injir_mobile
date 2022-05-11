@@ -3,7 +3,7 @@ class RegistrationAccount {
   String? lastName;
   String? password;
   String? email;
-  String? confirmPassword;
+  // String? confirmPassword;
   String? telephone;
   String? city;
   String? address;
@@ -19,7 +19,7 @@ class RegistrationAccount {
     this.lastName,
     this.email,
     this.password,
-    this.confirmPassword,
+    // this.confirmPassword,
     this.telephone,
     this.city,
     this.taxId = 1,
@@ -37,7 +37,7 @@ class RegistrationAccount {
         'lastname': lastName,
         'email': email,
         'password': password,
-        // 'confirm': confirmPassword,
+        'confirm': password,
         'telephone': '$telephone',
         // 'city': city,
         // 'address_1': address,
