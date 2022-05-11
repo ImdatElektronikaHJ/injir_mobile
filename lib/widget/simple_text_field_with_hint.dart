@@ -31,9 +31,7 @@ class SimpleTextFieldWithHint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: AppDimension.paddingMedium,
-          vertical: AppDimension.paddingSmall),
+      padding: const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
