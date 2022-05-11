@@ -72,6 +72,7 @@ class InitLoginController extends GetxController {
         _navigateToDashboard();
       }, onErrorCallback: (e) {
         _loginResponse = StatefullData.error(e);
+        print(e);
         update();
       });
     }
