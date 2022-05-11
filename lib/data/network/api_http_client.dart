@@ -1,11 +1,15 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tajir/localization/localization_service.dart';
+
 import 'api_auth_interceptor.dart';
 import 'api_base.dart';
 import 'api_exception.dart';
-import 'dart:convert';
 
 class HttpClient {
   static const requestTimeoutMilliseconds = 20000;
@@ -15,14 +19,25 @@ class HttpClient {
 
   HttpClient() {
     _localizationService = LocalizationService();
-    var cookieJar = CookieJar();
+
     _dio = Dio(BaseOptions(
       responseType: ResponseType.plain,
       connectTimeout: requestTimeoutMilliseconds,
     ));
-    _dio.interceptors.add(CookieManager(cookieJar));
+    getCookie();
     _dio.interceptors.add(ApiAuthInterceptor(
         mainDio: _dio, localizationService: _localizationService));
+  }
+
+  getCookie() async {
+    var cookieJar = PersistCookieJar(
+      ignoreExpires: true,
+    );
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String appDocPath = appDocDir.path;
+    cookieJar =
+        PersistCookieJar(storage: FileStorage(appDocPath + "/.cookies/"));
+    _dio.interceptors.add(CookieManager(cookieJar));
   }
 
   static HttpClient get instance => _singleton;
