@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
-
 class InitLoginAppBar extends StatelessWidget {
   final void Function()? onBackTapped;
   const InitLoginAppBar({Key? key, this.onBackTapped}) : super(key: key);
@@ -32,6 +31,7 @@ class InitLoginAppBarDelegate extends SliverPersistentHeaderDelegate {
         padding: EdgeInsets.zero,
         constraints: const BoxConstraints(),
         onPressed: onBackTapped,
+        splashRadius: 1.0,
         icon: const Icon(Icons.arrow_back),
       ),
     );
