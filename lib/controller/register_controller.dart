@@ -1,104 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:get/utils.dart';
+import 'package:tajir/base/cancelable_void_future.dart';
 import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/const/app_routes.dart';
 import 'package:tajir/model/registration_account.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/util/interpolation_util.dart';
 import 'package:tajir/util/validator.dart';
 
 import '../data/network/repository/account_registration_repository.dart';
 
 class RegisterController extends GetxController {
-  RxBool isPasswordObscured = RxBool(true);
-  RxBool isConfirmPasswordObscured = RxBool(true);
-  RxBool isPrivacyChecked = RxBool(false);
-  final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
-  Rx<StatefullData> registerResponse = Rx(StatefullData.empty());
+  bool isPasswordObscured = true;
+  bool isConfirmPasswordObscured = true;
+  bool isPrivacyChecked = false;
+  final GlobalKey<FormState> registerFormKey;
+  StatefullData _registerResponse = StatefullData.empty();
 
-  String? _firstName;
-  String? _lastName;
-  String? _mail;
-  String? _phone;
-  String? _password;
-  String? _confirmPassword;
+  CancelableVoidFuture? _cancelableVoidFuture;
+
+  RegisterController({required this.registerFormKey});
+
+  StatefullData? get registerResponse => _registerResponse;
+
   final List<Map<String, String>>? _map = [];
 
   RegistrationAccount _registrationAccount = RegistrationAccount();
-  final AccountRegistrationRepository _accountRegistrationRepository =
-      AccountRegistrationRepository();
+  final _accountRegistrationRepository = AccountRegistrationRepository();
 
   void toggleObscured() {
-    bool _isPasswordObscured = isPasswordObscured.value;
-    isPasswordObscured.value = !_isPasswordObscured;
+    bool _isPasswordObscured = isPasswordObscured;
+    isPasswordObscured = !_isPasswordObscured;
+    update();
   }
 
   void toggleConfirmObscured() {
-    bool _isConfirmPasswordObscured = isConfirmPasswordObscured.value;
-    isConfirmPasswordObscured.value = !_isConfirmPasswordObscured;
+    bool _isConfirmPasswordObscured = isConfirmPasswordObscured;
+    isConfirmPasswordObscured = !_isConfirmPasswordObscured;
+    update();
   }
 
   void togglePrivacy() {
-    bool isPrivacyChecked = this.isPrivacyChecked.value;
-    this.isPrivacyChecked.value = !isPrivacyChecked;
+    bool isPrivacyChecked = this.isPrivacyChecked;
+    this.isPrivacyChecked = !isPrivacyChecked;
+    update();
   }
 
   void updateFirstName(String? value) {
-    _firstName = value?.trim();
+    _registrationAccount.firstName = value?.trim();
   }
 
   void updateLastName(String? value) {
-    _lastName = value?.trim();
+    _registrationAccount.lastName = value?.trim();
   }
 
   void updatePhone(String? value) {
     if (_map != null) {
       _map!.removeWhere((element) => element.containsKey('phone'));
     }
-    _phone = value?.trim();
+    _registrationAccount.telephone = value?.trim();
   }
 
   void updatePassword(String? value) {
-    _password = value!.trim();
+    _registrationAccount.password = value!.trim();
   }
 
-  void updateConfirmPassword(String? value) {
-    _confirmPassword = value!.trim();
-  }
+  // void updateConfirmPassword(String? value) {
+  //   _confirmPassword = value!.trim();
+  // }
 
   void updateMail(String? value) {
     if (_map != null) {
       _map!.removeWhere((element) => element.containsKey('mail'));
     }
-    _mail = value!.trim();
+    _registrationAccount.email = value!.trim();
   }
 
   String? validateFirstName() {
-    if (_firstName == null || _firstName!.isEmpty) {
-      return 'error text';
-    } else if (!Validator.matchAsciiTextWithSymbols(_firstName!)) {
-      return 'spelling error';
+    if (_registrationAccount.firstName == null ||
+        _registrationAccount.firstName!.isEmpty) {
+      return 'fill_field'.tr;
+    } else if (!Validator.matchAsciiTextWithSymbols(
+        _registrationAccount.firstName!)) {
+      return 'check_spelling'.tr;
     } else {
       return null;
     }
   }
 
   String? validateLastName() {
-    if (_lastName == null || _lastName!.isEmpty) {
-      return 'error text';
-    } else if (!Validator.matchAsciiTextWithSymbols(_lastName!)) {
-      return 'spelling error';
+    if (_registrationAccount.lastName == null ||
+        _registrationAccount.lastName!.isEmpty) {
+      return 'fill_field'.tr;
+    } else if (!Validator.matchAsciiTextWithSymbols(
+        _registrationAccount.lastName!)) {
+      return 'check_spelling'.tr;
     } else {
       return null;
     }
   }
 
   String? validatePhone() {
-    if (_phone == null || _phone!.isEmpty) {
-      return 'error text';
-    } else if (!Validator.matchPhoneNumber(_phone!)) {
-      return 'spelling error';
+    if (_registrationAccount.telephone == null ||
+        _registrationAccount.telephone!.isEmpty) {
+      return 'fill_field'.tr;
+    } else if (!Validator.matchPhoneNumber(_registrationAccount.telephone!)) {
+      return 'check_spelling'.tr;
     } else if (_map != null && _map!.isNotEmpty) {
       for (var element in _map!) {
         if (element.containsKey('phone')) {
@@ -112,10 +122,11 @@ class RegisterController extends GetxController {
   }
 
   String? validateMail() {
-    if (_mail == null || _mail!.isEmpty) {
-      return 'error text';
-    } else if (!Validator.matchEmail(_mail!)) {
-      return 'spelling error';
+    if (_registrationAccount.email == null ||
+        _registrationAccount.email!.isEmpty) {
+      return 'fill_field'.tr;
+    } else if (!Validator.matchEmail(_registrationAccount.email!)) {
+      return 'check_spelling'.tr;
     } else if (_map != null && _map!.isNotEmpty) {
       for (var element in _map!) {
         if (element.containsKey('mail')) {
@@ -129,86 +140,83 @@ class RegisterController extends GetxController {
   }
 
   String? validatePassword() {
-    if (_password == null || _password!.isEmpty) {
-      return 'error text';
-    } else if (_password!.length < 6) {
-      return 'password should be longer than 6';
+    if (_registrationAccount.password == null ||
+        _registrationAccount.password!.isEmpty) {
+      return 'fill_field'.tr;
+    } else if (_registrationAccount.password!.length < 6) {
+      return InterpolationUtil.interpolate('field_min_length'.tr, [6]);
     } else {
       return null;
     }
   }
 
-  String? validateConfirmPassword() {
-    if (_password != null && _password!.isNotEmpty) {
-      if (_confirmPassword!.trim() != _password!.trim()) {
-        return 'password is not equal';
-      }
-    } else {
-      return 'password is not equal';
-    }
-    return null;
-  }
-
   void _clearAll() {
-    _mail = null;
-    _confirmPassword = null;
-    _password = null;
-    _firstName = null;
-    _lastName = null;
-    _password = null;
-    _phone = null;
     _registrationAccount = RegistrationAccount();
-  }
-
-  void _addToRegisterModel() {
-    _registrationAccount.firstName = _firstName;
-    _registrationAccount.lastName = _lastName;
-    _registrationAccount.telephone = _phone;
-    _registrationAccount.password = _password;
-    _registrationAccount.email = _mail;
   }
 
   void register() {
     Get.closeAllSnackbars();
-    // _map = [
-    // {'mail': 'mail is incorrect'},
-    // {'mail': 'mail is exist'},
-    // {'phone': 'phone is exist'}
-    // ];
-    if (!isPrivacyChecked.value) {
-      Get.showSnackbar(const GetSnackBar(
-        message: 'Please check checkbox if you agree',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: AppColors.darkPurpleColor,
-        duration: Duration(milliseconds: 3000),
-        margin: EdgeInsets.all(AppDimension.marginLarge),
-        borderRadius: AppDimension.borderRadiusMedium,
-        animationDuration: Duration(milliseconds: 650),
-      ));
+    if (!isPrivacyChecked) {
+      showDialog();
     }
-    if (registerFormKey.currentState!.validate() && isPrivacyChecked.value) {
-      _addToRegisterModel();
+    if (registerFormKey.currentState!.validate() && isPrivacyChecked) {
       _makeRegistration();
     }
   }
 
+  void showDialog() {
+    Get.showSnackbar(GetSnackBar(
+      message: 'check_checkbox'.tr,
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: AppColors.darkPurpleColor,
+      duration: const Duration(milliseconds: 3000),
+      margin: const EdgeInsets.all(AppDimension.marginLarge),
+      borderRadius: AppDimension.borderRadiusMedium,
+      animationDuration: const Duration(milliseconds: 650),
+    ));
+  }
+
   void _makeRegistration() async {
-    registerResponse.value = StatefullData.loading();
-    try {
-      await _accountRegistrationRepository
-          .makeRegistration(_registrationAccount);
-      registerResponse.value = StatefullData.completed('');
-      Get.offAndToNamed(AppRoutes.dashboardRoute);
-      _clearAll();
-    } catch (e) {
-      registerResponse.value = StatefullData.error(e);
-      print(e);
+    if (_registerResponse.status != Status.loading) {
+      _cancelableVoidFuture?.cancel();
+      _registerResponse = StatefullData.loading();
+      update();
+      _cancelableVoidFuture = CancelableVoidFuture(
+        _accountRegistrationRepository.makeRegistration(_registrationAccount),
+        onSuccessCallback: () {
+          _registerResponse = StatefullData.completed('');
+          _clearAll();
+          update();
+          Get.offAndToNamed(AppRoutes.dashboardRoute);
+        },
+        onErrorCallback: (e) {
+          _registerResponse = StatefullData.error(e);
+          update();
+          print(e);
+        },
+      );
     }
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
+  void onBackTapped() {
+    Get.back();
+  }
+
+  void onBecomeSellerTapped() {
+    if (_registerResponse.status != Status.loading) {
+      //TODO: Add logic here
+    }
+  }
+
+  void onLoginTapped() {
+    if (_registerResponse.status != Status.loading) {
+      //TODO: Add logic here
+    }
+  }
+
+  void onPrivacyTapped() {
+    if (_registerResponse.status != Status.loading) {
+      //TODO: Add logic here
+    }
   }
 }
