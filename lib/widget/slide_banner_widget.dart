@@ -62,7 +62,7 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 250),
                 height: 10.0,
-                width: _currentIndex == index ? 10.0 : 10.0,
+                width: 10.0,
                 margin: const EdgeInsets.symmetric(
                   vertical: AppDimension.marginMedium,
                   horizontal: AppDimension.marginSmall,
