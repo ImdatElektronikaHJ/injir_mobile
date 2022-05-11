@@ -1,17 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/controller/register_controller.dart';
 import 'package:tajir/screen/registration/local_widgets/registration_app_bar.dart';
+import 'package:tajir/screen/registration/local_widgets/registration_become_seller_button.dart';
+import 'package:tajir/screen/registration/local_widgets/registration_title.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
-import 'package:tajir/widget/become_seller_button.dart';
 
-import '../../widget/simple_text_field_with_hint.dart';
-import 'local_widgets/registartion_action_button.dart';
+import 'local_widgets/registration_first_name_field.dart';
+import 'local_widgets/registration_last_name_field.dart';
+import 'local_widgets/registration_login_button.dart';
+import 'local_widgets/registration_mail_field.dart';
+import 'local_widgets/registration_password_field.dart';
+import 'local_widgets/registration_phone_field.dart';
+import 'local_widgets/registration_privacy_policy.dart';
+import 'local_widgets/registration_register_button.dart';
 
 class RegistrationScreen extends StatelessWidget {
-  final registerController = Get.put(RegisterController(), permanent: true);
+  final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
   RegistrationScreen({Key? key}) : super(key: key);
 
   @override
@@ -19,145 +26,101 @@ class RegistrationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            const RegistrationAppBar(),
-            SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Form(
-                    key: registerController.registerFormKey,
-                    child: Column(
-                      children: [
-                        SimpleTextFieldWithHint(
-                          fieldName: "first_name".tr,
-                          onValueChanged: registerController.updateFirstName,
-                          validation: (_) =>
-                              registerController.validateFirstName(),
-                        ),
-                        SimpleTextFieldWithHint(
-                          fieldName: "last_name".tr,
-                          onValueChanged: registerController.updateLastName,
-                          validation: (_) =>
-                              registerController.validateLastName(),
-                        ),
-                        SimpleTextFieldWithHint(
-                          fieldName: "email_address".tr,
-                          hint: "send_confirmation".tr,
-                          onValueChanged: registerController.updateMail,
-                          validation: (_) => registerController.validateMail(),
-                        ),
-                        SimpleTextFieldWithHint(
-                          fieldName: "phone_number".tr,
-                          onValueChanged: registerController.updatePhone,
-                          validation: (_) => registerController.validatePhone(),
-                        ),
-                        Obx(
-                          () => SimpleTextFieldWithHint(
-                            fieldName: "password".tr,
-                            obscureText:
-                                registerController.isPasswordObscured.value,
-                            onValueChanged: registerController.updatePassword,
-                            validation: (_) =>
-                                registerController.validatePassword(),
-                            suffix: GestureDetector(
-                              onTap: () {
-                                registerController.toggleObscured();
-                              },
-                              child: Icon(
-                                  registerController.isPasswordObscured.value
-                                      ? CupertinoIcons.eye
-                                      : CupertinoIcons.eye_slash),
-                            ),
+        child: GetBuilder<RegisterController>(
+          init: RegisterController(registerFormKey: registerFormKey),
+          builder: (registerController) {
+            bool isLoading =
+                registerController.registerResponse?.status == Status.loading;
+            return CustomScrollView(
+              slivers: [
+                RegistrationAppBar(
+                  onBackTapped: registerController.onBackTapped,
+                ),
+                const RegistrationTitle(),
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      Form(
+                        key: registerController.registerFormKey,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: AppDimension.paddingExtraLarge,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              RegistrationFirstNameField(
+                                validation: (_) =>
+                                    registerController.validateFirstName(),
+                                onValueChanged:
+                                    registerController.updateFirstName,
+                                isEnabled: !isLoading,
+                              ),
+                              RegistrationLastNameField(
+                                validation: (_) =>
+                                    registerController.validateLastName(),
+                                onValueChanged:
+                                    registerController.updateLastName,
+                                isEnabled: !isLoading,
+                              ),
+                              RegistrationMailField(
+                                validation: (_) =>
+                                    registerController.validateMail(),
+                                onValueChanged: registerController.updateMail,
+                                isEnabled: !isLoading,
+                              ),
+                              RegistrationPhoneField(
+                                validation: (_) =>
+                                    registerController.validatePhone(),
+                                onValueChanged: registerController.updatePhone,
+                                isEnabled: !isLoading,
+                              ),
+                              RegistrationPasswordField(
+                                isEnabled: !isLoading,
+                                obscureText:
+                                    registerController.isPasswordObscured,
+                                onValueChanged:
+                                    registerController.updatePassword,
+                                validation: (_) =>
+                                    registerController.validatePassword(),
+                                toggleObscure:
+                                    registerController.toggleObscured,
+                              ),
+                              RegistrationPrivacyPolicy(
+                                onPrivacyTapped:
+                                    registerController.onPrivacyTapped,
+                                isPrivacyChecked:
+                                    registerController.isPrivacyChecked,
+                                togglePrivacy: (_) =>
+                                    registerController.togglePrivacy(),
+                              ),
+                              RegistrationRegisterButton(
+                                isLoading: isLoading,
+                                onActionTapped: () {
+                                  FocusScope.of(context)
+                                      .requestFocus(FocusNode());
+                                  registerController.register();
+                                },
+                              ),
+                            ],
                           ),
                         ),
-                        Obx(
-                          () => SimpleTextFieldWithHint(
-                            fieldName: "password_confirm".tr,
-                            obscureText: registerController
-                                .isConfirmPasswordObscured.value,
-                            onValueChanged:
-                                registerController.updateConfirmPassword,
-                            validation: (_) =>
-                                registerController.validateConfirmPassword(),
-                            suffix: GestureDetector(
-                              onTap: () {
-                                registerController.toggleConfirmObscured();
-                              },
-                              child: Icon(registerController
-                                      .isConfirmPasswordObscured.value
-                                  ? CupertinoIcons.eye
-                                  : CupertinoIcons.eye_slash),
-                            ),
-                          ),
-                        ),
-                        Obx(
-                          () => Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppDimension.paddingLarge,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text('I agree with '),
-                                GestureDetector(
-                                    onTap: () {
-                                      print('Privacy policy');
-                                    },
-                                    child: Text(
-                                      'Privacy Policy',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1!
-                                          .copyWith(
-                                            color: AppColors.blueColor,
-                                          ),
-                                    )),
-                                Checkbox(
-                                  value:
-                                      registerController.isPrivacyChecked.value,
-                                  onChanged: (_) =>
-                                      registerController.togglePrivacy(),
-                                  side: const BorderSide(
-                                    color: AppColors.greyColor,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                      AppDimension.borderRadiusMicro,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        RegistrationActionButton(
-                          onActionTapped: () {
-                            FocusScope.of(context).requestFocus(FocusNode());
-                            registerController.register();
-                          },
-                          title: 'create_account'.tr.toUpperCase(),
-                        ),
-                      ],
-                    ),
+                      ),
+                      RegistrationLoginButton(
+                        onActionTapped: registerController.onLoginTapped,
+                      ),
+                      RegistrationBecomeSellerButton(
+                        onActionTapped: registerController.onBecomeSellerTapped,
+                      ),
+                      const SizedBox(
+                        height: AppDimension.marginLarge,
+                      ),
+                    ],
                   ),
-                  RegistrationActionButton(
-                    onActionTapped: () {
-                      print('asdasdasdasd');
-                    },
-                    padding: MediaQuery.of(context).size.width / 4,
-                    title: 'sign_in'.tr.toUpperCase(),
-                  ),
-                  BecomeSellerButton(
-                    onActionTapped: () {
-                      print('asdasdasd');
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
