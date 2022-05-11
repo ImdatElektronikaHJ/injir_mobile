@@ -6,8 +6,8 @@ import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:tajir/data/network/api_key_secret.dart';
 import 'package:tajir/data/network/api_path.dart';
-import 'package:tajir/data/shared_preferences/storage_token.dart';
 import 'package:tajir/data/shared_preferences/storage_login.dart';
+import 'package:tajir/data/shared_preferences/storage_token.dart';
 import 'package:tajir/localization/localization_service.dart';
 import 'package:tajir/model/login.dart';
 import 'package:tajir/util/auth_header_util.dart';
@@ -47,8 +47,8 @@ class ApiAuthInterceptor extends QueuedInterceptor {
           Response response = await dio.post(
             tokenUrl,
           );
-          String newToken =
-              json.decode(response.data.toString())['access_token'];
+          var responseData = json.decode(response.data.toString())['data'];
+          String newToken = responseData['access_token'];
           StorageToken.saveNewAccessToken(newToken);
           options.headers[AuthHeaderUtil.authorizationHeader] =
               "Bearer $newToken";
