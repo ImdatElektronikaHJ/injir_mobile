@@ -31,8 +31,8 @@ class BecomeSellerButton extends StatelessWidget {
                 maxLines: 2,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -40,8 +40,6 @@ class RegistrationAccount {
         // 'city': city,
         // 'address_1': address,
         // 'address_2': addressOptional,
-        'country_id': countryId,
-        'zone_id': zoneId,
         'customer_group_id': customerGroupId,
         'tax_id': taxId,
         'agree': agree,
