@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:tajir/model/slide_banner.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/widget/caching_image.dart';
 
 class SlideBannerWidget extends StatefulWidget {
-  final List<dynamic> slideBanners;
+  final List<SlideBanner> slideBanners;
   final Color activeColor;
   final Color disabledColor;
   const SlideBannerWidget(
@@ -18,7 +20,7 @@ class SlideBannerWidget extends StatefulWidget {
 }
 
 class _SlideBannerWidgetState extends State<SlideBannerWidget> {
-  late List<dynamic> _slideBanners;
+  late List<SlideBanner> _slideBanners;
   int _currentIndex = 0;
 
   @override
@@ -35,19 +37,20 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
       children: [
         CarouselSlider(
           items: _slideBanners
-              .map(
-                (e) => ClipRRect(
-                  child: e,
+              .map((e) => ClipRRect(
                   borderRadius:
                       BorderRadius.circular(AppDimension.borderRadiusMedium),
-                ),
-              )
+                  child: CachingImage(
+                    e.image ?? '',
+                    fit: BoxFit.cover,
+                  )))
               .toList(),
           options: CarouselOptions(
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 10),
             enlargeCenterPage: true,
             viewportFraction: 1.0,
+            aspectRatio: 16 / 8,
             onPageChanged: (index, reason) {
               _pageChanged(index);
             },
