@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tajir/model/slide_banner.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/animated_like_button.dart';
@@ -28,27 +29,10 @@ class ProductImage extends StatelessWidget {
             activeColor: AppColors.darkBlueColor,
             disabledColor: AppColors.darkBlueColor30,
             slideBanners: [
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/placeholder/1.png'),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/placeholder/1.png'),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/placeholder/1.png'),
-                  ),
-                ),
-              ),
+              //TODO: add logic for banners on product screen
+              SlideBanner(image: ''),
+              SlideBanner(image: ''),
+              SlideBanner(image: ''),
             ],
           ),
           Align(
