@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/widget/caching_image.dart';
+
+import '../../../model/list_category.dart';
 
 class CategoriesScreenItem extends StatelessWidget {
   final Function? onCategoryTapped;
+  final ListCategory? listCategory;
 
-  const CategoriesScreenItem({Key? key, this.onCategoryTapped})
+  const CategoriesScreenItem(
+      {Key? key, this.onCategoryTapped, this.listCategory})
       : super(key: key);
 
   @override
@@ -26,16 +31,12 @@ class CategoriesScreenItem extends StatelessWidget {
                 BorderRadius.circular(AppDimension.borderRadiusSmall)),
         child: Column(children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/placeholder/1t.png'),
-                    fit: BoxFit.contain),
-              ),
+            child: CachingImage(
+              listCategory?.image,
             ),
           ),
           Text(
-            'Элетроника',
+            '${listCategory?.name}',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText1,
           ),
