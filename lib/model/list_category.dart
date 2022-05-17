@@ -28,4 +28,13 @@ class ListCategory {
       children: children.map((model) => ListCategory.fromJson(model)).toList(),
     );
   }
+
+  factory ListCategory.dummy() {
+    return ListCategory(
+      id: -1,
+      name: '',
+      image: '',
+      icon: '',
+    );
+  }
 }
