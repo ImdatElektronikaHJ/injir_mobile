@@ -36,8 +36,10 @@ class CheckoutController extends GetxController {
   }
 
   void changeCurrentAddress(int address) {
-    currentAddress = address;
-    update();
+    if (currentAddress != address) {
+      currentAddress = address;
+      update();
+    }
   }
 
   void onAddressAddTapped() {
@@ -45,8 +47,10 @@ class CheckoutController extends GetxController {
   }
 
   void changeCurrentShippingMethod(int shippingMethod) {
-    currentShippingMethod = shippingMethod;
-    update();
+    if (currentShippingMethod != shippingMethod) {
+      currentShippingMethod = shippingMethod;
+      update();
+    }
   }
 
   void onBackTapped() {
