@@ -21,12 +21,13 @@ class ShippingMethodContainer extends StatelessWidget {
         onPressed();
       },
       child: Container(
-        height: 120,
         margin: const EdgeInsets.symmetric(
             horizontal:
                 AppDimension.marginLarge + AppDimension.marginExtraLarge,
             vertical: AppDimension.marginMedium / 2),
-        padding: const EdgeInsets.all(AppDimension.paddingMedium),
+        padding: const EdgeInsets.symmetric(
+            horizontal: AppDimension.paddingMedium,
+            vertical: AppDimension.paddingMedium * 2),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(AppDimension.borderRadiusMicro),
