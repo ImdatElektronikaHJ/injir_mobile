@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:tajir/const/app_routes.dart';
-import 'package:tajir/const/nested_navigation_ids.dart';
+import 'package:get/get.dart';
+import 'package:tajir/controller/checkout_controller.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import 'local_widgets/line_painter.dart';
 import 'local_widgets/payment/payment.dart';
@@ -16,25 +14,23 @@ class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({Key? key}) : super(key: key);
 
   @override
-  State<CheckoutScreen> createState() => _CheckoutrScreenState();
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
 }
 
-class _CheckoutrScreenState extends State<CheckoutScreen>
+class _CheckoutScreenState extends State<CheckoutScreen>
     with TickerProviderStateMixin {
   late final AnimationController _firstLineController;
   late final AnimationController _secondLineController;
   late final PageController _pageController;
 
-  int currentIndex = 0;
-
   @override
   void initState() {
     _firstLineController = AnimationController(
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 250),
       vsync: this,
     );
     _secondLineController = AnimationController(
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 250),
       vsync: this,
     );
     _pageController = PageController();
@@ -42,114 +38,92 @@ class _CheckoutrScreenState extends State<CheckoutScreen>
   }
 
   @override
-  void dispose() {
-    _firstLineController.dispose();
-    _secondLineController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.whiteColor,
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        children: [
-          const SizedBox(
-            height: AppDimension.paddingLarge,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: AppDimension.paddingMedium),
-            child: CustomPaint(
-              willChange: true,
-              painter: LinePainter(
-                  firstAnimation: _firstLineController,
-                  secondAnimation: _secondLineController),
-              size: Size(MediaQuery.of(context).size.width, 50.0),
+    return GetBuilder<CheckoutController>(
+      init: CheckoutController(
+        firstLineController: _firstLineController,
+        secondLineController: _secondLineController,
+        pageController: _pageController,
+      ),
+      builder: (controller) => Container(
+        color: AppColors.whiteColor,
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: AppDimension.paddingLarge,
             ),
-          ),
-          const PageNames(),
-          Flexible(
-            child: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _pageController,
-              children: [
-                ShippingMethodWidget(
-                  onNextPressed: () {
-                    _onNextPressed();
-                  },
-                ),
-                ShippingAddressWidget(
-                  onNextPressed: () {
-                    _onNextPressed();
-                  },
-                  onBackPressed: () {
-                    _onBackPressed();
-                  },
-                ),
-                PaymentWidget(
-                  onNextPressed: () {
-                    _onCheckoutPressed();
-                  },
-                  onBackPressed: () {
-                    _onBackPressed();
-                  },
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimension.paddingMedium),
+              child: CustomPaint(
+                willChange: true,
+                painter: LinePainter(
+                    firstAnimation: controller.firstLineController,
+                    secondAnimation: controller.secondLineController,
+                    isShipping: controller.currentShippingMethod == 1),
+                size: Size(MediaQuery.of(context).size.width, 50.0),
+              ),
             ),
-          ),
-        ],
+            const PageNames(),
+            Flexible(
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: controller.pageController,
+                children: [
+                  Visibility(
+                    visible: controller.currentPage == 0,
+                    child: ShippingMethodWidget(
+                      onNextPressed: () {
+                        controller.onNextTapped();
+                      },
+                      onShippingMethodTapped: (int shippingMethod) {
+                        controller.changeCurrentShippingMethod(shippingMethod);
+                      },
+                      currentShippingMethod: controller.currentShippingMethod,
+                    ),
+                  ),
+                  Visibility(
+                    visible: controller.currentPage == 1,
+                    child: ShippingAddressWidget(
+                      onNextTapped: () {
+                        controller.onNextTapped();
+                      },
+                      onBackTapped: () {
+                        controller.onBackTapped();
+                      },
+                      onAddressAddTapped: () {
+                        controller.onAddressAddTapped();
+                      },
+                    ),
+                  ),
+                  Visibility(
+                    visible: controller.currentPage == 2,
+                    child: PaymentWidget(
+                      onNextTapped: () {
+                        controller.onCheckoutTapped();
+                      },
+                      onBackTapped: () {
+                        controller.onBackTapped();
+                      },
+                      currentPaymentMethod: controller.currentPaymentMethod,
+                      onPaymentTapped: (int paymentMethod) {
+                        controller.changeCurrentPaymentMethod(paymentMethod);
+                      },
+                      currentOnlinePaymentMethod: controller.currentOnlinePaymentMethod,
+                      onOnlinePaymentMethodTapped: (int onlinePayment) {
+                        controller.changeCurrentOnlinePaymentMethod(onlinePayment);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  _onCheckoutPressed() {
-    Get.toNamed(AppRoutes.checkoutSummaryRoute, id: NestedNavigationIds.cart);
-  }
-
-  _onBackPressed() {
-    if (_firstLineController.isCompleted && _secondLineController.isDismissed) {
-      setState(() {
-        if (currentIndex > 0) {
-          currentIndex--;
-        }
-      });
-      _pageController.animateToPage(currentIndex,
-          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
-      _firstLineController.reverse();
-    }
-    if (_secondLineController.isCompleted) {
-      setState(() {
-        if (currentIndex > 0) {
-          currentIndex--;
-        }
-      });
-
-      _pageController.animateToPage(currentIndex,
-          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
-      _secondLineController.reverse();
-    }
-  }
-
-  _onNextPressed() {
-    if (_firstLineController.isDismissed) {
-      setState(() {
-        currentIndex++;
-      });
-      _pageController.animateToPage(currentIndex,
-          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
-      _firstLineController.forward();
-    }
-    if (_secondLineController.isDismissed && _firstLineController.isCompleted) {
-      setState(() {
-        currentIndex++;
-      });
-      _pageController.animateToPage(currentIndex,
-          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
-      _secondLineController.forward();
-    }
   }
 }
 
