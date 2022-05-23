@@ -96,6 +96,10 @@ class _CheckoutScreenState extends State<CheckoutScreen>
                       onAddressAddTapped: () {
                         controller.onAddressAddTapped();
                       },
+                      onAddressChangeTapped: (int value) {
+                        controller.changeCurrentAddress(value);
+                      },
+                      currentAddress: controller.currentAddress,
                     ),
                   ),
                   Visibility(
@@ -111,9 +115,11 @@ class _CheckoutScreenState extends State<CheckoutScreen>
                       onPaymentTapped: (int paymentMethod) {
                         controller.changeCurrentPaymentMethod(paymentMethod);
                       },
-                      currentOnlinePaymentMethod: controller.currentOnlinePaymentMethod,
+                      currentOnlinePaymentMethod:
+                          controller.currentOnlinePaymentMethod,
                       onOnlinePaymentMethodTapped: (int onlinePayment) {
-                        controller.changeCurrentOnlinePaymentMethod(onlinePayment);
+                        controller
+                            .changeCurrentOnlinePaymentMethod(onlinePayment);
                       },
                     ),
                   ),
