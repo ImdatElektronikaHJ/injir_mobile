@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/theme/app_button_style.dart';
-import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class BottomButtons extends StatelessWidget {
-  final Function onBackPressed;
-  final Function onNextPressed;
+  final Function onBackTapped;
+  final Function onNextTapped;
   final String? title;
 
   const BottomButtons(
       {Key? key,
-      required this.onBackPressed,
-      required this.onNextPressed,
+      required this.onBackTapped,
+      required this.onNextTapped,
       this.title})
       : super(key: key);
   @override
@@ -37,7 +35,7 @@ class BottomButtons extends StatelessWidget {
                       Get.theme.colorScheme.onSecondaryContainer),
                 ),
                 onPressed: () {
-                  onBackPressed();
+                  onBackTapped();
                 },
                 child: Text(
                   'back'.tr.toUpperCase(),
@@ -49,7 +47,7 @@ class BottomButtons extends StatelessWidget {
             child: ElevatedButton(
               style: AppButtonStyle.elevatedButtonStyleMedium,
               onPressed: () {
-                onNextPressed();
+                onNextTapped();
               },
               child: Text(title?.toUpperCase() ?? 'next'.tr.toUpperCase()),
             ),

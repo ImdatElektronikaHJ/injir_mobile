@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/screen/checkout_screen/local_widgets/bottom_buttons.dart';
 import 'package:tajir/screen/checkout_screen/local_widgets/page_title.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import 'local_widgets/checkout_summary_container.dart';
 import 'local_widgets/checkout_summary_decoration_container.dart';
@@ -90,10 +90,10 @@ class CheckoutSummaryScreen extends StatelessWidget {
                     height: AppDimension.marginExtraLarge,
                   ),
                   BottomButtons(
-                    onBackPressed: () {
+                    onBackTapped: () {
                       Get.back(id: NestedNavigationIds.cart);
                     },
-                    onNextPressed: () {
+                    onNextTapped: () {
                       Get.until((route) => route.isFirst,
                           id: NestedNavigationIds.cart);
                     },

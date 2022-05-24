@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
-class ShippingMethodContainer extends StatelessWidget {
+class PaymentMethodContainer extends StatelessWidget {
   final bool isChecked;
   final String title;
   final Function onPressed;
 
-  const ShippingMethodContainer(
+  const PaymentMethodContainer(
       {Key? key,
       required this.isChecked,
       required this.title,

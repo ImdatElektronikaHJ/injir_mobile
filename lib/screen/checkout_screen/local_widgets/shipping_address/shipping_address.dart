@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_dimension.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:tajir/theme/app_dimension.dart';
 
 import '../bottom_buttons.dart';
 import '../page_title.dart';
@@ -10,20 +10,22 @@ import 'local_widgets/address_title_with_icon.dart';
 import 'local_widgets/my_address_checkbox.dart';
 import 'local_widgets/shipping_address_container.dart';
 
-class ShippingAddressWidget extends StatefulWidget {
-  final Function onBackPressed;
-  final Function onNextPressed;
+class ShippingAddressWidget extends StatelessWidget {
+  final void Function() onBackTapped;
+  final void Function() onNextTapped;
+  final void Function() onAddressAddTapped;
+  final void Function(int) onAddressChangeTapped;
+  final int currentAddress;
+
   const ShippingAddressWidget(
-      {Key? key, required this.onBackPressed, required this.onNextPressed})
+      {Key? key,
+      required this.onBackTapped,
+      required this.onNextTapped,
+      required this.onAddressAddTapped,
+      required this.onAddressChangeTapped,
+      required this.currentAddress})
       : super(key: key);
 
-  @override
-  _ShippingAddressWidgetState createState() => _ShippingAddressWidgetState();
-}
-
-class _ShippingAddressWidgetState extends State<ShippingAddressWidget> {
-  int currentMethod = 0;
-  int addresses = 2;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -34,15 +36,15 @@ class _ShippingAddressWidgetState extends State<ShippingAddressWidget> {
         SliverList(
           delegate: SliverChildListDelegate(
             [
-              for (int i = 0; i < addresses; i++)
+              for (int i = 0; i < 2; i++)
                 ShippingAddressContainer(
                   onPressed: () {
-                    _onAddressPressed(i);
+                    onAddressChangeTapped(i);
                   },
                   child: Column(
                     children: [
                       MyAddressCheckbox(
-                        isChecked: currentMethod == i,
+                        isChecked: currentAddress == i,
                       ),
                       const AddressTitleWithIcon(
                         title: 'Muhammed Artykov',
@@ -65,17 +67,17 @@ class _ShippingAddressWidgetState extends State<ShippingAddressWidget> {
         SliverToBoxAdapter(
           child: AddNewAddressButton(
             onAddNewAddressPressed: () {
-              _onAddNewAddressPressed();
+              onAddressAddTapped();
             },
           ),
         ),
         SliverToBoxAdapter(
           child: BottomButtons(
-            onBackPressed: () {
-              widget.onBackPressed();
+            onBackTapped: () {
+              onBackTapped();
             },
-            onNextPressed: () {
-              widget.onNextPressed();
+            onNextTapped: () {
+              onNextTapped();
             },
           ),
         ),
@@ -86,17 +88,5 @@ class _ShippingAddressWidgetState extends State<ShippingAddressWidget> {
         ),
       ],
     );
-  }
-
-  _onAddNewAddressPressed() {
-    setState(() {
-      addresses++;
-    });
-  }
-
-  _onAddressPressed(int i) {
-    setState(() {
-      currentMethod = i;
-    });
   }
 }

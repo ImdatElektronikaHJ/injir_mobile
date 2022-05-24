@@ -11,8 +11,12 @@ class LinePainter extends CustomPainter {
   late final Animation<double> _innerCircleAnimation2;
   late final Animation<double> _slideInAnimation1;
   late final Animation<double> _slideInAnimation2;
+  final bool isShipping;
 
-  LinePainter({required firstAnimation, required secondAnimation})
+  LinePainter(
+      {required firstAnimation,
+      required secondAnimation,
+      this.isShipping = false})
       : super(repaint: Listenable.merge([firstAnimation, secondAnimation])) {
     _slideInAnimation1 = CurvedAnimation(
       parent: firstAnimation,
@@ -48,8 +52,10 @@ class LinePainter extends CustomPainter {
 
     var firstLinePath = Path();
     var innerCirclePath = Path();
+    var innerCirclePathLight = Path();
     var secondLinePath = Path();
     var outerCirclePath = Path();
+    var outerCirclePathLight = Path();
 
     var blueLinePaint = Paint()
       ..color = AppColors.blueColor
@@ -61,6 +67,19 @@ class LinePainter extends CustomPainter {
       ..strokeWidth = 1.5
       ..style = PaintingStyle.stroke;
 
+    var innerCirclePaint = Paint()
+      ..color = AppColors.blueColor
+      ..style = PaintingStyle.fill;
+
+    var outerCirclePaintLight = Paint()
+      ..color = AppColors.darkerGreyColor
+      ..strokeWidth = 1.5
+      ..style = PaintingStyle.stroke;
+
+    var innerCirclePaintLight = Paint()
+      ..color = AppColors.darkerGreyColor
+      ..style = PaintingStyle.fill;
+
     var greyLinePaint = Paint()
       ..color = AppColors.greyColor
       ..strokeWidth = 1.0
@@ -70,10 +89,6 @@ class LinePainter extends CustomPainter {
       ..color = AppColors.greyColor
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
-
-    var innerCirclePaint = Paint()
-      ..color = AppColors.blueColor
-      ..style = PaintingStyle.fill;
 
     _drawGreyLines(canvas, size, greyLinePaint, outerCircleRadius);
     _drawOuterCircles(canvas, size, greyCirclePaint, outerCircleRadius);
@@ -89,9 +104,15 @@ class LinePainter extends CustomPainter {
     innerCirclePath.addOval(Rect.fromCircle(
         center: Offset(0.0 + padding + outerCircleRadius, size.height / 2),
         radius: innerCircleRadius));
-    innerCirclePath.addOval(Rect.fromCircle(
-        center: Offset(size.width / 2, size.height / 2),
-        radius: innerCircleRadius * _innerCircleAnimation1.value));
+    if (!isShipping) {
+      innerCirclePath.addOval(Rect.fromCircle(
+          center: Offset(size.width / 2, size.height / 2),
+          radius: innerCircleRadius * _innerCircleAnimation1.value));
+    } else {
+      innerCirclePathLight.addOval(Rect.fromCircle(
+          center: Offset(size.width / 2, size.height / 2),
+          radius: innerCircleRadius * _innerCircleAnimation1.value));
+    }
     innerCirclePath.addOval(Rect.fromCircle(
         center:
             Offset(size.width - outerCircleRadius - padding, size.height / 2),
@@ -111,18 +132,37 @@ class LinePainter extends CustomPainter {
     outerCirclePath.addOval(Rect.fromCircle(
         center: Offset(padding + outerCircleRadius, size.height / 2),
         radius: outerCircleRadius));
-    outerCirclePath.addArc(
-        Rect.fromCircle(
-            center: Offset(size.width / 2, size.height / 2),
-            radius: outerCircleRadius),
-        3.14,
-        3.14 * _outerCircleAnimation1.value);
-    outerCirclePath.addArc(
-        Rect.fromCircle(
-            center: Offset(size.width / 2, size.height / 2),
-            radius: outerCircleRadius),
-        -3.14,
-        -3.14 * _outerCircleAnimation1.value);
+
+    ///Draw second outer circle
+    if (!isShipping) {
+      outerCirclePath.addArc(
+          Rect.fromCircle(
+              center: Offset(size.width / 2, size.height / 2),
+              radius: outerCircleRadius),
+          3.14,
+          3.14 * _outerCircleAnimation1.value);
+      outerCirclePath.addArc(
+          Rect.fromCircle(
+              center: Offset(size.width / 2, size.height / 2),
+              radius: outerCircleRadius),
+          -3.14,
+          -3.14 * _outerCircleAnimation1.value);
+    } else {
+      outerCirclePathLight.addArc(
+          Rect.fromCircle(
+              center: Offset(size.width / 2, size.height / 2),
+              radius: outerCircleRadius),
+          3.14,
+          3.14 * _outerCircleAnimation1.value);
+      outerCirclePathLight.addArc(
+          Rect.fromCircle(
+              center: Offset(size.width / 2, size.height / 2),
+              radius: outerCircleRadius),
+          -3.14,
+          -3.14 * _outerCircleAnimation1.value);
+    }
+
+    ///Draw third outer circle
     outerCirclePath.addArc(
         Rect.fromCircle(
             center: Offset(
@@ -140,6 +180,8 @@ class LinePainter extends CustomPainter {
 
     canvas.drawPath(outerCirclePath, outerCirclePaint);
     canvas.drawPath(innerCirclePath, innerCirclePaint);
+    canvas.drawPath(outerCirclePathLight, outerCirclePaintLight);
+    canvas.drawPath(innerCirclePathLight, innerCirclePaintLight);
     canvas.drawPath(firstLinePath, blueLinePaint);
     canvas.drawPath(secondLinePath, blueLinePaint);
   }
