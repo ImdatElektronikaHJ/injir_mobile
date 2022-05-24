@@ -63,6 +63,7 @@ const Map<String, String> ruRu = {
   'agree_with': 'Я согласен с ',
   'privacy_policy': 'Пользовательским соглашением',
   'check_checkbox': 'Пожалуйста, поставьте галочку, если вы согласны',
-  'create_user' : 'Создать Аккаунт',
-  'fields_must_be_same' : 'Поля должны быть одинаковыми'
+  'create_user': 'Создать Аккаунт',
+  'fields_must_be_same': 'Поля должны быть одинаковыми',
+  'retry': 'Повторить'
 };

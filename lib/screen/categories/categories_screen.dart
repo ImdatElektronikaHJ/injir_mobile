@@ -5,6 +5,7 @@ import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/controller/categories_controller.dart';
 import 'package:tajir/model/list_category.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/widget/error_screen.dart';
 
 import '../../base/statefull_data.dart';
 import 'local_widgets/categories_app_bar.dart';
@@ -23,7 +24,7 @@ class CategoriesScreen extends StatelessWidget {
           slivers: [
             const CategoriesAppBar(),
             SliverVisibility(
-              visible: status == Status.completed,
+              visible: status == Status.error,
               sliver: SliverPadding(
                 padding: const EdgeInsets.symmetric(
                     vertical: AppDimension.paddingMedium,
@@ -56,10 +57,10 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ),
             SliverVisibility(
-              visible: status == Status.error,
-              sliver: const SliverFillRemaining(
+              visible: status == Status.completed,
+              sliver: SliverFillRemaining(
                 hasScrollBody: false,
-                child: Text('error'),
+                child: ErrorScreen(onRetryTapped: () {}),
               ),
             ),
           ],
