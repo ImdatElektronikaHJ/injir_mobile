@@ -1,16 +1,19 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:get/utils.dart';
 import 'package:tajir/base/cancelable_void_future.dart';
 import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/const/app_routes.dart';
+import 'package:tajir/controller/account_controller.dart';
+import 'package:tajir/controller/account_login_status_controller.dart';
 import 'package:tajir/model/registration_account.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/util/interpolation_util.dart';
 import 'package:tajir/util/validator.dart';
 
+import '../data/network/api_exception.dart';
 import '../data/network/repository/account_registration_repository.dart';
 
 class RegisterController extends GetxController {
@@ -30,6 +33,8 @@ class RegisterController extends GetxController {
 
   RegistrationAccount _registrationAccount = RegistrationAccount();
   final _accountRegistrationRepository = AccountRegistrationRepository();
+  final accountLoginStatusController = Get.find<AccountLoginStatusController>();
+  final accountController = Get.find<AccountController>();
 
   void toggleObscured() {
     bool _isPasswordObscured = isPasswordObscured;
@@ -187,12 +192,39 @@ class RegisterController extends GetxController {
           _registerResponse = StatefullData.completed('');
           _clearAll();
           update();
+          accountController.fetchAccount();
+          accountLoginStatusController.getAccountStatus(_registerResponse);
           Get.offAndToNamed(AppRoutes.dashboardRoute);
         },
         onErrorCallback: (e) {
           _registerResponse = StatefullData.error(e);
           update();
-          print(e);
+          Get.closeCurrentSnackbar();
+          if (e is FetchDataException) {
+            Get.showSnackbar(GetSnackBar(
+              title: 'network_error'.tr,
+              message: 'check_internet_connection'.tr,
+              duration: const Duration(milliseconds: 4500),
+              margin: const EdgeInsets.all(AppDimension.marginMedium),
+              backgroundColor: AppColors.redColor,
+              borderRadius: AppDimension.borderRadiusMedium,
+            ));
+          } else {
+            Get.showSnackbar(GetSnackBar(
+              messageText: Text(
+                _registerResponse.error.message['error'][0] ?? '',
+                style: Get.textTheme.subtitle1!
+                    .copyWith(color: AppColors.whiteColor),
+              ),
+              duration: const Duration(milliseconds: 4500),
+              margin: const EdgeInsets.all(AppDimension.marginMedium),
+              backgroundColor: AppColors.redColor,
+              borderRadius: AppDimension.borderRadiusMedium,
+            ));
+          }
+          if (kDebugMode) {
+            print(e);
+          }
         },
       );
     }
