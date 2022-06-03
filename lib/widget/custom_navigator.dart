@@ -9,9 +9,9 @@ import 'package:tajir/screen/checkout_summary/checkout_summary_screen.dart';
 import 'package:tajir/screen/compare/compare_screen.dart';
 import 'package:tajir/screen/compare_categories/compare_categories_screen.dart';
 import 'package:tajir/screen/edit_profile/edit_profile_screen.dart';
+import 'package:tajir/screen/filter/filter_screen.dart';
 import 'package:tajir/screen/login/login_screen.dart';
 import 'package:tajir/screen/order_history/order_history_screen.dart';
-import 'package:tajir/screen/filter/filter_screen.dart';
 import 'package:tajir/screen/product/product_screen.dart';
 import 'package:tajir/screen/search/search_screen.dart';
 import 'package:tajir/screen/sort/sort_screen.dart';
@@ -28,7 +28,7 @@ class CustomNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Navigator(
-      key: Get.nestedKey(nestedId),
+      key: Get.nestedKey(nestedId.hashCode),
       onGenerateRoute: _routes(initialRoute),
     );
   }
@@ -66,13 +66,13 @@ class CustomNavigator extends StatelessWidget {
           break;
 
         case AppRoutes.editProfileRoute:
-          screen = const EditProfileScreen();
+          screen = EditProfileScreen();
           break;
 
         case AppRoutes.filterRoute:
           screen = const FilterScreen();
           break;
-    
+
         case AppRoutes.compareCategoriesRoute:
           screen = const CompareCategoriesScreen();
           break;
