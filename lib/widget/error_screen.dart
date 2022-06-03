@@ -20,7 +20,7 @@ class ErrorScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: AppDimension.paddingSmall),
             child: Text(
-              'No network connection'.toUpperCase(),
+              'network_error'.tr.toUpperCase(),
               style: Get.theme.textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
@@ -32,7 +32,7 @@ class ErrorScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
                 horizontal: AppDimension.paddingSmall),
             child: Text(
-              'Original with 1000 product from a lot of  different brand accros the world. buy so easy with just simple step then your item will send it.',
+              'check_internet_connection'.tr,
               style: Get.theme.textTheme.caption,
               textAlign: TextAlign.center,
             ),
