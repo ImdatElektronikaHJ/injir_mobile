@@ -13,7 +13,7 @@ class SimpleTextField extends StatelessWidget {
   final String? placeHolder;
   final Widget? suffix;
   final String? Function(String?)? validation;
-
+  final String? initialValue;
   const SimpleTextField({
     Key? key,
     required this.fieldName,
@@ -25,6 +25,7 @@ class SimpleTextField extends StatelessWidget {
     this.placeHolder,
     this.validation,
     this.suffix,
+    this.initialValue,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class SimpleTextField extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               vertical: AppDimension.marginSmall / 2),
           child: TextFormField(
-            controller: controller,
+            initialValue: initialValue,
             autocorrect: false,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             obscureText: obscureText,
