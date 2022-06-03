@@ -1,37 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/theme/app_colors.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
 class LoginActionButton extends StatelessWidget {
-  final double padding;
-  final String title;
-  final bool? isLoading;
+  final bool isLoading;
   final Function()? onActionTapped;
 
   const LoginActionButton(
-      {Key? key,
-      this.padding = AppDimension.paddingMedium,
-      required this.title,
-      this.onActionTapped,
-      this.isLoading})
+      {Key? key, this.onActionTapped, required this.isLoading})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: padding, vertical: AppDimension.paddingSmall),
-      child: SizedBox(
-        height: 60.0,
-        child: ElevatedButton(
-          onPressed: onActionTapped,
-          child: isLoading!
-              ? const CircularProgressIndicator(
-                  color: AppColors.whiteColor,
-                  strokeWidth: 1.0,
-                )
-              : Text(title),
-        ),
-      ),
+    return SizedBox(
+      width: double.infinity,
+      child: isLoading
+          ? ElevatedButton(
+              onPressed: onActionTapped,
+              child: SizedBox(
+                height:
+                    AppDimension.fontSizeLarge + AppDimension.paddingLarge - 1,
+                width:
+                    AppDimension.fontSizeLarge + AppDimension.paddingLarge - 1,
+                child: const CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ),
+              style: AppButtonStyle.elevatedButtonStyleLarge.copyWith(
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                  const EdgeInsets.all(AppDimension.paddingMedium),
+                ),
+              ),
+            )
+          : ElevatedButton(
+              onPressed: onActionTapped,
+              child: Text('sign_in'.tr),
+              style: AppButtonStyle.elevatedButtonStyleLarge,
+            ),
     );
   }
 }
