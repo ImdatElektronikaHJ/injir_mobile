@@ -51,6 +51,7 @@ const Map<String, String> tmTm = {
   'next': 'Next',
   'pay': 'Pay',
   'tajir_welcome': 'Добро пожаловать в Tajir',
+  'tajir_sign_in': 'Sign in to Tajir',
   'fill_email_password_login':
       'Пожалуйста, заполните адрес электронной почты и пароль, чтобы войти в свою учетную запись приложения.',
   'login_now': 'Войти Сейчас',
@@ -65,5 +66,11 @@ const Map<String, String> tmTm = {
   'check_checkbox': 'Please check checkbox if you agree',
   'create_user': 'Создать Аккаунт',
   'fields_must_be_same': 'Поля должны быть одинаковыми',
-  'retry': 'Retry'
+  'retry': 'Retry',
+  'network_error': 'Network error',
+  'check_internet_connection':
+      'Please, check your internet connection and try again',
+  'save': 'Save',
+  'nothing_changed': 'Nothing\'s changed',
+  'saved': 'Successfully saved'
 };

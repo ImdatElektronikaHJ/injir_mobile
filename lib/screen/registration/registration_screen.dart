@@ -18,7 +18,7 @@ import 'local_widgets/registration_privacy_policy.dart';
 import 'local_widgets/registration_register_button.dart';
 
 class RegistrationScreen extends StatelessWidget {
-  final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   RegistrationScreen({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class RegistrationScreen extends StatelessWidget {
       backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: GetBuilder<RegisterController>(
-          init: RegisterController(registerFormKey: registerFormKey),
+          init: RegisterController(registerFormKey: _registerFormKey),
           builder: (registerController) {
             bool isLoading =
                 registerController.registerResponse?.status == Status.loading;
@@ -41,7 +41,7 @@ class RegistrationScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Form(
-                        key: registerController.registerFormKey,
+                        key: _registerFormKey,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                             horizontal: AppDimension.paddingExtraLarge,

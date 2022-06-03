@@ -51,6 +51,7 @@ const Map<String, String> enGb = {
   'next': 'Next',
   'pay': 'Pay',
   'tajir_welcome': 'Welcome to Tajir',
+  'tajir_sign_in': 'Sign in to Tajir',
   'fill_email_password_login':
       'Please fill E-mail & password to login your app account.',
   'login_now': 'Login Now',
@@ -66,5 +67,11 @@ const Map<String, String> enGb = {
   'check_checkbox': 'Please check checkbox if you agree',
   'create_user': 'Create Account',
   'fields_must_be_same': 'Fields must be the same',
-  'retry': 'Retry'
+  'retry': 'Retry',
+  'network_error': 'Network error',
+  'check_internet_connection':
+      'Please, check your internet connection and try again',
+  'save': 'Save',
+  'nothing_changed': 'Nothing\'s changed',
+  'saved': 'Successfully saved'
 };

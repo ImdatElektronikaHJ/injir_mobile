@@ -51,6 +51,7 @@ const Map<String, String> ruRu = {
   'next': 'Вперед',
   'pay': 'Оплатить',
   'tajir_welcome': 'Добро пожаловать в Tajir',
+  'tajir_sign_in': 'Войдите в Tajir',
   'fill_email_password_login':
       'Пожалуйста, заполните адрес электронной почты и пароль, чтобы войти в свою учетную запись приложения.',
   'login_now': 'Войти Сейчас',
@@ -65,5 +66,11 @@ const Map<String, String> ruRu = {
   'check_checkbox': 'Пожалуйста, поставьте галочку, если вы согласны',
   'create_user': 'Создать Аккаунт',
   'fields_must_be_same': 'Поля должны быть одинаковыми',
-  'retry': 'Повторить'
+  'retry': 'Повторить',
+  'network_error': 'Ошибка сети',
+  'check_internet_connection':
+      'Пожалуйста, проверьте ваше интернет соединение и повторите попытку',
+  'save': 'Сохранить',
+  'nothing_changed': 'Ничего не изменено',
+  'saved': 'Успешно сохранено'
 };

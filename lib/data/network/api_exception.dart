@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 class ApiException implements Exception {
   final String? _message;
   final String? _prefix;
 
   ApiException([this._message, this._prefix]);
+
+  dynamic get message => json.decode(_message!);
 
   @override
   String toString() {

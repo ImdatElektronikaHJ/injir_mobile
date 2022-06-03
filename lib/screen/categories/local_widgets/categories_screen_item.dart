@@ -6,7 +6,7 @@ import 'package:tajir/widget/caching_image.dart';
 import '../../../model/list_category.dart';
 
 class CategoriesScreenItem extends StatelessWidget {
-  final Function? onCategoryTapped;
+  final void Function()? onCategoryTapped;
   final ListCategory? listCategory;
 
   const CategoriesScreenItem(
@@ -42,7 +42,9 @@ class CategoriesScreenItem extends StatelessWidget {
           ),
         ]),
       ),
-      onTap: () => onCategoryTapped!(),
+      onTap: () {
+        onCategoryTapped!();
+      },
     );
   }
 }
