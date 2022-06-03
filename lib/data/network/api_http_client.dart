@@ -24,12 +24,12 @@ class HttpClient {
       responseType: ResponseType.plain,
       connectTimeout: requestTimeoutMilliseconds,
     ));
-    getCookie();
+    _getCookie();
     _dio.interceptors.add(ApiAuthInterceptor(
         mainDio: _dio, localizationService: _localizationService));
   }
 
-  getCookie() async {
+  _getCookie() async {
     var cookieJar = PersistCookieJar(
       ignoreExpires: true,
     );
