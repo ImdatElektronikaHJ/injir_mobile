@@ -24,7 +24,7 @@ class CategoriesScreen extends StatelessWidget {
           slivers: [
             const CategoriesAppBar(),
             SliverVisibility(
-              visible: status == Status.error,
+              visible: status == Status.completed,
               sliver: SliverPadding(
                 padding: const EdgeInsets.symmetric(
                     vertical: AppDimension.paddingMedium,
@@ -57,7 +57,7 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ),
             SliverVisibility(
-              visible: status == Status.completed,
+              visible: status == Status.error,
               sliver: SliverFillRemaining(
                 hasScrollBody: false,
                 child: ErrorScreen(onRetryTapped: () {}),
