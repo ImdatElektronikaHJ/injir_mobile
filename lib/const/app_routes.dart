@@ -27,4 +27,5 @@ class AppRoutes {
   static const String loginRoute = '/login';
   static const String initLoginRoute = '/init_login';
   static const String initRegistrationRoute = '/init_registration';
+  static const String changeLanguageRoute = '/init_registration';
 }
