@@ -72,5 +72,8 @@ const Map<String, String> tmTm = {
       'Please, check your internet connection and try again',
   'save': 'Save',
   'nothing_changed': 'Nothing\'s changed',
-  'saved': 'Successfully saved'
+  'saved': 'Successfully saved',
+  'edit_profile': 'Изменить профиль',
+  'language': 'Язык',
+  'order_history': 'История заказов'
 };

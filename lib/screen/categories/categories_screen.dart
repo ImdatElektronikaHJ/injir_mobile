@@ -60,7 +60,9 @@ class CategoriesScreen extends StatelessWidget {
               visible: status == Status.error,
               sliver: SliverFillRemaining(
                 hasScrollBody: false,
-                child: ErrorScreen(onRetryTapped: () {}),
+                child: ErrorScreen(onRetryTapped: () {
+                  categoriesController.retry();
+                }),
               ),
             ),
           ],

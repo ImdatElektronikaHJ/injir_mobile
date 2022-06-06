@@ -7,11 +7,8 @@ import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/controller/account_controller.dart';
 import 'package:tajir/controller/account_login_status_controller.dart';
 import 'package:tajir/screen/profile/local_widgets/profile_app_bar.dart';
-import 'package:tajir/theme/app_button_style.dart';
 import 'package:tajir/theme/svg_icons.dart';
 import 'package:tajir/widget/error_screen.dart';
-
-import '../../theme/app_dimension.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -36,10 +33,13 @@ class ProfileScreen extends StatelessWidget {
                       controller.accountLoginStatus != AccountLoginStatus.error,
               sliver: SliverToBoxAdapter(
                 child: ListTile(
+                  onTap: () {
+                    _goToLanguageScreen();
+                  },
                   leading: SvgPicture.asset(
                     SvgImages.lang,
                   ),
-                  title: Text('Language',
+                  title: Text('language'.tr,
                       style: Theme.of(context).textTheme.subtitle2!),
                   trailing: SvgPicture.asset(
                     SvgImages.arrowright,
@@ -54,29 +54,27 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: AppDimension.marginExtraLarge,
-                            vertical: AppDimension.paddingSmall / 2),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.toNamed(AppRoutes.loginRoute);
-                          },
-                          style: AppButtonStyle.elevatedButtonStyleLarge,
-                          child: Text('sign_in'.tr),
+                      ListTile(
+                        leading: SvgPicture.asset(
+                          SvgImages.person,
                         ),
+                        title: Text('sign_in'.tr,
+                            style: Theme.of(context).textTheme.subtitle2!),
+                        trailing: SvgPicture.asset(
+                          SvgImages.arrowright,
+                        ),
+                        onTap: () => _goToSignInScreen(),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: AppDimension.marginExtraLarge,
-                            vertical: AppDimension.paddingSmall / 2),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.toNamed(AppRoutes.registrationRoute);
-                          },
-                          style: AppButtonStyle.elevatedButtonStyleLarge,
-                          child: Text('sign_up'.tr),
+                      ListTile(
+                        leading: SvgPicture.asset(
+                          SvgImages.person,
                         ),
+                        title: Text('sign_up'.tr,
+                            style: Theme.of(context).textTheme.subtitle2!),
+                        trailing: SvgPicture.asset(
+                          SvgImages.arrowright,
+                        ),
+                        onTap: () => _goToSignUpScreen(),
                       ),
                     ],
                   ),
@@ -91,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
                       leading: SvgPicture.asset(
                         SvgImages.person,
                       ),
-                      title: Text('Edit Profile',
+                      title: Text('edit_profile'.tr,
                           style: Theme.of(context).textTheme.subtitle2!),
                       trailing: SvgPicture.asset(
                         SvgImages.arrowright,
@@ -102,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
                       leading: SvgPicture.asset(
                         SvgImages.local,
                       ),
-                      title: Text('Address',
+                      title: Text('address'.tr,
                           style: Theme.of(context).textTheme.subtitle2!),
                       trailing: SvgPicture.asset(
                         SvgImages.arrowright,
@@ -115,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
                       leading: SvgPicture.asset(
                         SvgImages.clock,
                       ),
-                      title: Text('Order History',
+                      title: Text('order_history'.tr,
                           style: Theme.of(context).textTheme.subtitle2!),
                       trailing: SvgPicture.asset(
                         SvgImages.arrowright,
@@ -162,5 +160,17 @@ class ProfileScreen extends StatelessWidget {
 
   _goToOrderHistoryScreen() {
     Get.toNamed(AppRoutes.orderHistoryRoute, id: NestedNavigationIds.profile);
+  }
+
+  _goToLanguageScreen() {
+    Get.toNamed(AppRoutes.changeLanguageRoute, id: NestedNavigationIds.profile);
+  }
+
+  _goToSignUpScreen() {
+    Get.toNamed(AppRoutes.registrationRoute);
+  }
+
+  _goToSignInScreen() {
+    Get.toNamed(AppRoutes.loginRoute);
   }
 }
