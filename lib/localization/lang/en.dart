@@ -73,5 +73,8 @@ const Map<String, String> enGb = {
       'Please, check your internet connection and try again',
   'save': 'Save',
   'nothing_changed': 'Nothing\'s changed',
-  'saved': 'Successfully saved'
+  'saved': 'Successfully saved',
+  'edit_profile': 'Edit Profile',
+  'language': 'Language',
+  'order_history': 'Order history'
 };
