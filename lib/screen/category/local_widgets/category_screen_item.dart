@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:tajir/model/category_embedded.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/widget/caching_image.dart';
 
 class CategoryScreenItem extends StatelessWidget {
-  final Function? onCategoryTapped;
+  final void Function()? onCategoryTapped;
+  final CategoryEmbedded categoryEmbedded;
 
-  const CategoryScreenItem({Key? key, this.onCategoryTapped})
+  const CategoryScreenItem(
+      {Key? key, this.onCategoryTapped, required this.categoryEmbedded})
       : super(key: key);
 
   @override
@@ -26,16 +30,12 @@ class CategoryScreenItem extends StatelessWidget {
                 BorderRadius.circular(AppDimension.borderRadiusSmall)),
         child: Column(children: [
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/placeholder/phone.png'),
-                    fit: BoxFit.contain),
-              ),
+            child: CachingImage(
+              categoryEmbedded.image,
             ),
           ),
           Text(
-            'Смартфоны, планшеты и аксессуары',
+            categoryEmbedded.name,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyText1,
           ),
