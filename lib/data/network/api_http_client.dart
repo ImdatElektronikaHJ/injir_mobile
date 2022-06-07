@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tajir/localization/localization_service.dart';
 
@@ -46,7 +47,10 @@ class HttpClient {
     dynamic responseJson;
     String uri = APIBase.baseURL + url;
 
-    print('Method is GET and current uri is: $uri');
+    if (kDebugMode) {
+      print(
+          'Method is GET and current uri is: ${uri + ((params != null) ? queryParameters(params) : "")}');
+    }
     try {
       final response = await _dio
           .get(uri, queryParameters: params)
@@ -68,10 +72,14 @@ class HttpClient {
     dynamic responseJson;
     String uri = APIBase.baseURL + url;
 
-    print('Method is POST and current uri is: $uri');
+    if (kDebugMode) {
+      print(
+          'Method is POST and current uri is: ${uri + ((params != null) ? queryParameters(params) : "")}');
+    }
     try {
       Response response =
           await _dio.post(uri, data: body, queryParameters: params);
+
       responseJson = json.decode(response.data.toString());
     } on DioError catch (e) {
       if (e.type == DioErrorType.response) {
@@ -83,11 +91,22 @@ class HttpClient {
     return responseJson;
   }
 
+  String queryParameters(Map<String, String>? params) {
+    if (params != null) {
+      final jsonString = Uri(queryParameters: params);
+      return '&${jsonString.query}';
+    }
+    return '';
+  }
+
   Future<dynamic> putData(String url,
       {dynamic body, Map<String, String>? params}) async {
     dynamic responseJson;
     String uri = APIBase.baseURL + url;
-    print('Method is PUT and current uri is: $uri');
+    if (kDebugMode) {
+      print(
+          'Method is PUT and current uri is: ${uri + ((params != null) ? queryParameters(params) : "")}');
+    }
     try {
       Response response =
           await _dio.put(uri, data: body, queryParameters: params);
@@ -106,7 +125,10 @@ class HttpClient {
       {dynamic body, Map<String, String>? params}) async {
     dynamic responseJson;
     String uri = APIBase.baseURL + url;
-    print('Method is DELETE and current uri is: $uri');
+    if (kDebugMode) {
+      print(
+          'Method is DELETE and current uri is: ${uri + ((params != null) ? queryParameters(params) : "")}');
+    }
     try {
       Response response =
           await _dio.delete(uri, data: body, queryParameters: params);

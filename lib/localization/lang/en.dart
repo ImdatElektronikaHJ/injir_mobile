@@ -76,5 +76,6 @@ const Map<String, String> enGb = {
   'saved': 'Successfully saved',
   'edit_profile': 'Edit Profile',
   'language': 'Language',
-  'order_history': 'Order history'
+  'order_history': 'Order history',
+  'product_list_empty': 'Product list is empty',
 };

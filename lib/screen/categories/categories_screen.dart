@@ -8,6 +8,7 @@ import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/error_screen.dart';
 
 import '../../base/statefull_data.dart';
+import '../category/category_screen.dart';
 import 'local_widgets/categories_app_bar.dart';
 import 'local_widgets/categories_screen_item.dart';
 
@@ -37,7 +38,10 @@ class CategoriesScreen extends StatelessWidget {
                   delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
                     return CategoriesScreenItem(
-                      onCategoryTapped: _goToCategoryScreen,
+                      onCategoryTapped: () {
+                        _goToCategoryScreen(categoriesController
+                            .categoriesResponse.data![index].id);
+                      },
                       listCategory: categoriesController
                               .categoriesResponse.data?[index] ??
                           ListCategory.dummy(),
@@ -53,7 +57,12 @@ class CategoriesScreen extends StatelessWidget {
               visible: status == Status.loading,
               sliver: const SliverFillRemaining(
                 hasScrollBody: false,
-                child: CircularProgressIndicator(),
+                child: SizedBox(
+                  height: AppDimension.loaderSizeMedium,
+                  child: Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  ),
+                ),
               ),
             ),
             SliverVisibility(
@@ -71,7 +80,11 @@ class CategoriesScreen extends StatelessWidget {
     );
   }
 
-  _goToCategoryScreen() {
-    Get.toNamed(AppRoutes.categoryRoute, id: NestedNavigationIds.categories);
+  _goToCategoryScreen(int id) {
+    Get.toNamed(AppRoutes.categoryRoute,
+        id: NestedNavigationIds.categories,
+        arguments: {
+          categoryId: id,
+        });
   }
 }

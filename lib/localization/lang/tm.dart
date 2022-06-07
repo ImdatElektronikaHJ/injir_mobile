@@ -75,5 +75,6 @@ const Map<String, String> tmTm = {
   'saved': 'Successfully saved',
   'edit_profile': 'Изменить профиль',
   'language': 'Язык',
-  'order_history': 'История заказов'
+  'order_history': 'История заказов',
+  'product_list_empty': 'Product list is empty'
 };

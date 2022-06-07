@@ -56,4 +56,7 @@ class AppDimension {
   static const compareSpecificationHeight = 35.0;
 
   static const cartTotalBarHeight = 80.0;
+
+  static const loaderSizeMedium = 50.0;
+  static const loaderSizeSmall = 30.0;
 }
