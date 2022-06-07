@@ -45,7 +45,9 @@ class CustomNavigator extends StatelessWidget {
           break;
 
         case AppRoutes.categoryRoute:
-          screen = const CategoryScreen();
+          screen = CategoryScreen(
+            currentIndex: arguments?[categoryId],
+          );
           break;
 
         case AppRoutes.productRoute:
