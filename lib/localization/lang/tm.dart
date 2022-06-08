@@ -76,5 +76,7 @@ const Map<String, String> tmTm = {
   'edit_profile': 'Изменить профиль',
   'language': 'Язык',
   'order_history': 'История заказов',
-  'product_list_empty': 'Product list is empty'
+  'product_list_empty': 'Product list is empty',
+  'no_description': 'У этого продукта еще нет описания',
+  'ok': 'OK'
 };

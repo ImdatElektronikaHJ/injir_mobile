@@ -76,5 +76,7 @@ const Map<String, String> ruRu = {
   'edit_profile': 'Изменить профиль',
   'language': 'Язык',
   'order_history': 'История заказов',
-  'product_list_empty': 'Список продуктов пуст'
+  'product_list_empty': 'Список продуктов пуст',
+  'no_description': 'У этого продукта еще нет описания',
+  'ok': 'OK'
 };
