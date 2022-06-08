@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/screen/product/local_widgets/product_review/product_review.dart';
+
 import 'local_widgets/product_comment_block/product_comment_block.dart';
 
 class ProductComments extends StatelessWidget {
@@ -18,7 +18,6 @@ class ProductComments extends StatelessWidget {
                 'Nike is a leading sports shoes brand in the world, with a youthful and dynamic',
             date: '09:30 - 23/10/2021',
           ),
-        const ProductReview(),
       ],
     );
   }
