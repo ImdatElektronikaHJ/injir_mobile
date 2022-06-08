@@ -8,11 +8,15 @@ class SlideBannerWidget extends StatefulWidget {
   final List<SlideBanner> slideBanners;
   final Color activeColor;
   final Color disabledColor;
+  final double aspectRatio;
+  final BoxFit fit;
   const SlideBannerWidget(
       {Key? key,
       required this.slideBanners,
       required this.activeColor,
-      required this.disabledColor})
+      required this.disabledColor,
+      this.aspectRatio = 16 / 8,
+      this.fit = BoxFit.cover})
       : super(key: key);
 
   @override
@@ -37,20 +41,23 @@ class _SlideBannerWidgetState extends State<SlideBannerWidget> {
       children: [
         CarouselSlider(
           items: _slideBanners
-              .map((e) => ClipRRect(
+              .map(
+                (e) => ClipRRect(
                   borderRadius:
                       BorderRadius.circular(AppDimension.borderRadiusMedium),
                   child: CachingImage(
                     e.image ?? '',
-                    fit: BoxFit.cover,
-                  )))
+                    fit: widget.fit,
+                  ),
+                ),
+              )
               .toList(),
           options: CarouselOptions(
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 10),
             enlargeCenterPage: true,
             viewportFraction: 1.0,
-            aspectRatio: 16 / 8,
+            aspectRatio: widget.aspectRatio,
             onPageChanged: (index, reason) {
               _pageChanged(index);
             },

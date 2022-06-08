@@ -36,7 +36,8 @@ enum APIPath {
   fetchPlannedListProducts,
   fetchPlannedListRemoveProduct,
   fetchLatestProducts,
-  fetchBestsellersProducts
+  fetchBestsellersProducts,
+  fetchReview,
 }
 
 class APIPathHelper {
@@ -116,6 +117,9 @@ class APIPathHelper {
         return "/index.php?route=rest/account/plandelproduct";
       case APIPath.fetchLatestProducts:
         return "/index.php?route=feed/rest_api/latest";
+      case APIPath.fetchReview:
+        return "/index.php?route=feed/rest_api/reviews";
+
       case APIPath.fetchBestsellersProducts:
         return "/index.php?route=feed/rest_api/bestsellers"; //adding &limit={limit} required
 

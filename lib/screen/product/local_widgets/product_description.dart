@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductDescription extends StatelessWidget {
   final String description;
@@ -8,7 +9,7 @@ class ProductDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      description,
+      description.isNotEmpty ? description : 'no_description'.tr,
       style: Theme.of(context).textTheme.subtitle1,
     );
   }

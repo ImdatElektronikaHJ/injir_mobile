@@ -65,6 +65,14 @@ class ProductsRepository {
     return list.map((model) => ListProduct.fromJson(model)).toList();
   }
 
+  Future<List<ListProduct>> fetchRelatedProducts(int id) async {
+    String uri = APIPathHelper.getValue(APIPath.fetchRelatedProducts);
+    final response =
+        await HttpClient.instance.fetchData(uri, params: {'id': id.toString()});
+    Iterable list = response['data'];
+    return list.map((model) => ListProduct.fromJson(model)).toList();
+  }
+
   // Future<List<ListProduct>> fetchSpecialsProducts(
   //     {int limit = 10, int page = 1}) async {
   //   String uri = APIPathHelper.getValue(APIPath.fetch_specials);

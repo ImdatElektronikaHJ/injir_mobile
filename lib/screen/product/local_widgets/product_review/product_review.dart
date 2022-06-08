@@ -6,7 +6,21 @@ import 'package:tajir/theme/app_dimension.dart';
 import 'local_widgets/product_review_stars.dart';
 
 class ProductReview extends StatelessWidget {
-  const ProductReview({Key? key}) : super(key: key);
+  final GlobalKey<FormState> formKey;
+  final void Function() onRatingTapped;
+  final void Function() onPostCommentTapped;
+  final int currentRating;
+  final void Function(String?) onCommentChanged;
+  final String? Function() validateComment;
+  const ProductReview(
+      {Key? key,
+      required this.formKey,
+      required this.onRatingTapped,
+      required this.onPostCommentTapped,
+      this.currentRating = -1,
+      required this.onCommentChanged,
+      required this.validateComment})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +50,14 @@ class ProductReview extends StatelessWidget {
                         ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(AppDimension.paddingSmall / 2),
-                  child: ProductReviewStars(rating: 2),
+                Padding(
+                  padding: const EdgeInsets.all(AppDimension.paddingSmall / 2),
+                  child: ProductReviewStars(
+                    rating: currentRating,
+                    onRatingTapped: () {
+                      onRatingTapped();
+                    },
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -55,23 +74,31 @@ class ProductReview extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppDimension.paddingSmall / 2,
                   ),
-                  child: TextField(
-                    maxLines: 10,
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          AppDimension.borderRadiusMedium,
+                  child: Form(
+                    key: formKey,
+                    child: TextFormField(
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      maxLines: 10,
+                      onChanged: (value) {
+                        onCommentChanged(value);
+                      },
+                      validator: (_) => validateComment(),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            AppDimension.borderRadiusMedium,
+                          ),
+                          borderSide: const BorderSide(
+                            color: AppColors.darkBlueColor,
+                          ),
                         ),
-                        borderSide: const BorderSide(
-                          color: AppColors.darkBlueColor,
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          AppDimension.borderRadiusMedium,
-                        ),
-                        borderSide: const BorderSide(
-                          color: AppColors.greyColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            AppDimension.borderRadiusMedium,
+                          ),
+                          borderSide: const BorderSide(
+                            color: AppColors.greyColor,
+                          ),
                         ),
                       ),
                     ),
@@ -83,15 +110,17 @@ class ProductReview extends StatelessWidget {
                   ),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        minimumSize: Size(
-                          MediaQuery.of(context).size.width,
-                          AppDimension.paddingExtraLarge * 2,
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                AppDimension.borderRadiusSmall))),
+                      minimumSize: Size(
+                        MediaQuery.of(context).size.width,
+                        AppDimension.paddingExtraLarge * 2,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            AppDimension.borderRadiusSmall),
+                      ),
+                    ),
                     onPressed: () {
-                      print('dasdasdasdasd');
+                      onPostCommentTapped();
                     },
                     child: Text('comment'.tr),
                   ),

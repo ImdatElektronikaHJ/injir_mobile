@@ -78,4 +78,6 @@ const Map<String, String> enGb = {
   'language': 'Language',
   'order_history': 'Order history',
   'product_list_empty': 'Product list is empty',
+  'no_description': 'This product has no description yet',
+  'ok': 'OK'
 };

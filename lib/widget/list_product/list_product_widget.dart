@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/const/app_routes.dart';
+import 'package:tajir/const/nested_navigation_ids.dart';
+import 'package:tajir/model/list_product.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
-import 'package:tajir/const/nested_navigation_ids.dart';
-
+import '../rating_widget.dart';
 import 'local_widgets/list_product_widget_image.dart';
 import 'local_widgets/list_product_widget_price.dart';
-import '../rating_widget.dart';
 import 'local_widgets/list_product_widget_title.dart';
 
 class ListProductWidget extends StatelessWidget {
-  const ListProductWidget({Key? key}) : super(key: key);
+  final ListProduct? listProduct;
+  const ListProductWidget({Key? key, this.listProduct}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +60,8 @@ class ListProductWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const ListProductTitleBlock(
-              title:
-                  'Смартфон Samsung Galaxy Note 10+ 12/256GB White(SM-N975FZWDSER)',
+            ListProductTitleBlock(
+              title: listProduct?.name ?? '',
             ),
             const ListProductPriceBlock(
               price: '123123',

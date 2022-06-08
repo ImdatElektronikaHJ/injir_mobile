@@ -1,25 +1,15 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
 
-class ProductReviewStars extends StatefulWidget {
-  final double rating;
+class ProductReviewStars extends StatelessWidget {
+  final int rating;
+  final void Function() onRatingTapped;
+  // final void Function(int) onRatingChanged;
 
-  const ProductReviewStars({Key? key, required this.rating}) : super(key: key);
-
-  @override
-  State<ProductReviewStars> createState() => _ProductReviewStarsState();
-}
-
-class _ProductReviewStarsState extends State<ProductReviewStars> {
-  double? rating;
-
-  @override
-  void initState() {
-    rating = widget.rating;
-    super.initState();
-  }
+  const ProductReviewStars(
+      {Key? key, required this.rating, required this.onRatingTapped})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +18,11 @@ class _ProductReviewStarsState extends State<ProductReviewStars> {
         for (int i = 0; i < 5; i++)
           GestureDetector(
             onTap: () {
-              setState(() {
-                if (rating != i) rating = i.toDouble();
-              });
+              onRatingTapped();
             },
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 250),
-              child: i <= rating!.floor()
+              child: i <= rating
                   ? const Icon(
                       CupertinoIcons.star_fill,
                       key: Key('true'),
