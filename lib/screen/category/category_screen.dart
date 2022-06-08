@@ -18,16 +18,14 @@ import 'local_widgets/category_screen_item.dart';
 const String categoryId = 'category_id';
 
 class CategoryScreen extends StatelessWidget {
-  final int currentIndex;
-  const CategoryScreen({Key? key, required this.currentIndex})
-      : super(key: key);
+  final int currentId;
+  const CategoryScreen({Key? key, required this.currentId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CategoryController>(
-      init: CategoryController(currentIndex: currentIndex),
+      init: CategoryController(currentId: currentId),
       global: false,
-      // id: currentIndex,
       builder: (controller) {
         Status status = controller.categoryResponse.status;
         CategoryModel category =
@@ -98,6 +96,9 @@ class CategoryScreen extends StatelessWidget {
                       (BuildContext context, int index) {
                         return CategoryProduct(
                           listProduct: products[index],
+                          onProductTapped: () {
+                            controller.onProductTapped(products[index].id!);
+                          },
                         );
                       },
                       childCount: products.length,

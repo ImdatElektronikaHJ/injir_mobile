@@ -7,6 +7,7 @@ import 'package:tajir/const/nested_navigation_ids.dart';
 import 'package:tajir/controller/language_controller.dart';
 import 'package:tajir/data/network/repository/products_repository.dart';
 import 'package:tajir/model/category.dart';
+import 'package:tajir/screen/product/product_screen.dart';
 
 import '../base/statefull_data_paginator.dart';
 import '../const/app_routes.dart';
@@ -15,8 +16,8 @@ import '../model/list_product.dart';
 import '../screen/category/category_screen.dart';
 
 class CategoryController extends GetxController {
-  final int currentIndex;
-  CategoryController({required this.currentIndex});
+  final int currentId;
+  CategoryController({required this.currentId});
 
   StatefullData<CategoryModel> _categoryResponse = StatefullData.empty();
   StatefullData<CategoryModel> get categoryResponse => _categoryResponse;
@@ -56,8 +57,7 @@ class CategoryController extends GetxController {
     _categoryResponse = StatefullData.loading();
     update();
     try {
-      final response =
-          await _categoryRepository.fetchCategory(id: currentIndex);
+      final response = await _categoryRepository.fetchCategory(id: currentId);
       _categoryResponse = StatefullData.completed(response);
       update();
     } catch (e) {
@@ -84,7 +84,7 @@ class CategoryController extends GetxController {
         update();
         _productsRequestSubscription = _productsRepository
             .fetchCategoryProducts(
-              categoryId: currentIndex,
+              categoryId: currentId,
               limit: limitPerPage,
               page: _currentPage,
             )
@@ -117,7 +117,7 @@ class CategoryController extends GetxController {
     }
     _productsRequestSubscription = _productsRepository
         .fetchCategoryProducts(
-            categoryId: currentIndex, limit: limitPerPage, page: _currentPage)
+            categoryId: currentId, limit: limitPerPage, page: _currentPage)
         .asStream()
         .listen((data) {
       _responseProductsPaginator = StatefullDataPaginator.completed(data);
@@ -146,6 +146,11 @@ class CategoryController extends GetxController {
       _fetchProducts();
       _getCategory();
     });
+  }
+
+  void onProductTapped(int id) {
+    Get.toNamed(AppRoutes.productRoute,
+        id: NestedNavigationIds.categories, arguments: {productId: id});
   }
 
   @override
