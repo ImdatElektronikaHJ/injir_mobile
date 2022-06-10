@@ -78,5 +78,7 @@ const Map<String, String> ruRu = {
   'order_history': 'История заказов',
   'product_list_empty': 'Список продуктов пуст',
   'no_description': 'У этого продукта еще нет описания',
-  'ok': 'OK'
+  'ok': 'OK',
+  'cart_is_empty': 'Ваша корзина пуста',
+  'product_count': 'Количество продуктов: {#}'
 };

@@ -4,41 +4,51 @@ import 'package:tajir/screen/product/local_widgets/product_buttons/local_widgets
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/widget/product_counter/product_counter_widget.dart';
 
-class ProductAddToCartWidget extends StatefulWidget {
-  const ProductAddToCartWidget({Key? key}) : super(key: key);
+class ProductAddToCartWidget extends StatelessWidget {
+  final void Function()? onAddToCartTapped;
+  final void Function()? onIncrementTapped;
+  final void Function()? onDecrementTapped;
+  final int? count;
+  final double? width;
+  const ProductAddToCartWidget(
+      {Key? key,
+      required this.onAddToCartTapped,
+      this.onIncrementTapped,
+      this.onDecrementTapped,
+      this.count,
+      this.width = 170.0})
+      : super(key: key);
 
-  @override
-  _ProductAddToCartWidgetState createState() => _ProductAddToCartWidgetState();
-}
-
-class _ProductAddToCartWidgetState extends State<ProductAddToCartWidget> {
-  bool addedToCart = false;
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 250),
-      child: addedToCart
-          ? ProductCounterWidget(
-              key: UniqueKey(),
-              onCartDeleteTapped: () {
-                setState(() {
-                  addedToCart = false;
-                });
-              },
-            )
-          : SizedBox(
-            width: double.maxFinite,
-              child: ProductElevatedButton(
+    bool isCart = count != null && count! > 0.00;
+    return SizedBox(
+      width: width,
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 250),
+        child: isCart
+            ? ProductCounterWidget(
                 key: UniqueKey(),
-                title: 'to_cart'.tr,
-                onTapped: () {
-                  setState(() {
-                    addedToCart = true;
-                  });
+                onIncrementTapped: () {
+                  onIncrementTapped!();
                 },
-                buttonColor: AppColors.lightRedColor,
+                onDecrementTapped: () {
+                  onDecrementTapped!();
+                },
+                count: count,
+              )
+            : SizedBox(
+                width: double.maxFinite,
+                child: ProductElevatedButton(
+                  key: UniqueKey(),
+                  title: 'to_cart'.tr,
+                  onTapped: () {
+                    onAddToCartTapped!();
+                  },
+                  buttonColor: AppColors.lightRedColor,
+                ),
               ),
-            ),
+      ),
     );
   }
 }

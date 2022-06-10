@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:tajir/controller/cart_controller.dart';
 import 'package:tajir/model/list_product.dart';
-import 'package:tajir/theme/app_button_style.dart';
+import 'package:tajir/screen/product/local_widgets/product_buttons/local_widgets/product_add_to_cart_widget.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/caching_image.dart';
@@ -39,7 +41,9 @@ class CategoryProduct extends StatelessWidget {
                   ),
                 ],
               )
-            : null,
+            : BoxDecoration(
+                color: Theme.of(context).backgroundColor,
+              ),
         height: 200.0,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -148,12 +152,37 @@ class CategoryProduct extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: ElevatedButton(
-                      style: AppButtonStyle.elevatedButtonStyleSmall,
-                      onPressed: () {},
-                      child: Text('to_cart'.tr),
+                  GetBuilder<CartController>(
+                    builder: (cartController) => Container(
+                      alignment: Alignment.topLeft,
+                      // width: 35.0,
+                      child: ProductAddToCartWidget(
+                        onDecrementTapped: () {
+                          cartController.decrementTapped(listProduct.id);
+                        },
+                        onIncrementTapped: () {
+                          cartController.incrementTapped(listProduct.id);
+                        },
+                        onAddToCartTapped: () {
+                          cartController.addProduct(
+                              productId: listProduct.id,
+                              thumb: listProduct.thumb,
+                              name: listProduct.name,
+                              model: listProduct.model,
+                              inStock: listProduct.quantity! > 0,
+                              price: listProduct.price,
+                              type: listProduct.type,
+                              categories: listProduct.categories);
+                        },
+                        // count: listProduct.quantity,
+                        count: cartController.cart.data != null &&
+                                cartController
+                                        .cart.data?.products?[listProduct.id] !=
+                                    null
+                            ? cartController
+                                .cart.data?.products![listProduct.id]!.quantity
+                            : 0,
+                      ),
                     ),
                   ),
                 ],

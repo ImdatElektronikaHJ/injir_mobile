@@ -13,7 +13,7 @@ class Product {
   final double? price;
   final double? special;
   final String? description;
-  final double? quantity;
+  final int? quantity;
   List<ListProduct>? relatedProducts;
   List<ListProduct>? relatedBuyProducts;
   final bool? novelty;
@@ -49,7 +49,7 @@ class Product {
         .toString()
         .replaceAll('&quot;', '"')
         .replaceAll('&amp;', '&');
-    // Iterable
+    print(json);
     return Product(
       id: int.parse(json['id']),
       name: nameFixed,
@@ -60,7 +60,7 @@ class Product {
       price: _parseDouble(json['price']),
       special: _parseDouble(json['special']),
       description: json['description'],
-      quantity: double.parse(json['quantity']),
+      quantity: int.parse(json['quantity']),
       novelty: int.tryParse(json['new'].toString()) == 1,
       type: ProductType.quantitative,
       minimum: double.parse(json['minimum']),

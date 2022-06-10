@@ -6,11 +6,12 @@ class CartAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
+    return AppBar(
       backgroundColor: Theme.of(context).backgroundColor,
       centerTitle: false,
       title: Text('cart'.tr, style: Theme.of(context).textTheme.headline6!),
-      floating: true,
+      elevation: 0.0,
+      // floating: true,
     );
   }
 }

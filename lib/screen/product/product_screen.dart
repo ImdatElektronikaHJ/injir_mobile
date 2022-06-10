@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/base/statefull_data.dart';
+import 'package:tajir/controller/cart_controller.dart';
 import 'package:tajir/controller/product_controller.dart';
 import 'package:tajir/model/product.dart';
 import 'package:tajir/theme/app_dimension.dart';
@@ -22,6 +24,7 @@ import 'local_widgets/product_thumb_info/product_thumb_info.dart';
 const productId = 'product_id';
 
 class ProductScreen extends StatelessWidget {
+  // final cartController = Get.find<CartController>();
   final _formKey = GlobalKey<FormState>();
   final int currentId;
   ProductScreen({Key? key, required this.currentId}) : super(key: key);
@@ -71,7 +74,36 @@ class ProductScreen extends StatelessWidget {
                       ProductShortInfos(
                         product: product,
                       ),
-                      const ProductButtons(),
+                      GetBuilder<CartController>(
+                        builder: (cartController) => ProductButtons(
+                          onDecrementTapped: () {
+                            cartController.decrementTapped(product.id);
+                          },
+                          onIncrementTapped: () {
+                            cartController.incrementTapped(product.id);
+                          },
+                          onAddToCartTapped: () {
+                            cartController.addProduct(
+                                productId: product.id,
+                                thumb: product.thumb,
+                                name: product.name,
+                                model: product.model,
+                                inStock: product.quantity! > 0,
+                                price: product.price,
+                                type: product.type,
+                                categories: product.categories);
+                          },
+                          // count: product.quantity,
+                          cartProductQuantity:
+                              cartController.cart.data != null &&
+                                      cartController.cart.data
+                                              ?.products?[product.id] !=
+                                          null
+                                  ? cartController.cart.data
+                                      ?.products![product.id]!.quantity
+                                  : 0,
+                        ),
+                      ),
                       ProductExpansionDescription(
                         title: 'description'.tr,
                         child: ProductDescription(

@@ -6,7 +6,11 @@ import 'package:tajir/theme/app_dimension.dart';
 
 class CartTotalBar extends StatelessWidget {
   final Function()? onCheckoutTapped;
-  const CartTotalBar({Key? key, this.onCheckoutTapped}) : super(key: key);
+  final String? total;
+  final bool isLoading;
+  const CartTotalBar(
+      {Key? key, this.onCheckoutTapped, this.total, required this.isLoading})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,7 @@ class CartTotalBar extends StatelessWidget {
                       ?.copyWith(color: AppColors.darkerGreyColor),
                 ),
                 Text(
-                  '1050.0 TMT',
+                  '${total ?? 0} TMT',
                   style: Theme.of(context)
                       .textTheme
                       .subtitle1
@@ -54,7 +58,9 @@ class CartTotalBar extends StatelessWidget {
             child: ElevatedButton(
               style: AppButtonStyle.elevatedButtonStyleMedium,
               onPressed: onCheckoutTapped,
-              child: Text('checkout'.tr.toUpperCase()),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator.adaptive())
+                  : Text('checkout'.tr.toUpperCase()),
             ),
           ),
         ],
