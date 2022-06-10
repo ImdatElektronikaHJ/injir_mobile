@@ -97,8 +97,9 @@ class CategoryScreen extends StatelessWidget {
                         return CategoryProduct(
                           listProduct: products[index],
                           onProductTapped: () {
-                            controller.onProductTapped(products[index].id!);
+                            controller.onProductTapped(products[index].id);
                           },
+                          isShadowVisible: index % 2 == 0,
                         );
                       },
                       childCount: products.length,
