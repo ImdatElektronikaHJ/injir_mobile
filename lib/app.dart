@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tajir/controller/account_controller.dart';
+import 'package:tajir/controller/cart_controller.dart';
 import 'package:tajir/localization/localization_service.dart';
 import 'package:tajir/screen/dashboard/dashboard_screen.dart';
 import 'package:tajir/screen/init_login/init_login_screen.dart';
@@ -42,10 +43,10 @@ class TajirApp extends StatelessWidget {
             page: () => const ShowcaseScreen(),
           ),
           GetPage(
-            name: AppRoutes.dashboardRoute,
-            page: () => DashboardScreen(),
-            transition: Transition.fadeIn,
-          ),
+              name: AppRoutes.dashboardRoute,
+              page: () => DashboardScreen(),
+              transition: Transition.fadeIn,
+              binding: DashboardBinding()),
           GetPage(
             name: AppRoutes.registrationRoute,
             page: () => RegistrationScreen(),
@@ -71,5 +72,13 @@ class SplashBinding extends Bindings {
   void dependencies() {
     Get.put(LanguageController(), permanent: true);
     Get.put(AccountController(), permanent: true);
+  }
+}
+
+class DashboardBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(CartController(), permanent: true);
+    // Get.put(WishlistController(), permanent: true);
   }
 }
