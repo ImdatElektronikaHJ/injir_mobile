@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
 import 'local_widgets/product_add_to_cart_widget.dart';
@@ -9,7 +8,18 @@ import 'local_widgets/product_elevated_button.dart';
 import 'local_widgets/product_text_button.dart';
 
 class ProductButtons extends StatelessWidget {
-  const ProductButtons({Key? key}) : super(key: key);
+  final int? cartProductQuantity;
+  final void Function()? onAddToCartTapped;
+  final void Function()? onIncrementTapped;
+  final void Function()? onDecrementTapped;
+  // final int? count;
+  const ProductButtons({
+    Key? key,
+    required this.cartProductQuantity,
+    this.onAddToCartTapped,
+    this.onIncrementTapped,
+    this.onDecrementTapped,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +46,20 @@ class ProductButtons extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: AppDimension.paddingSmall),
             child: Row(
               children: [
-                const Expanded(child: ProductAddToCartWidget()),
+                Expanded(
+                  child: ProductAddToCartWidget(
+                    onAddToCartTapped: () {
+                      onAddToCartTapped!();
+                    },
+                    onDecrementTapped: () {
+                      onDecrementTapped!();
+                    },
+                    onIncrementTapped: () {
+                      onIncrementTapped!();
+                    },
+                    count: cartProductQuantity,
+                  ),
+                ),
                 const SizedBox(width: AppDimension.marginMedium),
                 Expanded(
                   child: ProductElevatedButton(

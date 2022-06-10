@@ -4,7 +4,7 @@ enum ProductType { quantitative, byWeight }
 
 class ListProduct {
   static List<ListProduct>? list = [];
-  final int? id;
+  final int id;
   final String? thumb;
   final String? name;
   final double? price;
@@ -19,7 +19,7 @@ class ListProduct {
   final double? maxCount;
 
   ListProduct({
-    this.id,
+    required this.id,
     this.thumb,
     this.name,
     this.special,
