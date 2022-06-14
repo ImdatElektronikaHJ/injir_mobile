@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tajir/screen/dashboard/local_widgets/dashboard_bottom_nav_item.dart';
 import 'package:tajir/theme/app_colors.dart';
 
 class DashboardBottomNavBar extends StatelessWidget {
-  final List<DashboardBottomNavItem> items;
+  final List<dynamic> items;
   const DashboardBottomNavBar({
     Key? key,
     required this.items,

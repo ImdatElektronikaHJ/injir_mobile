@@ -59,7 +59,10 @@ class CartTotalBar extends StatelessWidget {
               style: AppButtonStyle.elevatedButtonStyleMedium,
               onPressed: onCheckoutTapped,
               child: isLoading
-                  ? const Center(child: CircularProgressIndicator.adaptive())
+                  ? const Center(
+                      child: CircularProgressIndicator.adaptive(
+                      backgroundColor: AppColors.whiteColor,
+                    ))
                   : Text('checkout'.tr.toUpperCase()),
             ),
           ),

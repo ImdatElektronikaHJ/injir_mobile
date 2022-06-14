@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/controller/cart_controller.dart';
 import 'package:tajir/model/list_product.dart';
-import 'package:tajir/screen/product/local_widgets/product_buttons/local_widgets/product_add_to_cart_widget.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
+import 'package:tajir/widget/add_to_cart_widget/add_to_cart_widget.dart';
 import 'package:tajir/widget/caching_image.dart';
 import 'package:tajir/widget/rating_widget.dart';
 import 'package:tajir/widget/sale_widget.dart';
@@ -156,7 +156,7 @@ class CategoryProduct extends StatelessWidget {
                     builder: (cartController) => Container(
                       alignment: Alignment.topLeft,
                       // width: 35.0,
-                      child: ProductAddToCartWidget(
+                      child: AddToCartWidget(
                         onDecrementTapped: () {
                           cartController.decrementTapped(listProduct.id);
                         },
@@ -165,14 +165,16 @@ class CategoryProduct extends StatelessWidget {
                         },
                         onAddToCartTapped: () {
                           cartController.addProduct(
-                              productId: listProduct.id,
-                              thumb: listProduct.thumb,
-                              name: listProduct.name,
-                              model: listProduct.model,
-                              inStock: listProduct.quantity! > 0,
-                              price: listProduct.price,
-                              type: listProduct.type,
-                              categories: listProduct.categories);
+                            productId: listProduct.id,
+                            thumb: listProduct.thumb,
+                            name: listProduct.name,
+                            model: listProduct.model,
+                            inStock: listProduct.quantity! > 0,
+                            price: listProduct.price,
+                            type: listProduct.type,
+                            categories: listProduct.categories,
+                            salePrice: listProduct.special,
+                          );
                         },
                         // count: listProduct.quantity,
                         count: cartController.cart.data != null &&

@@ -14,6 +14,7 @@ class CartProduct {
   final List<CategoryEmbedded>? categories;
   bool? isUpdated = false;
   double? newQuantity;
+  final double? salePrice;
 
   CartProduct({
     required this.id,
@@ -28,6 +29,7 @@ class CartProduct {
     this.isUpdated,
     this.newQuantity,
     this.categories,
+    this.salePrice,
   });
 
   factory CartProduct.fromJson(Map<String, dynamic> json) {
@@ -36,23 +38,24 @@ class CartProduct {
         .replaceAll('&quot;', '"')
         .replaceAll('&amp;', '&');
     return CartProduct(
-      key: int.parse(json['key']),
-      id: json['product_id'] is int
-          ? json['product_id']
-          : int.parse(json['product_id']),
-      thumb: json['thumb'],
-      name: nameFixed,
-      price: _parseDouble(json['price']),
-      model: json['model'],
-      type: ProductType.quantitative,
-      inStock: json['stock'],
-      quantity: int.tryParse(json['quantity']),
-      // step: double.tryParse(json['shag']),
-      // minimum: double.tryParse(json['minimum']),
-      isUpdated: false,
-      newQuantity: 0,
-      // categories: _fetchCategories(json['categories'] ?? []),
-    );
+        key: int.parse(json['key']),
+        id: json['product_id'] is int
+            ? json['product_id']
+            : int.parse(json['product_id']),
+        thumb: json['thumb'],
+        name: nameFixed,
+        price: _parseDouble(json['price']),
+        model: json['model'],
+        type: ProductType.quantitative,
+        inStock: json['stock'],
+        quantity: int.tryParse(json['quantity']),
+        // step: double.tryParse(json['shag']),
+        // minimum: double.tryParse(json['minimum']),
+        isUpdated: false,
+        newQuantity: 0,
+        salePrice: json['special']
+        // categories: _fetchCategories(json['categories'] ?? []),
+        );
   }
 
   // static List<CategoryEmbedded> _fetchCategories(List<dynamic>? categories) {

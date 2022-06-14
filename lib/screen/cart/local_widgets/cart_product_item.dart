@@ -7,19 +7,23 @@ import 'package:tajir/widget/caching_image.dart';
 import 'package:tajir/widget/product_counter/product_counter_widget.dart';
 import 'package:tajir/widget/rating_widget.dart';
 
+import '../../../widget/sale_widget.dart';
+
 class CartProductItem extends StatelessWidget {
   final bool isShadowVisible;
   final CartProduct? cartProduct;
   final void Function() onIncrementTapped;
   final void Function() onDecrementTapped;
   final void Function()? onProductTapped;
+  final void Function() onDeleteTapped;
   const CartProductItem(
       {Key? key,
       this.isShadowVisible = true,
       required this.cartProduct,
       required this.onIncrementTapped,
       required this.onDecrementTapped,
-      this.onProductTapped})
+      this.onProductTapped,
+      required this.onDeleteTapped})
       : super(key: key);
 
   @override
@@ -102,10 +106,12 @@ class CartProductItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // const SizedBox(
-                      //   width: AppDimension.paddingMedium,
-                      // ),
-                      // const SaleWidget(salePercentage: '32'),
+                      const SizedBox(
+                        width: AppDimension.paddingMedium,
+                      ),
+                      Visibility(
+                          visible: cartProduct?.salePrice != null,
+                          child: const SaleWidget(salePercentage: '32')),
                       const Expanded(child: SizedBox()),
                       const Padding(
                         padding: EdgeInsets.symmetric(
@@ -155,10 +161,11 @@ class CartProductItem extends StatelessWidget {
                           count: cartProduct?.quantity,
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: AppDimension.paddingMedium),
-                        child: Icon(
+                      IconButton(
+                        onPressed: () {
+                          onDeleteTapped();
+                        },
+                        icon: const Icon(
                           Icons.delete,
                           color: AppColors.darkerGreyColor,
                         ),
