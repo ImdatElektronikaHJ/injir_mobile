@@ -12,6 +12,7 @@ import 'package:tajir/screen/compare_categories/compare_categories_screen.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_bottom_nav.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_container.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_top_nav_item.dart';
+import 'package:tajir/screen/dashboard/local_widgets/dashboard_top_nav_item_with_bagde.dart';
 import 'package:tajir/screen/home/home_screen.dart';
 import 'package:tajir/screen/profile/profile_screen.dart';
 import 'package:tajir/screen/search/search_screen.dart';
@@ -62,12 +63,13 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ),
                 actions: [
-                  DashboardTopNavItem(
+                  DashboardTopNavItemWithBadge(
                     value: DashboardNavigationIndex.wishlist,
                     groupValue: currentIndex,
                     iconData: CupertinoIcons.heart_fill,
                     onTapped: () => _dashboardController
                         .updateCurrentIndex(DashboardNavigationIndex.wishlist),
+                    badge: true,
                   ),
                   DashboardTopNavItem(
                     value: DashboardNavigationIndex.compare,

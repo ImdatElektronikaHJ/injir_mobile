@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:tajir/controller/cart_controller.dart';
 import 'package:tajir/screen/dashboard/consts/dashboard_navigation_index.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_bottom_nav_bar.dart';
 import 'package:tajir/screen/dashboard/local_widgets/dashboard_bottom_nav_item.dart';
+
+import 'dashboard_bottom_nav_item_with_badge.dart';
 
 class DashboardBottomNav extends StatelessWidget {
   final Function(int)? onItemSelected;
@@ -29,12 +33,15 @@ class DashboardBottomNav extends StatelessWidget {
         tooltip: 'categories'.tr,
         onTapped: () => _onItemTapped(DashboardNavigationIndex.categories),
       ),
-      DashboardBottomNavItem(
-        value: DashboardNavigationIndex.cart,
-        groupValue: currentIndex,
-        iconData: CupertinoIcons.bag,
-        tooltip: 'cart'.tr,
-        onTapped: () => _onItemTapped(DashboardNavigationIndex.cart),
+      GetBuilder<CartController>(
+        builder: (controller) => DashboardBottomNavItemWithBadge(
+          value: DashboardNavigationIndex.cart,
+          groupValue: currentIndex,
+          iconData: CupertinoIcons.bag,
+          tooltip: 'cart'.tr,
+          onTapped: () => _onItemTapped(DashboardNavigationIndex.cart),
+          badge: controller.cart.data?.products?.isNotEmpty ?? false,
+        ),
       ),
       DashboardBottomNavItem(
         value: DashboardNavigationIndex.stores,

@@ -59,4 +59,9 @@ class AppDimension {
 
   static const loaderSizeMedium = 50.0;
   static const loaderSizeSmall = 30.0;
+  static const badgeSize = 7.0;
+  static const topBadgePositionRight = 10.0;
+  static const topBadgePositionTop = 17.0;
+  static const bottomBadgePositionTop = 15.0;
+  static const bottomBadgePositionRight = 12.5;
 }
