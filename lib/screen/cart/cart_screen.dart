@@ -38,7 +38,7 @@ class CartScreen extends StatelessWidget {
                           SliverToBoxAdapter(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: AppDimension.paddingMedium),
+                                  horizontal: AppDimension.paddingMedium, vertical: AppDimension.paddingSmall),
                               child: Text(
                                 InterpolationUtil.interpolate(
                                     "product_count".tr,
@@ -68,28 +68,30 @@ class CartScreen extends StatelessWidget {
                                             height: 200.0,
                                             width: 200.0,
                                             child: CartProductItem(
-                                              onProductTapped: () {
-                                                Get.toNamed(
-                                                    AppRoutes.productRoute,
-                                                    id: NestedNavigationIds
-                                                        .cart,
-                                                    arguments: {
-                                                      productId:
-                                                          entryValue.value.id
-                                                    });
-                                              },
-                                              onIncrementTapped: () {
-                                                controller.incrementTapped(
-                                                    entryValue.value.id);
-                                              },
-                                              onDecrementTapped: () {
-                                                controller.decrementTapped(
-                                                    entryValue.value.id);
-                                              },
-                                              isShadowVisible:
-                                                  entryValue.key % 2 == 0,
-                                              cartProduct: entryValue.value,
-                                            ),
+                                                onProductTapped: () {
+                                                  Get.toNamed(
+                                                      AppRoutes.productRoute,
+                                                      id: NestedNavigationIds
+                                                          .cart,
+                                                      arguments: {
+                                                        productId:
+                                                            entryValue.value.id
+                                                      });
+                                                },
+                                                onIncrementTapped: () {
+                                                  controller.incrementTapped(
+                                                      entryValue.value.id);
+                                                },
+                                                onDecrementTapped: () {
+                                                  controller.decrementTapped(
+                                                      entryValue.value.id);
+                                                },
+                                                isShadowVisible:
+                                                    entryValue.key % 2 == 0,
+                                                cartProduct: entryValue.value,
+                                                onDeleteTapped: () {
+                                                  controller.removeProduct(entryValue.value.id);
+                                                }),
                                           ),
                                         )
                                         .toList(),
@@ -102,7 +104,7 @@ class CartScreen extends StatelessWidget {
                     CartTotalBar(
                         total: cart.total.toString(),
                         onCheckoutTapped: () {
-                          if (controller.syncStatus != CartSyncStatus.loading ||
+                          if (controller.syncStatus != CartSyncStatus.loading &&
                               controller.cart.status != Status.loading) {
                             Get.toNamed(AppRoutes.checkoutRoute,
                                 id: NestedNavigationIds.cart);
