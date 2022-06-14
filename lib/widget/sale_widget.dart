@@ -19,7 +19,7 @@ class SaleWidget extends StatelessWidget {
           horizontal: AppDimension.paddingSmall / 1.5,
           vertical: AppDimension.paddingSmall / 3),
       child: Text(
-        '-$salePercentage%',
+        '$salePercentage%',
         maxLines: 1,
         style: Theme.of(context)
             .textTheme

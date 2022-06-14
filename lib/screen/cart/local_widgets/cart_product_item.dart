@@ -90,28 +90,57 @@ class CartProductItem extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            '${cartProduct?.price} TMT',
-                            textAlign: TextAlign.left,
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(
-                                    color: AppColors.darkBlueColor,
-                                    fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                      Visibility(
+                        visible: cartProduct?.salePrice != null,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              '${cartProduct?.salePrice ?? 1} TMT',
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1!
+                                  .copyWith(
+                                      color: AppColors.darkBlueColor,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '${cartProduct?.price} TMT',
+                              style:
+                                  Theme.of(context).textTheme.caption!.copyWith(
+                                        fontSize: 13.0,
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Visibility(
+                        visible: cartProduct?.salePrice == null,
+                        child: Text(
+                          '${cartProduct?.price} TMT',
+                          textAlign: TextAlign.left,
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(
+                                  color: AppColors.darkBlueColor,
+                                  fontWeight: FontWeight.bold),
+                        ),
                       ),
                       const SizedBox(
                         width: AppDimension.paddingMedium,
                       ),
                       Visibility(
                           visible: cartProduct?.salePrice != null,
-                          child: const SaleWidget(salePercentage: '32')),
+                          child: SaleWidget(
+                              salePercentage: (100 -
+                                      ((cartProduct?.price ?? 1) /
+                                          (cartProduct?.salePrice ?? 1) *
+                                          100))
+                                  .toStringAsFixed(2))),
                       const Expanded(child: SizedBox()),
                       const Padding(
                         padding: EdgeInsets.symmetric(
