@@ -91,7 +91,8 @@ class ProductScreen extends StatelessWidget {
                                 inStock: product.quantity! > 0,
                                 price: product.price,
                                 type: product.type,
-                                categories: product.categories);
+                                categories: product.categories,
+                                salePrice: product.special);
                           },
                           // count: product.quantity,
                           cartProductQuantity:

@@ -102,7 +102,8 @@ class CartController extends GetxController {
       bool? inStock,
       double? price,
       ProductType? type,
-      List<CategoryEmbedded>? categories}) async {
+      List<CategoryEmbedded>? categories,
+      double? salePrice}) async {
     if (_cartResponse.status == Status.completed) {
       CartProduct productToAdd = CartProduct(
           id: productId,
@@ -114,7 +115,8 @@ class CartController extends GetxController {
           price: price,
           type: type,
           isUpdated: false,
-          categories: categories);
+          categories: categories,
+          salePrice: salePrice);
       _cartResponse.data?.products?[productId] = productToAdd;
       _cartSyncHelper.addProduct(productId, 1);
       _productsTotalUpdated();
