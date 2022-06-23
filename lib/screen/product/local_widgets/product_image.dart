@@ -10,7 +10,7 @@ import 'package:tajir/widget/slide_banner_widget.dart';
 
 class ProductImage extends StatelessWidget {
   final bool? isInWishlist;
-  final Function(bool)? onFavouriteTapped;
+  final Function()? onFavouriteTapped;
   final Function onBackTapped;
   final List<String> imageUrls;
   const ProductImage(
@@ -45,8 +45,9 @@ class ProductImage extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: AnimatedLikeButton(
                   isInWishList: isInWishlist!,
-                  onFavoriteTapped: (bool isInWishlist) =>
-                      onFavouriteTapped!(isInWishlist),
+                  onFavoriteTapped: () {
+                    onFavouriteTapped!();
+                  },
                 ),
               ),
             ],
