@@ -3,39 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 
-class AnimatedLikeButton extends StatefulWidget {
+class AnimatedLikeButton extends StatelessWidget {
   final bool isInWishList;
-  final Function(bool isInWishList) onFavoriteTapped;
+  final Function() onFavoriteTapped;
 
   const AnimatedLikeButton(
       {Key? key, required this.isInWishList, required this.onFavoriteTapped})
       : super(key: key);
-  @override
-  _AnimatedLikeButtonState createState() => _AnimatedLikeButtonState();
-}
-
-class _AnimatedLikeButtonState extends State<AnimatedLikeButton> {
-  bool _isInWishList = false;
-  // ignore: prefer_function_declarations_over_variables
-  Function(bool isInWishList) _onFavoriteTapped = (bool isInWishList) {};
-
-  @override
-  void initState() {
-    _isInWishList = widget.isInWishList;
-    _onFavoriteTapped = widget.onFavoriteTapped;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _onFavoriteTapped(!_isInWishList);
-
-        //TODO: remove
-        setState(() {
-          _isInWishList = !_isInWishList;
-        });
+        onFavoriteTapped();
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
@@ -52,7 +32,7 @@ class _AnimatedLikeButtonState extends State<AnimatedLikeButton> {
               child: child,
             );
           },
-          child: _isInWishList
+          child: isInWishList
               ? const Icon(
                   CupertinoIcons.heart_fill,
                   key: Key('true'),
@@ -68,19 +48,5 @@ class _AnimatedLikeButtonState extends State<AnimatedLikeButton> {
         ),
       ),
     );
-  }
-
-  _favoriteUpdated(bool isInWishList) {
-    setState(() {
-      _isInWishList = isInWishList;
-    });
-  }
-
-  @override
-  void didUpdateWidget(covariant AnimatedLikeButton oldWidget) {
-    if (widget.isInWishList != oldWidget.isInWishList) {
-      _favoriteUpdated(widget.isInWishList);
-    }
-    super.didUpdateWidget(oldWidget);
   }
 }
