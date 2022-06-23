@@ -80,5 +80,8 @@ const Map<String, String> tmTm = {
   'no_description': 'У этого продукта еще нет описания',
   'ok': 'OK',
   'cart_is_empty': 'Ваша корзина пуста',
-  'product_count': 'Количество продуктов: {#}'
+  'wishlist_is_empty': 'Список избранных пуст',
+  'product_count': 'Количество продуктов: {#}',
+  'error_getting_account': 'Ошибка получения аккаунта',
+  'user_not_logged_in': 'User is not logged in'
 };
