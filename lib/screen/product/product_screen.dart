@@ -6,6 +6,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:tajir/base/statefull_data.dart';
 import 'package:tajir/controller/cart_controller.dart';
 import 'package:tajir/controller/product_controller.dart';
+import 'package:tajir/controller/wishlist_controller.dart';
 import 'package:tajir/model/product.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/featured_block/featured_block.dart';
@@ -24,7 +25,6 @@ import 'local_widgets/product_thumb_info/product_thumb_info.dart';
 const productId = 'product_id';
 
 class ProductScreen extends StatelessWidget {
-  // final cartController = Get.find<CartController>();
   final _formKey = GlobalKey<FormState>();
   final int currentId;
   ProductScreen({Key? key, required this.currentId}) : super(key: key);
@@ -60,13 +60,27 @@ class ProductScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProductImage(
-                        isInWishlist: true,
-                        onFavouriteTapped: (bool isInWishlist) {
-                          _onFavouriteTapped(isInWishlist);
-                        },
-                        onBackTapped: () => _onBackTapped(context),
-                        imageUrls: [product.image ?? '', ...product.images],
+                      GetBuilder<WishlistController>(
+                        builder: (wishlistController) => ProductImage(
+                          isInWishlist:
+                              wishlistController.isInWishlist(product.id),
+                          onFavouriteTapped: () {
+                            if (wishlistController.isInWishlist(product.id)) {
+                              wishlistController.removeProduct(product.id);
+                            } else {
+                              wishlistController.addProduct(
+                                  productId: product.id,
+                                  thumb: product.thumb,
+                                  name: product.name,
+                                  model: product.model,
+                                  quantity: product.quantity,
+                                  price: product.price,
+                                  special: product.special);
+                            }
+                          },
+                          onBackTapped: () => _onBackTapped(context),
+                          imageUrls: [product.image ?? '', ...product.images],
+                        ),
                       ),
                       ProductThumbInfo(
                         product: product,
@@ -161,12 +175,7 @@ class ProductScreen extends StatelessWidget {
   }
 
   void _onSeeAllTapped() {
-    //TODO: add click listener
     print('on see all');
-  }
-
-  _onFavouriteTapped(bool isInWishlist) {
-    print(isInWishlist);
   }
 
   _onBackTapped(BuildContext context) {

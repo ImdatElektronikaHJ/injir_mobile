@@ -12,7 +12,7 @@ class ListProduct {
   final String? description;
   final String? model;
   final bool? novelty;
-  final double? quantity;
+  final int? quantity;
   final ProductType? type;
   final double? minimum;
   final List<CategoryEmbedded>? categories;
@@ -47,7 +47,7 @@ class ListProduct {
       special: _parseDouble(json['special']),
       model: json['model'],
       description: json['description'],
-      quantity: double.parse(json['quantity']),
+      quantity: int.parse(json['quantity']),
       novelty: json['new'] == null
           ? null
           : int.tryParse(json['new'].toString()) == 1,

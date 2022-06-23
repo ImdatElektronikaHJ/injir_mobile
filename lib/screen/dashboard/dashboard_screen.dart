@@ -23,6 +23,7 @@ import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/custom_navigator.dart';
 import 'package:tajir/widget/fade_indexed_stack.dart';
 
+import '../../controller/wishlist_controller.dart';
 import 'consts/dashboard_navigation_index.dart';
 import 'local_widgets/dashboard_search_bar.dart';
 
@@ -63,13 +64,16 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ),
                 actions: [
-                  DashboardTopNavItemWithBadge(
-                    value: DashboardNavigationIndex.wishlist,
-                    groupValue: currentIndex,
-                    iconData: CupertinoIcons.heart_fill,
-                    onTapped: () => _dashboardController
-                        .updateCurrentIndex(DashboardNavigationIndex.wishlist),
-                    badge: true,
+                  GetBuilder<WishlistController>(
+                    builder: (controller) => DashboardTopNavItemWithBadge(
+                      value: DashboardNavigationIndex.wishlist,
+                      groupValue: currentIndex,
+                      iconData: CupertinoIcons.heart_fill,
+                      onTapped: () => _dashboardController.updateCurrentIndex(
+                          DashboardNavigationIndex.wishlist),
+                      badge: controller.wishList.data != null &&
+                          controller.wishList.data!.isNotEmpty,
+                    ),
                   ),
                   DashboardTopNavItem(
                     value: DashboardNavigationIndex.compare,

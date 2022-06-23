@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AccountLoginStatusController>(
+    return GetX<AccountLoginStatusController>(
       builder: (controller) {
         final accountController = Get.find<AccountController>();
         return CustomScrollView(
@@ -24,13 +24,14 @@ class ProfileScreen extends StatelessWidget {
               onLogoutTapped: () {
                 accountController.logout();
               },
-              isLoggedIn:
-                  controller.accountLoginStatus == AccountLoginStatus.loggedIn,
+              isLoggedIn: controller.accountLoginStatus.value ==
+                  AccountLoginStatus.loggedIn,
             ),
             SliverVisibility(
-              visible:
-                  controller.accountLoginStatus != AccountLoginStatus.loading &&
-                      controller.accountLoginStatus != AccountLoginStatus.error,
+              visible: controller.accountLoginStatus.value !=
+                      AccountLoginStatus.loading &&
+                  controller.accountLoginStatus.value !=
+                      AccountLoginStatus.error,
               sliver: SliverToBoxAdapter(
                 child: ListTile(
                   onTap: () {
@@ -48,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SliverVisibility(
-                visible: controller.accountLoginStatus ==
+                visible: controller.accountLoginStatus.value ==
                     AccountLoginStatus.notLoggedIn,
                 sliver: SliverToBoxAdapter(
                   child: Column(
@@ -80,8 +81,8 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 )),
             SliverVisibility(
-              visible:
-                  controller.accountLoginStatus == AccountLoginStatus.loggedIn,
+              visible: controller.accountLoginStatus.value ==
+                  AccountLoginStatus.loggedIn,
               sliver: SliverToBoxAdapter(
                 child: Column(
                   children: [
@@ -127,8 +128,8 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SliverVisibility(
-              visible:
-                  controller.accountLoginStatus == AccountLoginStatus.error,
+              visible: controller.accountLoginStatus.value ==
+                  AccountLoginStatus.error,
               sliver: SliverFillRemaining(
                 hasScrollBody: false,
                 child: ErrorScreen(
@@ -139,8 +140,8 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SliverVisibility(
-              visible:
-                  controller.accountLoginStatus == AccountLoginStatus.loading,
+              visible: controller.accountLoginStatus.value ==
+                  AccountLoginStatus.loading,
               sliver: const SliverFillRemaining(
                 hasScrollBody: false,
                 child: Center(

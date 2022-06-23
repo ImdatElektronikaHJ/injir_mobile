@@ -6,9 +6,12 @@ import 'package:tajir/model/list_product.dart';
 import 'package:tajir/theme/app_colors.dart';
 import 'package:tajir/theme/app_dimension.dart';
 import 'package:tajir/widget/add_to_cart_widget/add_to_cart_widget.dart';
+import 'package:tajir/widget/animated_like_button.dart';
 import 'package:tajir/widget/caching_image.dart';
 import 'package:tajir/widget/rating_widget.dart';
 import 'package:tajir/widget/sale_widget.dart';
+
+import '../../../controller/wishlist_controller.dart';
 
 class CategoryProduct extends StatelessWidget {
   final bool isShadowVisible;
@@ -73,11 +76,27 @@ class CategoryProduct extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: AppDimension.paddingMedium),
-                      child: Icon(Icons.favorite, color: AppColors.redColor),
-                    ),
+                    GetBuilder<WishlistController>(
+                        builder: (wishlistController) => AnimatedLikeButton(
+                              isInWishList: wishlistController
+                                  .isInWishlist(listProduct.id),
+                              onFavoriteTapped: () {
+                                if (wishlistController
+                                    .isInWishlist(listProduct.id)) {
+                                  wishlistController
+                                      .removeProduct(listProduct.id);
+                                } else {
+                                  wishlistController.addProduct(
+                                      productId: listProduct.id,
+                                      thumb: listProduct.thumb,
+                                      name: listProduct.name,
+                                      model: listProduct.model,
+                                      quantity: listProduct.quantity,
+                                      price: listProduct.price,
+                                      special: listProduct.special);
+                                }
+                              },
+                            )),
                   ]),
                   listProduct.special != null && listProduct.special != 0.0
                       ? Row(

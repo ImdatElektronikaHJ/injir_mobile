@@ -18,6 +18,7 @@ class AccountController extends GetxController {
   void fetchAccount() async {
     _accountResponse = StatefullData.loading();
     update();
+    _accountLoginController.getAccountStatus(_accountResponse);
     try {
       final response = await _accountRepository.getAccount();
       _accountResponse = StatefullData.completed(response);

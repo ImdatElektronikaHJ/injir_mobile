@@ -5,7 +5,7 @@ import 'package:tajir/data/network/api_exception.dart';
 enum AccountLoginStatus { error, loggedIn, notLoggedIn, loading, empty }
 
 class AccountLoginStatusController extends GetxController {
-  AccountLoginStatus accountLoginStatus = AccountLoginStatus.loading;
+  Rx<AccountLoginStatus> accountLoginStatus = AccountLoginStatus.loading.obs;
 
   void getAccountStatus(StatefullData accountResponse) async {
     final status = accountResponse.status;
@@ -28,9 +28,9 @@ class AccountLoginStatusController extends GetxController {
         updateLoginStatus = AccountLoginStatus.empty;
         break;
     }
-    if (accountLoginStatus != updateLoginStatus) {
-      accountLoginStatus = updateLoginStatus;
+    if (accountLoginStatus.value != updateLoginStatus) {
+      accountLoginStatus.value = updateLoginStatus;
     }
-    update();
+    print(accountLoginStatus.value);
   }
 }

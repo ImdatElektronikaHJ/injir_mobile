@@ -64,4 +64,7 @@ class AppDimension {
   static const topBadgePositionTop = 17.0;
   static const bottomBadgePositionTop = 15.0;
   static const bottomBadgePositionRight = 12.5;
+
+  static const wishlistProductHeight = 180.0;
+  static const cartProductHeight = 180.0;
 }

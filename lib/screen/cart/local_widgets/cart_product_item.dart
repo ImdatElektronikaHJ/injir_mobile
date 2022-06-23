@@ -14,7 +14,7 @@ class CartProductItem extends StatelessWidget {
   final CartProduct? cartProduct;
   final void Function() onIncrementTapped;
   final void Function() onDecrementTapped;
-  final void Function()? onProductTapped;
+  final void Function() onProductTapped;
   final void Function() onDeleteTapped;
   const CartProductItem(
       {Key? key,
@@ -22,7 +22,7 @@ class CartProductItem extends StatelessWidget {
       required this.cartProduct,
       required this.onIncrementTapped,
       required this.onDecrementTapped,
-      this.onProductTapped,
+      required this.onProductTapped,
       required this.onDeleteTapped})
       : super(key: key);
 
@@ -30,10 +30,10 @@ class CartProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onProductTapped!();
+        onProductTapped();
       },
       child: Container(
-        height: 200.0,
+        height: AppDimension.cartProductHeight,
         padding:
             const EdgeInsets.symmetric(vertical: AppDimension.paddingMedium),
         decoration: isShadowVisible

@@ -47,8 +47,8 @@ class ListProductWidget extends StatelessWidget {
                 flex: 3,
                 child: ListProductImageBlock(
                   imageUrl: 'assets/images/placeholder/samsung.png',
-                  onFavouriteTapped: (bool isInWishlist) {
-                    print(isInWishlist);
+                  onFavouriteTapped: () {
+                    // print();
                   },
                   salePercentage: '16',
                 )),

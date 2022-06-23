@@ -14,6 +14,7 @@ import 'package:tajir/theme/app_theme_service.dart';
 
 import 'const/app_routes.dart';
 import 'controller/language_controller.dart';
+import 'controller/wishlist_controller.dart';
 import 'screen/login/login_screen.dart';
 
 class TajirApp extends StatelessWidget {
@@ -79,6 +80,6 @@ class DashboardBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(CartController(), permanent: true);
-    // Get.put(WishlistController(), permanent: true);
+    Get.put(WishlistController(), permanent: true);
   }
 }

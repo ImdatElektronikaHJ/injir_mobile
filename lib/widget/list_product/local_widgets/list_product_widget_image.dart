@@ -5,7 +5,7 @@ import 'package:tajir/widget/sale_widget.dart';
 
 class ListProductImageBlock extends StatelessWidget {
   final String imageUrl;
-  final Function(bool) onFavouriteTapped;
+  final Function() onFavouriteTapped;
   final String? salePercentage;
 
   const ListProductImageBlock(
