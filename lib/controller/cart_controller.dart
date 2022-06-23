@@ -8,6 +8,8 @@ import 'package:tajir/model/category_embedded.dart';
 import 'package:tajir/model/list_product.dart';
 
 import '../base/statefull_data.dart';
+import '../const/app_routes.dart';
+import '../const/nested_navigation_ids.dart';
 import '../data/network/helpers/cart_sync_helper.dart';
 import '../model/cart.dart';
 
@@ -185,6 +187,11 @@ class CartController extends GetxController {
     _langController.selectedLocale.listen((p0) {
       fetchCart();
     });
+  }
+
+  void onProductTapped(int productId) {
+    Get.toNamed(AppRoutes.productRoute,
+        id: NestedNavigationIds.cart, arguments: {productId: productId});
   }
 
   @override
