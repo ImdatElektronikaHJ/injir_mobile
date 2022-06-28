@@ -84,5 +84,8 @@ const Map<String, String> enGb = {
   'wishlist_is_empty': 'Список избранных пуст',
   'product_count': 'Product count: {#}',
   'error_getting_account': 'Account getting error',
-  'user_not_logged_in': 'User is not logged in'
+  'user_not_logged_in': 'User is not logged in',
+  'put_rating_to_make_review': 'Please rate to submit a review',
+  'thanks_for_review': 'Thanks for your review!',
+  'thanks': 'Thank you!'
 };

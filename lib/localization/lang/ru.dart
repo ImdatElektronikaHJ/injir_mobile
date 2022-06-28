@@ -83,5 +83,9 @@ const Map<String, String> ruRu = {
   'wishlist_is_empty': 'Список избранных пуст',
   'product_count': 'Количество товаров: {#}',
   'error_getting_account': 'Ошибка получения аккаунта',
-  'user_not_logged_in': 'Пользователь не авторизован'
+  'user_not_logged_in': 'Пользователь не авторизован',
+  'put_rating_to_make_review':
+      'Пожалуйста, поставьте рейтинг, чтобы отправить отзыв',
+  'thanks_for_review': 'Спасибо за ваш отзыв!',
+  'thanks': 'Спасибо'
 };
