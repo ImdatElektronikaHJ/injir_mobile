@@ -12,6 +12,7 @@ class ProductReview extends StatelessWidget {
   final int currentRating;
   final String? Function() validateComment;
   final TextEditingController textController;
+  final bool isLoading;
   const ProductReview(
       {Key? key,
       required this.formKey,
@@ -19,7 +20,8 @@ class ProductReview extends StatelessWidget {
       required this.onPostCommentTapped,
       this.currentRating = -1,
       required this.validateComment,
-      required this.textController})
+      required this.textController,
+      this.isLoading = false})
       : super(key: key);
 
   @override
@@ -120,7 +122,9 @@ class ProductReview extends StatelessWidget {
                     onPressed: () {
                       onPostCommentTapped();
                     },
-                    child: Text('comment'.tr),
+                    child: isLoading
+                        ? const CircularProgressIndicator.adaptive()
+                        : Text('comment'.tr),
                   ),
                 ),
               ],

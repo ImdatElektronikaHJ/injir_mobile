@@ -224,8 +224,8 @@ class ProductController extends GetxController {
               ),
             ),
           ).then((value) {
-            _textController.clear();
             _currentRating = -1;
+            formKey.currentState!.reset();
             update();
           });
         } catch (e) {
