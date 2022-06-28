@@ -28,17 +28,21 @@ class ProductController extends GetxController {
   StatefullData<List<ListProduct>> _relatedProducts = StatefullData.empty();
   StatefullData<List<ListProduct>> get relatedProducts => _relatedProducts;
 
+  StatefullData<String> _reviewResponse = StatefullData.empty();
+  StatefullData<String> get reviewResponse => _reviewResponse;
+
   final _productRepository = ProductRepository();
   final _productsRepository = ProductsRepository();
 
   final _langController = Get.find<LanguageController>();
   final _accountController = Get.find<AccountController>();
 
+  ///Need for clear comment after review
+  final _textController = TextEditingController();
+  TextEditingController get textController => _textController;
+
   int _currentRating = -1;
   int get currentRating => _currentRating;
-
-  String? _comment = '';
-  String? get comment => _comment;
 
   final _reviewRepository = ReviewRepository();
 
@@ -143,14 +147,16 @@ class ProductController extends GetxController {
   //   }
   // }
 
-  void onCommentChanged(String? value) {
-    _comment = value?.trim();
-  }
+  // void onCommentChanged(String? value) {
+  //   _textController.text = value?.trim() ?? '';
+  //   _textController.
+  // }
 
   String? validateComment() {
-    if (_comment == null || _comment!.isEmpty) {
+    if (_textController.value.text.isEmpty) {
       return 'fill_field'.tr;
-    } else if (_comment!.length < 25 || _comment!.length > 100) {
+    } else if (_textController.value.text.length < 25 ||
+        _textController.value.text.length > 100) {
       return InterpolationUtil.interpolate(
           "field_max_min_length".tr, [25, 100]);
     }
@@ -158,11 +164,22 @@ class ProductController extends GetxController {
   }
 
   void onPostCommentTapped() async {
-    if (formKey.currentState!.validate()) {
+    if (_accountController.accountResponse.data == null) {
+      Get.showSnackbar(GetSnackBar(
+        messageText: Text(
+          'user_not_logged_in'.tr,
+          style: Get.textTheme.subtitle1!.copyWith(color: AppColors.whiteColor),
+        ),
+        duration: const Duration(milliseconds: 3500),
+        margin: const EdgeInsets.all(AppDimension.marginMedium),
+        backgroundColor: AppColors.redColor,
+        borderRadius: AppDimension.borderRadiusMedium,
+      ));
+    } else if (formKey.currentState!.validate()) {
       if (_currentRating < 0) {
         Get.showSnackbar(GetSnackBar(
           messageText: Text(
-            'Пожалуйста, поставьте рейтинг, чтобы отправить отзыв',
+            'put_rating_to_make_review'.tr,
             style:
                 Get.textTheme.subtitle1!.copyWith(color: AppColors.whiteColor),
           ),
@@ -172,16 +189,19 @@ class ProductController extends GetxController {
           borderRadius: AppDimension.borderRadiusMedium,
         ));
       } else {
+        _reviewResponse = StatefullData.loading();
+        update();
         try {
           final review = Review(
               name: _accountController.accountResponse.data!.firstName,
               rating: _currentRating.toDouble(),
-              text: _comment);
-          final response =
-              await _reviewRepository.postReview(review, currentId);
+              text: _textController.value.text);
+          await _reviewRepository.postReview(review, currentId);
+          _reviewResponse = StatefullData.completed('');
           Get.defaultDialog(
+            barrierDismissible: false,
             title: '',
-            middleText: 'Спасибо за ваш отзыв!',
+            middleText: 'thanks_for_review'.tr,
             middleTextStyle: AppTextStyle.avenirRegular
                 .copyWith(color: Get.theme.secondaryHeaderColor),
             confirm: GestureDetector(
@@ -203,9 +223,15 @@ class ProductController extends GetxController {
                 ),
               ),
             ),
-          );
+          ).then((value) {
+            _currentRating = -1;
+            formKey.currentState!.reset();
+            update();
+          });
         } catch (e) {
           if (kDebugMode) {
+            _reviewResponse = StatefullData.error(e);
+            update();
             print("Post review method: $e");
           }
         }

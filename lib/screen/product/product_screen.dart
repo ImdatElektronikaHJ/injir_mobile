@@ -138,16 +138,20 @@ class ProductScreen extends StatelessWidget {
                       ),
                       ProductReview(
                         formKey: _formKey,
+                        textController: controller.textController,
                         currentRating: controller.currentRating,
                         onRatingTapped: () {
                           controller.onRatingTapped();
                         },
-                        onCommentChanged: (value) {
-                          controller.onCommentChanged(value);
-                        },
                         validateComment: () => controller.validateComment(),
+                        isLoading:
+                            controller.reviewResponse.status == Status.loading,
                         onPostCommentTapped: () {
-                          controller.onPostCommentTapped();
+                          FocusScope.of(context).unfocus();
+                          if (controller.reviewResponse.status !=
+                              Status.loading) {
+                            controller.onPostCommentTapped();
+                          }
                         },
                       ),
                       Visibility(

@@ -83,5 +83,9 @@ const Map<String, String> tmTm = {
   'wishlist_is_empty': 'Список избранных пуст',
   'product_count': 'Количество продуктов: {#}',
   'error_getting_account': 'Ошибка получения аккаунта',
-  'user_not_logged_in': 'User is not logged in'
+  'user_not_logged_in': 'User is not logged in',
+  'put_rating_to_make_review':
+      'Пожалуйста, поставьте рейтинг, чтобы отправить отзыв',
+  'thanks_for_review': 'Спасибо за ваш отзыв!',
+  'thanks': 'Спасибо'
 };

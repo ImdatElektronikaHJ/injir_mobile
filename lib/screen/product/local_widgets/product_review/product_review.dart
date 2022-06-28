@@ -10,16 +10,18 @@ class ProductReview extends StatelessWidget {
   final void Function() onRatingTapped;
   final void Function() onPostCommentTapped;
   final int currentRating;
-  final void Function(String?) onCommentChanged;
   final String? Function() validateComment;
+  final TextEditingController textController;
+  final bool isLoading;
   const ProductReview(
       {Key? key,
       required this.formKey,
       required this.onRatingTapped,
       required this.onPostCommentTapped,
       this.currentRating = -1,
-      required this.onCommentChanged,
-      required this.validateComment})
+      required this.validateComment,
+      required this.textController,
+      this.isLoading = false})
       : super(key: key);
 
   @override
@@ -78,10 +80,8 @@ class ProductReview extends StatelessWidget {
                     key: formKey,
                     child: TextFormField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
+                      controller: textController,
                       maxLines: 10,
-                      onChanged: (value) {
-                        onCommentChanged(value);
-                      },
                       validator: (_) => validateComment(),
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -122,7 +122,9 @@ class ProductReview extends StatelessWidget {
                     onPressed: () {
                       onPostCommentTapped();
                     },
-                    child: Text('comment'.tr),
+                    child: isLoading
+                        ? const CircularProgressIndicator.adaptive()
+                        : Text('comment'.tr),
                   ),
                 ),
               ],
